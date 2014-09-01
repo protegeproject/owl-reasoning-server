@@ -1,0 +1,195 @@
+package edu.stanford.protege.reasoning.protocol;
+
+
+// Creation
+
+message CreateKbActionMessage {
+    required string kbId = 1;
+}
+
+message CreateKbActionResponseMessage {
+    required string kbId = 1;
+}
+
+message DeleteKbActionMessage {
+    required string kbId = 1;
+}
+
+message DeleteKbResultMessage {
+    required string kbId = 1;
+}
+
+
+////////////////////////////////////////////////////////////////
+
+message KbId {
+    required string id = 1;
+}
+
+message KbDigest {
+    required bytes digest = 1;
+}
+
+enum HierarchyQueryType {
+    DIRECT = 0;
+    INDIRECT = 1;
+}
+
+message Axiom {
+    required bytes serialization = 1;
+}
+
+message ClassExpression {
+    required bytes serialization = 1;
+}
+
+message ClassName {
+    required string iri = 1;
+}
+
+message ClassHierarchyNode {
+    repeated ClassName classNames = 1;
+}
+
+message IndividualName {
+    required string iri = 1;
+}
+
+////////////////////////////////////////////////////////////////
+
+message GetKbDigestActionMessage {
+    required KbId kbId = 1;
+}
+
+message GetKbDigestResponseMessage {
+    required KbId kbId = 1;
+    required KbDigest kbDigest = 2;
+}
+
+
+////////////////////////////////////////////////////////////////
+
+enum Consistency {
+    CONSISTENT = 0; // This will be the default value.
+    INCONSISTENT = 1;
+}
+
+message IsConsistentActionMessage {
+    required KbId kbId = 1;
+}
+
+message IsConsistentResponseMessage {
+    required KbId kbId = 1;
+    required KbDigest kbDigest = 2;
+    required bool present = 3;
+    optional Consistency result = 4;
+}
+
+////////////////////////////////////////////////////////////////
+
+message IsEntailedActionMessage {
+    required KbId kbId = 1;
+    required Axiom axiom = 2;
+}
+
+
+enum EntailmentCheckResult {
+    NOT_ENTAILED = 0;
+    ENTAILED = 1;
+}
+
+message IsEntailedResponseMessage {
+
+    required KbId kbId = 1;
+    required KbDigest kbDigest = 2;
+    required Axiom axiom = 3;
+    required bool present = 4;
+    optional Consistency consistency = 5;
+    optional EntailmentCheckResult result = 6;
+}
+
+////////////////////////////////////////////////////////////////
+
+
+message GetSubClassesActionMessage {
+    required KbId kbId = 1;
+    required ClassExpression classExpression = 2;
+}
+
+message GetSubClassesResponseMessage {
+
+    required KbId kbId = 1;
+    required KbDigest kbDigest = 2;
+
+    required ClassExpression classExpression = 3;
+
+    required bool present = 4;
+    optional Consistency consistency = 5;
+    repeated ClassHierarchyNode subClasses = 6;
+}
+
+
+message GetSuperClassesActionMessage {
+    required KbId kbId = 1;
+    required ClassExpression classExpression = 2;
+    optional HierarchyQueryType hierarchyQueryType = 3;
+}
+
+message GetSuperClassesResponseMessage {
+
+    required KbId kbId = 1;
+    required KbDigest kbDigest = 2;
+
+    required ClassExpression classExpression = 3;
+
+    required bool present = 4;
+    optional Consistency consistency = 5;
+    repeated ClassHierarchyNode superClasses = 6;
+}
+
+
+
+message GetInstancesActionMessage {
+    required KbId kbId = 1;
+    required ClassExpression classExpresion = 2;
+    optional HierarchyQueryType hierarchyQueryType = 3;
+}
+
+message GetInstancesResponseMessage {
+    required KbId kbId = 1;
+    required KbDigest kbDigest = 2;
+
+    required ClassExpression classExpression = 3;
+
+    required bool present = 4;
+    optional Consistency consistency = 5;
+    repeated IndividualName instances = 6;
+}
+
+///////////////////////////////////////////////////////////////
+
+message ChangeData {
+    required bytes serialization = 1;
+}
+
+message ApplyChangesActionMessage {
+    required KbId kbId = 1;
+    repeated ChangeData changes = 2;
+}
+
+message ApplyChangesResponseMessage {
+    required KbId kbId = 1;
+    required KbDigest kbDigest = 2;
+}
+
+///////////////////////////////////////////////////////////////
+
+message ReplaceAxiomsActionMessage {
+    required KbId kbId = 1;
+    repeated Axiom axioms = 2;
+}
+
+message ReplaceAxiomsResponseMessage {
+    required KbId kbId = 1;
+    required KbDigest kbDigest = 2;
+}
