@@ -44,22 +44,22 @@ public class GetKbDigestAction_TestCase {
 
     @Test
     public void shouldReturnSameActionType() {
-        ActionType<GetKbDigestHandler> typeA = action.getType();
-        ActionType<GetKbDigestHandler> typeB = action.getType();
+        ActionType<GetKbDigestActionHandler> typeA = action.getType();
+        ActionType<GetKbDigestActionHandler> typeB = action.getType();
         assertThat(typeA, is(typeB));
     }
 
     @Test
     public void shouldReturnSameActionTypeForDifferentActions() {
-        ActionType<GetKbDigestHandler> typeA = action.getType();
+        ActionType<GetKbDigestActionHandler> typeA = action.getType();
         GetKbDigestAction actionB = new GetKbDigestAction(kbId);
-        ActionType<GetKbDigestHandler> typeB = actionB.getType();
+        ActionType<GetKbDigestActionHandler> typeB = actionB.getType();
         assertThat(typeA, is(typeB));
     }
 
     @Test
     public void shouldDispatchToHandler() {
-        GetKbDigestHandler handler = mock(GetKbDigestHandler.class);
+        GetKbDigestActionHandler handler = mock(GetKbDigestActionHandler.class);
         action.dispatch(handler);
         verify(handler, times(1)).handleAction(action);
     }

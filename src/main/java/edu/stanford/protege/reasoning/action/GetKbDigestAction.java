@@ -7,21 +7,21 @@ import edu.stanford.protege.reasoning.KbId;
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 28/08/2014
  */
-public class GetKbDigestAction extends KbAction<GetKbDigestResponse, GetKbDigestHandler> {
+public class GetKbDigestAction extends KbAction<GetKbDigestResponse, GetKbDigestActionHandler> {
 
-    public static final ActionType<GetKbDigestHandler> TYPE = ActionType.create();
+    public static final ActionType<GetKbDigestActionHandler> TYPE = ActionType.create();
 
     public GetKbDigestAction(KbId kbId) {
         super(kbId);
     }
 
     @Override
-    public ActionType<GetKbDigestHandler> getType() {
+    public ActionType<GetKbDigestActionHandler> getType() {
         return TYPE;
     }
 
     @Override
-    public ListenableFuture<GetKbDigestResponse> dispatch(GetKbDigestHandler handler) {
+    public ListenableFuture<GetKbDigestResponse> dispatch(GetKbDigestActionHandler handler) {
         return handler.handleAction(this);
     }
 

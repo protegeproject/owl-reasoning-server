@@ -1,7 +1,6 @@
 package edu.stanford.protege.reasoning.impl;
 
 import com.google.common.base.Optional;
-import com.google.common.eventbus.EventBus;
 import com.google.common.util.concurrent.*;
 import com.google.inject.Inject;
 import edu.stanford.protege.reasoning.*;
@@ -59,7 +58,7 @@ public class KbReasonerImpl implements KbReasoner {
         handlerRegistry.registerHandler(IsEntailedAction.TYPE, new IsEntailedActionHandlerImpl());
         handlerRegistry.registerHandler(GetSubClassesAction.TYPE, new GetSubClassesActionHandlerImpl());
         handlerRegistry.registerHandler(GetInstancesAction.TYPE, new GetInstancesActionHandlerImpl());
-        handlerRegistry.registerHandler(GetKbDigestAction.TYPE, new GetKbDigestHandlerImpl());
+        handlerRegistry.registerHandler(GetKbDigestAction.TYPE, new GetKbDigestActionHandlerImpl());
         handlerRegistry.registerHandler(ReplaceAxiomsAction.TYPE, new ReplaceAxiomsHandlerImpl());
         handlerRegistry.registerHandler(GetSuperClassesAction.TYPE, new GetSuperClassesActionHandlerImpl());
 
@@ -143,7 +142,7 @@ public class KbReasonerImpl implements KbReasoner {
         }
     }
 
-    private class GetKbDigestHandlerImpl implements GetKbDigestHandler {
+    private class GetKbDigestActionHandlerImpl implements GetKbDigestActionHandler {
         @Override
         public ListenableFuture<GetKbDigestResponse> handleAction(GetKbDigestAction action) {
             try {
