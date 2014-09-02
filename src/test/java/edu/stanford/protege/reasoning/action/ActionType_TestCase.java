@@ -18,7 +18,6 @@ public class ActionType_TestCase<H extends ActionHandler> {
         assertThat(actionType, is((equalTo(actionType))));
     }
 
-
     @Test
     public void shouldEqualSelfHashCode() {
         ActionType<H> actionType = ActionType.create();

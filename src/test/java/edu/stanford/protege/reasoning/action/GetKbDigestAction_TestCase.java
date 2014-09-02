@@ -37,6 +37,11 @@ public class GetKbDigestAction_TestCase {
     }
 
     @Test
+    public void shouldNotBeEqualToNull() {
+        assertThat(action.equals(null), is(false));
+    }
+
+    @Test
     public void shouldHaveSameHashCode() {
         GetKbDigestAction actionB = new GetKbDigestAction(kbId);
         assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));

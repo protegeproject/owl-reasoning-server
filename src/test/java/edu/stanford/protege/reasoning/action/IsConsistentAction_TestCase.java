@@ -45,22 +45,22 @@ public class IsConsistentAction_TestCase {
 
     @Test
     public void shouldReturnSameActionType() {
-        ActionType<IsConsistentActionHandler> typeA = action.getType();
-        ActionType<IsConsistentActionHandler> typeB = action.getType();
+        ActionType<IsConsistentHandler> typeA = action.getType();
+        ActionType<IsConsistentHandler> typeB = action.getType();
         assertThat(typeA, is(typeB));
     }
 
     @Test
     public void shouldReturnSameActionTypeForDifferentActions() {
-        ActionType<IsConsistentActionHandler> typeA = action.getType();
+        ActionType<IsConsistentHandler> typeA = action.getType();
         IsConsistentAction actionB = new IsConsistentAction(kbId);
-        ActionType<IsConsistentActionHandler> typeB = actionB.getType();
+        ActionType<IsConsistentHandler> typeB = actionB.getType();
         assertThat(typeA, is(typeB));
     }
 
     @Test
     public void shouldDispatchToHandler() {
-        IsConsistentActionHandler handler = mock(IsConsistentActionHandler.class);
+        IsConsistentHandler handler = mock(IsConsistentHandler.class);
         action.dispatch(handler);
         verify(handler, times(1)).handleAction(action);
     }
