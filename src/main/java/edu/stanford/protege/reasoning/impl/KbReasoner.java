@@ -5,6 +5,7 @@ import edu.stanford.protege.reasoning.HasShutDown;
 import edu.stanford.protege.reasoning.Response;
 import edu.stanford.protege.reasoning.action.ActionHandler;
 import edu.stanford.protege.reasoning.action.KbAction;
+import org.semanticweb.owlapi.reasoner.TimeOutException;
 
 import java.util.concurrent.Future;
 
@@ -24,5 +25,6 @@ public interface KbReasoner extends HasShutDown {
      * @param <H>
      * @return
      */
-    <A extends KbAction<R, H>, R extends Response, H extends ActionHandler> ListenableFuture<R> execute(A action);
+    <A extends KbAction<R, H>, R extends Response, H extends ActionHandler> ListenableFuture<R> execute(A action) throws
+                                                                                                                  TimeOutException;
 }

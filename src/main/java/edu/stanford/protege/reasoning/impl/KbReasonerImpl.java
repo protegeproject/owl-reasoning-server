@@ -39,7 +39,7 @@ public class KbReasonerImpl implements KbReasoner {
 
     private final HandlerRegistry handlerRegistry;
 
-    private final ListeningExecutorService executorService;
+    private final ListeningExecutorService applyChangesExecutorService;
 
     private final AtomicInteger clock = new AtomicInteger();
 
@@ -49,7 +49,7 @@ public class KbReasonerImpl implements KbReasoner {
         this.kbId = kbId;
         this.handlerRegistry = handlerRegistry;
         this.kbAxiomSetManager = axiomSetManager;
-        executorService = MoreExecutors.listeningDecorator(Executors.newSingleThreadExecutor());
+        applyChangesExecutorService = MoreExecutors.listeningDecorator(Executors.newSingleThreadExecutor());
         this.reasonerFactorySelector = reasonerFactorySelector;
         this.reasoner = new AtomicReference<Reasoner>(new NullReasoner(KbDigest.emptyDigest()));
 
@@ -67,12 +67,21 @@ public class KbReasonerImpl implements KbReasoner {
 
     @Override
     public <A extends KbAction<R, H>, R extends Response, H extends ActionHandler> ListenableFuture<R> execute(final A action) {
-        return handlerRegistry.handleAction(action);
+
+        try {
+            return handlerRegistry.handleAction(action);
+        }
+        catch (TimeOutException e) {
+            return Futures.immediateFailedFuture(e);
+        }
+        catch (RuntimeException e) {
+            return Futures.immediateFailedFuture(new InternalReasonerException(e));
+        }
     }
 
     @Override
     public void shutDown() {
-        executorService.shutdownNow();
+        applyChangesExecutorService.shutdownNow();
     }
 
 
@@ -195,7 +204,7 @@ public class KbReasonerImpl implements KbReasoner {
             if (ontology.isPresent()) {
                 VersionedOntology versionedOntology = ontology.get();
                 OWLReasonerFactory reasonerFactory = reasonerFactorySelector.getReasonerFactory(versionedOntology.getOntology());
-                return executorService.submit(new ReasonerUpdater<>(kbId, clock, reasonerFactory, versionedOntology, new ReasonerUpdater.ReasonerUpdaterCallback() {
+                return applyChangesExecutorService.submit(new ReasonerUpdater<>(kbId, clock, reasonerFactory, versionedOntology, new ReasonerUpdater.ReasonerUpdaterCallback() {
                     @Override
                     public void reasonerReady(Reasoner r) {
                         reasoner.set(r);
