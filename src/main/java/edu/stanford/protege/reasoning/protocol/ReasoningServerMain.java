@@ -3,6 +3,7 @@ package edu.stanford.protege.reasoning.protocol;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import edu.stanford.protege.reasoning.ReasoningService;
+import edu.stanford.protege.reasoning.impl.ReasoningServiceModule;
 
 import java.net.InetSocketAddress;
 
