@@ -11,6 +11,8 @@ import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.reasoner.*;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 15/04/2014
  *
@@ -18,10 +20,10 @@ import org.semanticweb.owlapi.reasoner.*;
  */
 public class NullReasoner implements Reasoner {
 
-    private KbDigest kbDigest;
+    private final KbDigest kbDigest;
 
     public NullReasoner(KbDigest kbDigest) {
-        this.kbDigest = kbDigest;
+        this.kbDigest = checkNotNull(kbDigest);
     }
 
     @Override
