@@ -12,6 +12,8 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 29/08/2014
@@ -38,6 +40,28 @@ public class GetKbDigestAction_TestCase {
     public void shouldHaveSameHashCode() {
         GetKbDigestAction actionB = new GetKbDigestAction(kbId);
         assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));
+    }
+
+    @Test
+    public void shouldReturnSameActionType() {
+        ActionType<GetKbDigestHandler> typeA = action.getType();
+        ActionType<GetKbDigestHandler> typeB = action.getType();
+        assertThat(typeA, is(typeB));
+    }
+
+    @Test
+    public void shouldReturnSameActionTypeForDifferentActions() {
+        ActionType<GetKbDigestHandler> typeA = action.getType();
+        GetKbDigestAction actionB = new GetKbDigestAction(kbId);
+        ActionType<GetKbDigestHandler> typeB = actionB.getType();
+        assertThat(typeA, is(typeB));
+    }
+
+    @Test
+    public void shouldDispatchToHandler() {
+        GetKbDigestHandler handler = mock(GetKbDigestHandler.class);
+        action.dispatch(handler);
+        verify(handler, times(1)).handleAction(action);
     }
 
     @Test(expected = NullPointerException.class)
