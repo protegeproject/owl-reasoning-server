@@ -54,7 +54,7 @@ public class KbReasonerImpl implements KbReasoner {
 
         // Seems bad... doing work in constructor
         handlerRegistry.registerHandler(ApplyChangesAction.TYPE, new ApplyChangesActionHandlerImpl());
-        handlerRegistry.registerHandler(IsConsistentAction.TYPE, new IsConsistentActionHandlerImpl());
+        handlerRegistry.registerHandler(IsConsistentAction.TYPE, new IsConsistentActionActionHandlerImpl());
         handlerRegistry.registerHandler(IsEntailedAction.TYPE, new IsEntailedActionHandlerImpl());
         handlerRegistry.registerHandler(GetSubClassesAction.TYPE, new GetSubClassesActionHandlerImpl());
         handlerRegistry.registerHandler(GetInstancesAction.TYPE, new GetInstancesActionHandlerImpl());
@@ -87,7 +87,7 @@ public class KbReasonerImpl implements KbReasoner {
     }
 
 
-    private class IsConsistentActionHandlerImpl implements IsConsistentHandler {
+    private class IsConsistentActionActionHandlerImpl implements IsConsistentActionHandler {
         @Override
         public ListenableFuture<IsConsistentResponse> handleAction(IsConsistentAction action) {
             Reasoner r = getReasoner();

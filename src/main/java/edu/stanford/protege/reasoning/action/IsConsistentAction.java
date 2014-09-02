@@ -7,21 +7,21 @@ import edu.stanford.protege.reasoning.KbId;
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 15/04/2014
  */
-public class IsConsistentAction extends KbQueryAction<IsConsistentResponse, IsConsistentHandler> {
+public class IsConsistentAction extends KbQueryAction<IsConsistentResponse, IsConsistentActionHandler> {
 
-    public static final ActionType<IsConsistentHandler> TYPE = ActionType.create();
+    public static final ActionType<IsConsistentActionHandler> TYPE = ActionType.create();
 
     public IsConsistentAction(KbId kbId) {
         super(kbId);
     }
 
     @Override
-    public ActionType<IsConsistentHandler> getType() {
+    public ActionType<IsConsistentActionHandler> getType() {
         return TYPE;
     }
 
     @Override
-    public ListenableFuture<IsConsistentResponse> dispatch(IsConsistentHandler handler) {
+    public ListenableFuture<IsConsistentResponse> dispatch(IsConsistentActionHandler handler) {
         return handler.handleAction(this);
     }
 
