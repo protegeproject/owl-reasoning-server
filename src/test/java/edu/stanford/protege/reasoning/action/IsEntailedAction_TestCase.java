@@ -44,6 +44,16 @@ public class IsEntailedAction_TestCase {
     }
 
     @Test
+    public void shouldBeEqualToSelf() {
+        assertThat(action.equals(action), is(true));
+    }
+
+    @Test
+    public void shouldNotBeEqualToNull() {
+        assertThat(action.equals(null), is(false));
+    }
+
+    @Test
     public void shouldHaveSameHashCode() {
         IsEntailedAction actionB = new IsEntailedAction(kbId, axiom);
         assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));

@@ -45,6 +45,11 @@ public class ApplyChangesResponse_TestCase {
     }
 
     @Test
+    public void shouldBeEqualToSelf() {
+        assertThat(response.equals(response), is(true));
+    }
+
+    @Test
     public void shouldHaveSameHashCode() {
         ApplyChangesResponse actionB = new ApplyChangesResponse(kbId, kbDigest);
         assertThat(response.hashCode(), is(equalTo(actionB.hashCode())));

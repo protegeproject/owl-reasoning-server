@@ -52,8 +52,13 @@ public class GetSuperClassesResponse_TestCase {
     }
 
     @Test
-    public void shouldReturnFalseForEqualsNull() {
+    public void shouldNotBeEqualToNull() {
         assertThat(response.equals(null), is(false));
+    }
+
+    @Test
+    public void shouldBeEqualToSelf() {
+        assertThat(response.equals(response), is(true));
     }
 
     @Test

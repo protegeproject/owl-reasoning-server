@@ -45,6 +45,11 @@ public class GetKbDigestResponse_TestCase {
     }
 
     @Test
+    public void shouldBeEqualToSelf() {
+        assertThat(response.equals(response), is(true));
+    }
+
+    @Test
     public void shouldHaveSameHashCode() {
         GetKbDigestResponse actionB = new GetKbDigestResponse(kbId, kbDigest);
         assertThat(response.hashCode(), is(equalTo(actionB.hashCode())));

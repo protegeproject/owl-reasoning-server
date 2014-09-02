@@ -43,6 +43,16 @@ public class ReplaceAxiomsAction_TestCase {
     }
 
     @Test
+    public void shouldNotBeEqualToNull() {
+        assertThat(action.equals(null), is(false));
+    }
+
+    @Test
+    public void shouldBeEqualToSelf() {
+        assertThat(action.equals(action), is(true));
+    }
+
+    @Test
     public void shouldHaveSameHashCode() {
         ReplaceAxiomsAction actionB = new ReplaceAxiomsAction(kbId, axioms);
         assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));

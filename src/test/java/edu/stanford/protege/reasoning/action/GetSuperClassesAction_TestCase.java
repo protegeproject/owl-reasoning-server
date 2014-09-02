@@ -45,6 +45,11 @@ public class GetSuperClassesAction_TestCase {
     }
 
     @Test
+    public void shouldNotBeEqualToNull() {
+        assertThat(action.equals(null), is(false));
+    }
+
+    @Test
     public void shouldHaveSameHashCode() {
         GetSuperClassesAction actionB = new GetSuperClassesAction(kbId, classExpression, queryType);
         assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));

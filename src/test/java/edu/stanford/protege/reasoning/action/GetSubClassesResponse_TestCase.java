@@ -57,6 +57,11 @@ public class GetSubClassesResponse_TestCase {
     }
 
     @Test
+    public void shouldBeEqualToSelf() {
+        assertThat(response.equals(response), is(true));
+    }
+
+    @Test
     public void shouldReturnFalseForEqualsNull() {
         assertThat(response.equals(null), is(false));
     }

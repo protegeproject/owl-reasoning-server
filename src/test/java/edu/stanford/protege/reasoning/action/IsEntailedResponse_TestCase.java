@@ -50,14 +50,19 @@ public class IsEntailedResponse_TestCase {
     }
 
     @Test
-    public void shouldHaveSameHashCode() {
-        IsEntailedResponse actionB = new IsEntailedResponse(kbId, kbDigest, axiom, entailed);
-        assertThat(response.hashCode(), is(equalTo(actionB.hashCode())));
+    public void shouldNotBeEqualToNull() {
+        assertThat(response.equals(null), is(false));
     }
 
     @Test
-    public void shouldReturnFalseForEqualsNull() {
-        assertThat(response.equals(null), is(false));
+    public void shouldBeEqualToSelf() {
+        assertThat(response.equals(response), is(true));
+    }
+
+    @Test
+    public void shouldHaveSameHashCode() {
+        IsEntailedResponse actionB = new IsEntailedResponse(kbId, kbDigest, axiom, entailed);
+        assertThat(response.hashCode(), is(equalTo(actionB.hashCode())));
     }
 
     @Test(expected = NullPointerException.class)

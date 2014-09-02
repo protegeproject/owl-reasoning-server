@@ -50,6 +50,11 @@ public class IsConsistentResponse_TestCase {
     }
 
     @Test
+    public void shouldBeEqualToSelf() {
+        assertThat(response.equals(response), is(true));
+    }
+
+    @Test
     public void shouldHaveSameHashCode() {
         IsConsistentResponse actionB = new IsConsistentResponse(kbId, kbDigest, consistency);
         assertThat(response.hashCode(), is(equalTo(actionB.hashCode())));

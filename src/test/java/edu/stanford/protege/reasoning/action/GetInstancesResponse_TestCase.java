@@ -56,6 +56,11 @@ public class GetInstancesResponse_TestCase {
     }
 
     @Test
+    public void shouldBeEqualToSelf() {
+        assertThat(response.equals(response), is(true));
+    }
+
+    @Test
     public void shouldHaveSameHashCode() {
         GetInstancesResponse actionB = new GetInstancesResponse(kbId, kbDigest, classExpression, result);
         assertThat(response.hashCode(), is(equalTo(actionB.hashCode())));
