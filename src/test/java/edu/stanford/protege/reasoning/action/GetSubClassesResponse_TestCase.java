@@ -51,6 +51,11 @@ public class GetSubClassesResponse_TestCase {
     }
 
     @Test
+    public void shouldNotBeEqualToNull() {
+        assertThat(action.equals(null), is(false));
+    }
+
+    @Test
     public void shouldHaveSameHashCode() {
         GetSubClassesResponse actionB = new GetSubClassesResponse(kbId, kbDigest, classExpression, result);
         assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));
