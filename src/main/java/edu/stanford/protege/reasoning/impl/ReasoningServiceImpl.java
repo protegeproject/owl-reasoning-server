@@ -52,11 +52,7 @@ public class ReasoningServiceImpl implements ReasoningService {
     }
 
     private KbReasoner getKbReasoner(final KbId kbId) {
-        try {
-            return reasonerCache.get(kbId);
-        } catch (ExecutionException e) {
-            throw new RuntimeException("There was an error creating the reasoner");
-        }
+        return reasonerCache.getUnchecked(kbId);
     }
 
     @Override
