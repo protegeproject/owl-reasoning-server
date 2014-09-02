@@ -16,9 +16,7 @@ import uk.ac.manchester.cs.owl.owlapi.OWLDataFactoryImpl;
 import uk.ac.manchester.cs.owl.owlapi.OWLOntologyManagerImpl;
 
 import java.io.*;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -31,11 +29,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class KbAxiomSetManager {
 
-    private TreeSet<OWLAxiom> axioms = Sets.newTreeSet();
+    private Set<OWLAxiom> axioms = Sets.newHashSet();
 
-    private KbDigest kbDigest = KbDigest.emptyDigest();
-
-    private VersionedOntology ontology;
+    private final DigestManager digestManager = new DigestManager();
 
     private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
@@ -47,15 +43,21 @@ public class KbAxiomSetManager {
         createOntology();
     }
 
+    public KbDigest getKbDigest() {
+        return digestManager.getDigest();
+    }
+
+
     public Optional<VersionedOntology> replaceAxioms(List<OWLAxiom> replacementAxioms) {
         try {
             checkNotNull(replacementAxioms);
             writeLock.lock();
-            if (replacementAxioms.equals(axioms)) {
+            if (axioms.containsAll(replacementAxioms) && replacementAxioms.containsAll(axioms)) {
                 return Optional.absent();
             }
             axioms.clear();
             axioms.addAll(replacementAxioms);
+            digestManager.updateDigest(axioms);
             return Optional.of(createOntology());
         } finally {
             writeLock.unlock();
@@ -72,6 +74,7 @@ public class KbAxiomSetManager {
                 changeData.accept(changeDataVisitor);
             }
             if (changeDataVisitor.isChanged()) {
+                digestManager.updateDigest(axioms);
                 return Optional.of(createOntology());
             }
             else {
@@ -82,30 +85,12 @@ public class KbAxiomSetManager {
         }
     }
 
-    public KbDigest getKbDigest() {
-        return kbDigest;
-    }
-
-    public VersionedOntology getOntology() {
-        try {
-            readLock.lock();
-            if (ontology == null) {
-                throw new IllegalStateException("ontology is null");
-            }
-            return ontology;
-        } finally {
-            readLock.unlock();
-        }
-    }
-
-
     private VersionedOntology createOntology() {
         try {
             writeLock.lock();
             OWLOntologyManagerImpl manager = new OWLOntologyManagerImpl(new OWLDataFactoryImpl());
             manager.addOntologyFactory(new EmptyInMemOWLOntologyFactory());
-            kbDigest = KbDigest.getDigest(axioms);
-            return ontology = new VersionedOntology(manager.createOntology(axioms), kbDigest);
+            return new VersionedOntology(manager.createOntology(axioms), digestManager.getDigest());
         } catch (OWLOntologyCreationException e) {
             throw new RuntimeException("Fatal error");
         } finally {
@@ -165,6 +150,38 @@ public class KbAxiomSetManager {
         @Override
         public Void visit(RemoveImportData removeImportData) throws RuntimeException {
             return VOID;
+        }
+    }
+
+
+    private static class DigestManager {
+
+        private final ReadWriteLock lock = new ReentrantReadWriteLock();
+
+        private final Lock readLock = lock.readLock();
+
+        private final Lock writeLock = lock.writeLock();
+
+        private KbDigest digest = KbDigest.emptyDigest();
+
+        public KbDigest getDigest() {
+            try {
+                readLock.lock();
+                return digest;
+            } finally {
+                readLock.unlock();
+            }
+        }
+
+        public void updateDigest(Collection<OWLAxiom> axioms) {
+            try {
+                writeLock.lock();
+                List<OWLAxiom> sortedAxioms = new ArrayList<>(axioms);
+                Collections.sort(sortedAxioms);
+                this.digest = KbDigest.getDigest(axioms);
+            } finally {
+                writeLock.unlock();
+            }
         }
     }
 }
