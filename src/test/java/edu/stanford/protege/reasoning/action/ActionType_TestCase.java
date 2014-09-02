@@ -6,6 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.core.IsNull.notNullValue;
 
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 31/08/2014
@@ -36,5 +37,11 @@ public class ActionType_TestCase<H extends ActionHandler> {
         ActionType<H> actionTypeA = ActionType.create();
         ActionType<H> actionTypeB = ActionType.create();
         assertThat(actionTypeA.hashCode(), is(not(equalTo(actionTypeB.hashCode()))));
+    }
+
+    @Test
+    public void shouldNotThrowNullPointerInToString() {
+        String s = ActionType.create().toString();
+        assertThat(s, is(notNullValue()));
     }
 }

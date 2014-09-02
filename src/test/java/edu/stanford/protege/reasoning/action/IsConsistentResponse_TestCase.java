@@ -3,6 +3,7 @@ package edu.stanford.protege.reasoning.action;
 import com.google.common.base.Optional;
 import edu.stanford.protege.reasoning.KbDigest;
 import edu.stanford.protege.reasoning.KbId;
+import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -89,5 +90,11 @@ public class IsConsistentResponse_TestCase {
     @Test
     public void shouldReturnProvidedConsistency() {
         assertThat(response.getConsistency(), is(equalTo(consistency)));
+    }
+
+    @Test
+    public void shouldNotThrowNullPointerInToString() {
+        String s = response.toString();
+        assertThat(s, is(IsNull.notNullValue()));
     }
 }

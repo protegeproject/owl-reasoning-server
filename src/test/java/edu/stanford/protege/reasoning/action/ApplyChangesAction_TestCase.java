@@ -13,6 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -100,5 +101,11 @@ public class ApplyChangesAction_TestCase {
     @Test
     public void shouldReturnProvidedClassExpression() {
         assertThat(action.getChangeData(), is(equalTo(changeData)));
+    }
+
+    @Test
+    public void shouldNotThrowNullPointerInToString() {
+        String s = action.toString();
+        assertThat(s, is(notNullValue()));
     }
 }

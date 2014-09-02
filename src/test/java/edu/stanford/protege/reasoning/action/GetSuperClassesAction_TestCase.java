@@ -2,6 +2,7 @@ package edu.stanford.protege.reasoning.action;
 
 import edu.stanford.protege.reasoning.KbId;
 import edu.stanford.protege.reasoning.protocol.HierachyQueryTypeTranslator;
+import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -110,6 +111,12 @@ public class GetSuperClassesAction_TestCase {
 
     public void shouldReturnProvidedQueryType() {
         assertThat(action.getHierarchyQueryType(), is(equalTo(queryType)));
+    }
+
+    @Test
+    public void shouldNotThrowNullPointerInToString() {
+        String s = action.toString();
+        assertThat(s, is(IsNull.notNullValue()));
     }
     
 }

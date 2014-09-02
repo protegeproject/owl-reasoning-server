@@ -1,6 +1,7 @@
 package edu.stanford.protege.reasoning.action;
 
 import edu.stanford.protege.reasoning.KbId;
+import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -83,6 +84,12 @@ public class GetKbDigestAction_TestCase {
     @Test
     public void shouldReturnProvidedId() {
         assertThat(action.getKbId(), is(equalTo(kbId)));
+    }
+
+    @Test
+    public void shouldNotThrowNullPointerInToString() {
+        String s = action.toString();
+        assertThat(s, is(IsNull.notNullValue()));
     }
 
 }

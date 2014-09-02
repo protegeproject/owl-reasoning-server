@@ -2,6 +2,7 @@ package edu.stanford.protege.reasoning.action;
 
 import edu.stanford.protege.reasoning.KbDigest;
 import edu.stanford.protege.reasoning.KbId;
+import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.mockito.Mockito.mock;
 
 /**
@@ -79,5 +81,11 @@ public class GetKbDigestResponse_TestCase {
     @Test
     public void shouldReturnProvidedDigest() {
         assertThat(response.getKbDigest(), is(equalTo(kbDigest)));
+    }
+
+    @Test
+    public void shouldNotThrowNullPointerInToString() {
+        String s = response.toString();
+        assertThat(s, is(notNullValue()));
     }
 }

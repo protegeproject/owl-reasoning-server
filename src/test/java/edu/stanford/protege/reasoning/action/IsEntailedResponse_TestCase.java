@@ -12,9 +12,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.semanticweb.owlapi.model.OWLLogicalAxiom;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.Matchers.isNotNull;
 import static org.mockito.Mockito.mock;
 
 /**
@@ -109,5 +108,11 @@ public class IsEntailedResponse_TestCase {
     @Test
     public void shouldReturnProvidedEntailment() {
         assertThat(response.getAxiom(), is(equalTo(axiom)));
+    }
+
+    @Test
+    public void shouldNotThrowNullPointerInToString() {
+        String s = response.toString();
+        assertThat(s, is(notNullValue()));
     }
 }

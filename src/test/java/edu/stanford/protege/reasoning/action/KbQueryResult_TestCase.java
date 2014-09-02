@@ -2,6 +2,7 @@ package edu.stanford.protege.reasoning.action;
 
 import com.google.common.base.Optional;
 import edu.stanford.protege.reasoning.KbQueryResult;
+import org.hamcrest.core.IsNull;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -92,6 +93,12 @@ public class KbQueryResult_TestCase<R> {
         KbQueryResult<R> result = KbQueryResult.ofValue(resultValue);
         Optional<KbQueryResult<R>> optional = KbQueryResult.optionalOfValue(resultValue);
         assertThat(optional, is(equalTo(Optional.of(result))));
+    }
+
+    @Test
+    public void shouldNotThrowNullPointerInToString() {
+        String s = resultValue.toString();
+        assertThat(s, is(IsNull.notNullValue()));
     }
 
 

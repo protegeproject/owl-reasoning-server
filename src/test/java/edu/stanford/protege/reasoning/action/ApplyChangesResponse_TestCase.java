@@ -12,6 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.mockito.Mockito.mock;
 
 /**
@@ -79,5 +80,11 @@ public class ApplyChangesResponse_TestCase {
     @Test
     public void shouldReturnProvidedDigest() {
         assertThat(response.getKbDigest(), is(equalTo(kbDigest)));
+    }
+
+    @Test
+    public void shouldNotThrowNullPointerInToString() {
+        String s = response.toString();
+        assertThat(s, is(notNullValue()));
     }
 }

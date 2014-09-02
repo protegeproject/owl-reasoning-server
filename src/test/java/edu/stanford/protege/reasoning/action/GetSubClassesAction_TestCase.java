@@ -1,6 +1,7 @@
 package edu.stanford.protege.reasoning.action;
 
 import edu.stanford.protege.reasoning.KbId;
+import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -104,5 +105,11 @@ public class GetSubClassesAction_TestCase {
     @Test
     public void shouldReturnProvidedClassExpression() {
         assertThat(action.getClassExpression(), is(equalTo(classExpression)));
+    }
+
+    @Test
+    public void shouldNotThrowNullPointerInToString() {
+        String s = action.toString();
+        assertThat(s, is(IsNull.notNullValue()));
     }
 }

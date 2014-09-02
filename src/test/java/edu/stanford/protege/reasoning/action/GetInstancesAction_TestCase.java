@@ -12,6 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -110,5 +111,10 @@ public class GetInstancesAction_TestCase {
     public void shouldReturnProvidedQueryType() {
         assertThat(action.getHierarchyQueryType(), is(equalTo(queryType)));
     }
-    
+
+    @Test
+    public void shouldNotThrowNullPointerInToString() {
+        String s = action.toString();
+        assertThat(s, is(notNullValue()));
+    }
 }
