@@ -106,6 +106,7 @@ public class GetInstancesAction_TestCase {
         assertThat(action.getClassExpression(), is(equalTo(classExpression)));
     }
 
+    @Test
     public void shouldReturnProvidedQueryType() {
         assertThat(action.getHierarchyQueryType(), is(equalTo(queryType)));
     }
