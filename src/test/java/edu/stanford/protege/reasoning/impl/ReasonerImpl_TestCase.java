@@ -2,9 +2,7 @@ package edu.stanford.protege.reasoning.impl;
 
 import com.google.common.base.Optional;
 import edu.stanford.protege.reasoning.KbDigest;
-import edu.stanford.protege.reasoning.KbQueryResult;
 import edu.stanford.protege.reasoning.action.Consistency;
-import edu.stanford.protege.reasoning.action.Entailed;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +13,7 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
+import org.semanticweb.owlapi.reasoner.OWLReasonerRuntimeException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -88,6 +87,40 @@ public class ReasonerImpl_TestCase {
         assertThat(result.get(), is(Consistency.INCONSISTENT));
     }
 
+    @Test(expected = RuntimeException.class)
+    public void shouldPropagateRuntimeExceptionOn_IsConsistent() {
+        when(delegate.isConsistent()).thenThrow(new RuntimeException());
+        reasoner.getConsistency();
+    }
 
+    @Test(expected = RuntimeException.class)
+    public void shouldPropagateRuntimeExceptionOn_IsEntailed() {
+        when(delegate.isEntailed(ax)).thenThrow(new RuntimeException());
+        reasoner.isEntailed(ax);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldPropagateRuntimeExceptionOn_GetSubClasses() {
+        when(delegate.getSubClasses(classExpression, true)).thenThrow(new RuntimeException());
+        reasoner.getSubClasses(classExpression, true);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldPropagateRuntimeExceptionOn_GetSuperClasses() {
+        when(delegate.getSuperClasses(classExpression, true)).thenThrow(new RuntimeException());
+        reasoner.getSuperClasses(classExpression, true);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldPropagateRuntimeExceptionOn_GetEquivalentClasses() {
+        when(delegate.getEquivalentClasses(classExpression)).thenThrow(new RuntimeException());
+        reasoner.getEquivalentClasses(classExpression);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldPropagateRuntimeExceptionOn_GetInstances() {
+        when(delegate.getInstances(classExpression, true)).thenThrow(new RuntimeException());
+        reasoner.getInstances(classExpression, true);
+    }
 
 }

@@ -41,7 +41,13 @@ public class ReasonerImpl implements Reasoner {
     }
 
     @Override
-    public Optional<KbQueryResult<Entailed>> isEntailed(OWLAxiom axiom) throws ReasonerInterruptedException, UnsupportedEntailmentTypeException, TimeOutException, AxiomNotInProfileException, FreshEntitiesException, InconsistentOntologyException {
+    public Optional<KbQueryResult<Entailed>> isEntailed(OWLAxiom axiom) throws
+                                                                        ReasonerInterruptedException,
+                                                                        UnsupportedEntailmentTypeException,
+                                                                        TimeOutException,
+                                                                        AxiomNotInProfileException,
+                                                                        FreshEntitiesException,
+                                                                        InconsistentOntologyException {
         if (isInconsistent()) {
             return KbQueryResult.optionalOfInconsistentKb();
         }
@@ -52,7 +58,12 @@ public class ReasonerImpl implements Reasoner {
     }
 
     @Override
-    public Optional<KbQueryResult<NodeSet<OWLClass>>> getSubClasses(OWLClassExpression ce, boolean direct) throws ReasonerInterruptedException, TimeOutException, FreshEntitiesException, InconsistentOntologyException, ClassExpressionNotInProfileException {
+    public Optional<KbQueryResult<NodeSet<OWLClass>>> getSubClasses(OWLClassExpression ce, boolean direct) throws
+                                                                                                           ReasonerInterruptedException,
+                                                                                                           TimeOutException,
+                                                                                                           FreshEntitiesException,
+                                                                                                           InconsistentOntologyException,
+                                                                                                           ClassExpressionNotInProfileException {
         if (isInconsistent()) {
             return KbQueryResult.optionalOfInconsistentKb();
         }
@@ -62,7 +73,12 @@ public class ReasonerImpl implements Reasoner {
     }
 
     @Override
-    public Optional<KbQueryResult<NodeSet<OWLClass>>> getSuperClasses(OWLClassExpression ce, boolean direct) throws InconsistentOntologyException, ClassExpressionNotInProfileException, FreshEntitiesException, ReasonerInterruptedException, TimeOutException {
+    public Optional<KbQueryResult<NodeSet<OWLClass>>> getSuperClasses(OWLClassExpression ce, boolean direct) throws
+                                                                                                             InconsistentOntologyException,
+                                                                                                             ClassExpressionNotInProfileException,
+                                                                                                             FreshEntitiesException,
+                                                                                                             ReasonerInterruptedException,
+                                                                                                             TimeOutException {
         if (isInconsistent()) {
             return KbQueryResult.optionalOfInconsistentKb();
         }
@@ -72,7 +88,12 @@ public class ReasonerImpl implements Reasoner {
     }
 
     @Override
-    public Optional<KbQueryResult<Node<OWLClass>>> getEquivalentClasses(OWLClassExpression ce) throws InconsistentOntologyException, ClassExpressionNotInProfileException, FreshEntitiesException, ReasonerInterruptedException, TimeOutException {
+    public Optional<KbQueryResult<Node<OWLClass>>> getEquivalentClasses(OWLClassExpression ce) throws
+                                                                                               InconsistentOntologyException,
+                                                                                               ClassExpressionNotInProfileException,
+                                                                                               FreshEntitiesException,
+                                                                                               ReasonerInterruptedException,
+                                                                                               TimeOutException {
         if (isInconsistent()) {
             return KbQueryResult.optionalOfInconsistentKb();
         }
@@ -82,7 +103,13 @@ public class ReasonerImpl implements Reasoner {
     }
 
     @Override
-    public Optional<KbQueryResult<NodeSet<OWLNamedIndividual>>> getInstances(OWLClassExpression ce, boolean direct) throws InconsistentOntologyException, ClassExpressionNotInProfileException, FreshEntitiesException, ReasonerInterruptedException, TimeOutException {
+    public Optional<KbQueryResult<NodeSet<OWLNamedIndividual>>> getInstances(OWLClassExpression ce,
+                                                                             boolean direct) throws
+                                                                                             InconsistentOntologyException,
+                                                                                             ClassExpressionNotInProfileException,
+                                                                                             FreshEntitiesException,
+                                                                                             ReasonerInterruptedException,
+                                                                                             TimeOutException {
         if (isInconsistent()) {
             return KbQueryResult.optionalOfInconsistentKb();
         }
