@@ -36,23 +36,28 @@ public class IsEntailedResponse_TestCase {
     @Mock
     private OWLLogicalAxiom axiom;
 
-    private IsEntailedResponse action;
+    private IsEntailedResponse response;
 
     @Before
     public void setUp() {
-        action = new IsEntailedResponse(kbId, kbDigest, axiom, entailed);
+        response = new IsEntailedResponse(kbId, kbDigest, axiom, entailed);
     }
 
     @Test
     public void shouldBeEqual() {
         IsEntailedResponse actionB = new IsEntailedResponse(kbId, kbDigest, axiom, entailed);
-        assertThat(action, is(equalTo(actionB)));
+        assertThat(response, is(equalTo(actionB)));
     }
 
     @Test
     public void shouldHaveSameHashCode() {
         IsEntailedResponse actionB = new IsEntailedResponse(kbId, kbDigest, axiom, entailed);
-        assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));
+        assertThat(response.hashCode(), is(equalTo(actionB.hashCode())));
+    }
+
+    @Test
+    public void shouldReturnFalseForEqualsNull() {
+        assertThat(response.equals(null), is(false));
     }
 
     @Test(expected = NullPointerException.class)
@@ -78,26 +83,26 @@ public class IsEntailedResponse_TestCase {
     @Test
     public void shouldNotBeEqual() {
         IsEntailedResponse actionB = new IsEntailedResponse(mock(KbId.class), mock(KbDigest.class), axiom, entailed);
-        assertThat(action, is(not(equalTo(actionB))));
+        assertThat(response, is(not(equalTo(actionB))));
     }
 
     @Test
     public void shouldReturnProvidedId() {
-        assertThat(action.getKbId(), is(equalTo(kbId)));
+        assertThat(response.getKbId(), is(equalTo(kbId)));
     }
 
     @Test
     public void shouldReturnProvidedDigest() {
-        assertThat(action.getKbDigest(), is(equalTo(kbDigest)));
+        assertThat(response.getKbDigest(), is(equalTo(kbDigest)));
     }
 
     @Test
     public void shouldReturnProvidedEntailed() {
-        assertThat(action.getResult(), is(equalTo(entailed)));
+        assertThat(response.getResult(), is(equalTo(entailed)));
     }
 
     @Test
     public void shouldReturnProvidedEntailment() {
-        assertThat(action.getAxiom(), is(equalTo(axiom)));
+        assertThat(response.getAxiom(), is(equalTo(axiom)));
     }
 }

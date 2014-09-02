@@ -26,23 +26,28 @@ public class ReplaceAxiomsResponse_TestCase {
     @Mock
     private KbDigest kbDigest;
 
-    private ReplaceAxiomsResponse action;
+    private ReplaceAxiomsResponse response;
 
     @Before
     public void setUp() {
-        action = new ReplaceAxiomsResponse(kbId, kbDigest);
+        response = new ReplaceAxiomsResponse(kbId, kbDigest);
     }
 
     @Test
     public void shouldBeEqual() {
         ReplaceAxiomsResponse actionB = new ReplaceAxiomsResponse(kbId, kbDigest);
-        assertThat(action, is(equalTo(actionB)));
+        assertThat(response, is(equalTo(actionB)));
+    }
+
+    @Test
+    public void shouldReturnFalseForEqualsNull() {
+        assertThat(response.equals(null), is(false));
     }
 
     @Test
     public void shouldHaveSameHashCode() {
         ReplaceAxiomsResponse actionB = new ReplaceAxiomsResponse(kbId, kbDigest);
-        assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));
+        assertThat(response.hashCode(), is(equalTo(actionB.hashCode())));
     }
 
     @Test(expected = NullPointerException.class)
@@ -58,16 +63,16 @@ public class ReplaceAxiomsResponse_TestCase {
     @Test
     public void shouldNotBeEqual() {
         ReplaceAxiomsResponse actionB = new ReplaceAxiomsResponse(mock(KbId.class), mock(KbDigest.class));
-        assertThat(action, is(not(equalTo(actionB))));
+        assertThat(response, is(not(equalTo(actionB))));
     }
 
     @Test
     public void shouldReturnProvidedId() {
-        assertThat(action.getKbId(), is(equalTo(kbId)));
+        assertThat(response.getKbId(), is(equalTo(kbId)));
     }
 
     @Test
     public void shouldReturnProvidedDigest() {
-        assertThat(action.getKbDigest(), is(equalTo(kbDigest)));
+        assertThat(response.getKbDigest(), is(equalTo(kbDigest)));
     }
 }

@@ -37,28 +37,28 @@ public class GetSubClassesResponse_TestCase {
     @Mock
     private OWLClassExpression classExpression;
 
-    private GetSubClassesResponse action;
+    private GetSubClassesResponse response;
 
     @Before
     public void setUp() {
-        action = new GetSubClassesResponse(kbId, kbDigest, classExpression, result);
+        response = new GetSubClassesResponse(kbId, kbDigest, classExpression, result);
     }
 
     @Test
     public void shouldBeEqual() {
         GetSubClassesResponse actionB = new GetSubClassesResponse(kbId, kbDigest, classExpression, result);
-        assertThat(action, is(equalTo(actionB)));
-    }
-
-    @Test
-    public void shouldNotBeEqualToNull() {
-        assertThat(action.equals(null), is(false));
+        assertThat(response, is(equalTo(actionB)));
     }
 
     @Test
     public void shouldHaveSameHashCode() {
         GetSubClassesResponse actionB = new GetSubClassesResponse(kbId, kbDigest, classExpression, result);
-        assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));
+        assertThat(response.hashCode(), is(equalTo(actionB.hashCode())));
+    }
+
+    @Test
+    public void shouldReturnFalseForEqualsNull() {
+        assertThat(response.equals(null), is(false));
     }
 
     @Test(expected = NullPointerException.class)
@@ -84,26 +84,26 @@ public class GetSubClassesResponse_TestCase {
     @Test
     public void shouldNotBeEqual() {
         GetSubClassesResponse actionB = new GetSubClassesResponse(mock(KbId.class), mock(KbDigest.class), classExpression, result);
-        assertThat(action, is(not(equalTo(actionB))));
+        assertThat(response, is(not(equalTo(actionB))));
     }
 
     @Test
     public void shouldReturnProvidedId() {
-        assertThat(action.getKbId(), is(equalTo(kbId)));
+        assertThat(response.getKbId(), is(equalTo(kbId)));
     }
 
     @Test
     public void shouldReturnProvidedDigest() {
-        assertThat(action.getKbDigest(), is(equalTo(kbDigest)));
+        assertThat(response.getKbDigest(), is(equalTo(kbDigest)));
     }
 
     @Test
     public void shouldReturnProvidedClassExpression() {
-        assertThat(action.getClassExpression(), is(equalTo(classExpression)));
+        assertThat(response.getClassExpression(), is(equalTo(classExpression)));
     }
 
     @Test
     public void shouldReturnProvidedResult() {
-        assertThat(action.getResult(), is(equalTo(result)));
+        assertThat(response.getResult(), is(equalTo(result)));
     }
 }

@@ -26,23 +26,28 @@ public class GetKbDigestResponse_TestCase {
     @Mock
     private KbDigest kbDigest;
 
-    private GetKbDigestResponse action;
+    private GetKbDigestResponse response;
 
     @Before
     public void setUp() {
-        action = new GetKbDigestResponse(kbId, kbDigest);
+        response = new GetKbDigestResponse(kbId, kbDigest);
     }
 
     @Test
     public void shouldBeEqual() {
         GetKbDigestResponse actionB = new GetKbDigestResponse(kbId, kbDigest);
-        assertThat(action, is(equalTo(actionB)));
+        assertThat(response, is(equalTo(actionB)));
+    }
+
+    @Test
+    public void shouldReturnFalseForEqualsNull() {
+        assertThat(response.equals(null), is(false));
     }
 
     @Test
     public void shouldHaveSameHashCode() {
         GetKbDigestResponse actionB = new GetKbDigestResponse(kbId, kbDigest);
-        assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));
+        assertThat(response.hashCode(), is(equalTo(actionB.hashCode())));
     }
 
     @Test(expected = NullPointerException.class)
@@ -58,16 +63,16 @@ public class GetKbDigestResponse_TestCase {
     @Test
     public void shouldNotBeEqual() {
         GetKbDigestResponse actionB = new GetKbDigestResponse(mock(KbId.class), mock(KbDigest.class));
-        assertThat(action, is(not(equalTo(actionB))));
+        assertThat(response, is(not(equalTo(actionB))));
     }
 
     @Test
     public void shouldReturnProvidedId() {
-        assertThat(action.getKbId(), is(equalTo(kbId)));
+        assertThat(response.getKbId(), is(equalTo(kbId)));
     }
 
     @Test
     public void shouldReturnProvidedDigest() {
-        assertThat(action.getKbDigest(), is(equalTo(kbDigest)));
+        assertThat(response.getKbDigest(), is(equalTo(kbDigest)));
     }
 }

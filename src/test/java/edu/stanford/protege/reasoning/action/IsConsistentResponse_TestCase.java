@@ -3,7 +3,6 @@ package edu.stanford.protege.reasoning.action;
 import com.google.common.base.Optional;
 import edu.stanford.protege.reasoning.KbDigest;
 import edu.stanford.protege.reasoning.KbId;
-import edu.stanford.protege.reasoning.protocol.Messages;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,23 +31,28 @@ public class IsConsistentResponse_TestCase {
     @Mock
     private Optional<Consistency> consistency;
 
-    private IsConsistentResponse action;
+    private IsConsistentResponse response;
 
     @Before
     public void setUp() {
-        action = new IsConsistentResponse(kbId, kbDigest, consistency);
+        response = new IsConsistentResponse(kbId, kbDigest, consistency);
     }
 
     @Test
     public void shouldBeEqual() {
         IsConsistentResponse actionB = new IsConsistentResponse(kbId, kbDigest, consistency);
-        assertThat(action, is(equalTo(actionB)));
+        assertThat(response, is(equalTo(actionB)));
+    }
+
+    @Test
+    public void shouldReturnFalseForEqualsNull() {
+        assertThat(response.equals(null), is(false));
     }
 
     @Test
     public void shouldHaveSameHashCode() {
         IsConsistentResponse actionB = new IsConsistentResponse(kbId, kbDigest, consistency);
-        assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));
+        assertThat(response.hashCode(), is(equalTo(actionB.hashCode())));
     }
 
     @Test(expected = NullPointerException.class)
@@ -64,21 +68,21 @@ public class IsConsistentResponse_TestCase {
     @Test
     public void shouldNotBeEqual() {
         IsConsistentResponse actionB = new IsConsistentResponse(mock(KbId.class), mock(KbDigest.class), consistency);
-        assertThat(action, is(not(equalTo(actionB))));
+        assertThat(response, is(not(equalTo(actionB))));
     }
 
     @Test
     public void shouldReturnProvidedId() {
-        assertThat(action.getKbId(), is(equalTo(kbId)));
+        assertThat(response.getKbId(), is(equalTo(kbId)));
     }
 
     @Test
     public void shouldReturnProvidedDigest() {
-        assertThat(action.getKbDigest(), is(equalTo(kbDigest)));
+        assertThat(response.getKbDigest(), is(equalTo(kbDigest)));
     }
 
     @Test
     public void shouldReturnProvidedConsistency() {
-        assertThat(action.getConsistency(), is(equalTo(consistency)));
+        assertThat(response.getConsistency(), is(equalTo(consistency)));
     }
 }

@@ -37,23 +37,28 @@ public class GetInstancesResponse_TestCase {
     @Mock
     private OWLClassExpression classExpression;
 
-    private GetInstancesResponse action;
+    private GetInstancesResponse response;
 
     @Before
     public void setUp() {
-        action = new GetInstancesResponse(kbId, kbDigest, classExpression, result);
+        response = new GetInstancesResponse(kbId, kbDigest, classExpression, result);
     }
 
     @Test
     public void shouldBeEqual() {
         GetInstancesResponse actionB = new GetInstancesResponse(kbId, kbDigest, classExpression, result);
-        assertThat(action, is(equalTo(actionB)));
+        assertThat(response, is(equalTo(actionB)));
+    }
+
+    @Test
+    public void shouldReturnFalseForEqualsNull() {
+        assertThat(response.equals(null), is(false));
     }
 
     @Test
     public void shouldHaveSameHashCode() {
         GetInstancesResponse actionB = new GetInstancesResponse(kbId, kbDigest, classExpression, result);
-        assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));
+        assertThat(response.hashCode(), is(equalTo(actionB.hashCode())));
     }
 
     @Test(expected = NullPointerException.class)
@@ -79,26 +84,26 @@ public class GetInstancesResponse_TestCase {
     @Test
     public void shouldNotBeEqual() {
         GetInstancesResponse actionB = new GetInstancesResponse(mock(KbId.class), mock(KbDigest.class), classExpression, result);
-        assertThat(action, is(not(equalTo(actionB))));
+        assertThat(response, is(not(equalTo(actionB))));
     }
 
     @Test
     public void shouldReturnProvidedId() {
-        assertThat(action.getKbId(), is(equalTo(kbId)));
+        assertThat(response.getKbId(), is(equalTo(kbId)));
     }
 
     @Test
     public void shouldReturnProvidedDigest() {
-        assertThat(action.getKbDigest(), is(equalTo(kbDigest)));
+        assertThat(response.getKbDigest(), is(equalTo(kbDigest)));
     }
 
     @Test
     public void shouldReturnProvidedClassExpression() {
-        assertThat(action.getClassExpression(), is(equalTo(classExpression)));
+        assertThat(response.getClassExpression(), is(equalTo(classExpression)));
     }
 
     @Test
     public void shouldReturnProvidedResult() {
-        assertThat(action.getResult(), is(equalTo(result)));
+        assertThat(response.getResult(), is(equalTo(result)));
     }
 }
