@@ -1,5 +1,6 @@
 package edu.stanford.protege.reasoning.impl;
 
+import com.google.common.base.Optional;
 import edu.stanford.protege.reasoning.Action;
 import edu.stanford.protege.reasoning.Response;
 import edu.stanford.protege.reasoning.action.ActionHandler;
@@ -35,7 +36,7 @@ public class HandlerRegistry_TestCase<A extends Action<R, H>, R extends Response
 
     @Before
     public void setUp() {
-        when(handlerMap.get(type)).thenReturn(actionHandler);
+        when(handlerMap.get(type)).thenReturn(Optional.of(actionHandler));
         when(action.getType()).thenReturn(type);
         registry = new HandlerRegistry(handlerMap);
         registry.registerHandler(type, actionHandler);

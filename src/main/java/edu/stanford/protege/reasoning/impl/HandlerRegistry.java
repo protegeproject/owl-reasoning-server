@@ -1,5 +1,6 @@
 package edu.stanford.protege.reasoning.impl;
 
+import com.google.common.base.Optional;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.inject.Inject;
 import edu.stanford.protege.reasoning.Response;
@@ -33,11 +34,11 @@ public class HandlerRegistry {
 
     @SuppressWarnings("unchecked")
     private <H extends ActionHandler> H getActionHandler(ActionType<H> type) {
-        H handler = actionHandlerMap.get(type);
-        if(handler == null) {
+        Optional<H> handler = actionHandlerMap.get(type);
+        if(!handler.isPresent()) {
             throw new RuntimeException("Handler not registered for type: " + type);
         }
-        return handler;
+        return handler.get();
     }
 
 
