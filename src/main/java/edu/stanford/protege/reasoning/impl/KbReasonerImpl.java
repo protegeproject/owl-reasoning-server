@@ -50,7 +50,7 @@ public class KbReasonerImpl implements KbReasoner {
         this.kbAxiomSetManager = axiomSetManager;
         executorService = MoreExecutors.listeningDecorator(Executors.newSingleThreadExecutor());
         this.reasonerFactorySelector = reasonerFactorySelector;
-        this.reasoner = new AtomicReference<Reasoner>(new EmptyOntologyReasoner());
+        this.reasoner = new AtomicReference<Reasoner>(new NullReasoner(KbDigest.emptyDigest()));
 
         // Seems bad... doing work in constructor
         handlerRegistry.registerHandler(ApplyChangesAction.TYPE, new ApplyChangesActionHandlerImpl());
