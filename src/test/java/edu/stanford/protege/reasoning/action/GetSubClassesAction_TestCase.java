@@ -14,6 +14,8 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 29/08/2014
@@ -44,6 +46,28 @@ public class GetSubClassesAction_TestCase {
     public void shouldHaveSameHashCode() {
         GetSubClassesAction actionB = new GetSubClassesAction(kbId, classExpression);
         assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));
+    }
+
+    @Test
+    public void shouldReturnSameActionType() {
+        ActionType<GetSubClassesActionHandler> typeA = action.getType();
+        ActionType<GetSubClassesActionHandler> typeB = action.getType();
+        assertThat(typeA, is(typeB));
+    }
+
+    @Test
+    public void shouldReturnSameActionTypeForDifferentActions() {
+        ActionType<GetSubClassesActionHandler> typeA = action.getType();
+        GetSubClassesAction actionB = new GetSubClassesAction(kbId, classExpression);
+        ActionType<GetSubClassesActionHandler> typeB = actionB.getType();
+        assertThat(typeA, is(typeB));
+    }
+
+    @Test
+    public void shouldDispatchToHandler() {
+        GetSubClassesActionHandler handler = mock(GetSubClassesActionHandler.class);
+        action.dispatch(handler);
+        verify(handler, times(1)).handleAction(action);
     }
 
     @Test(expected = NullPointerException.class)
