@@ -3,6 +3,8 @@ package edu.stanford.protege.reasoning.impl;
 import edu.stanford.protege.reasoning.KbDigest;
 import org.semanticweb.owlapi.model.OWLOntology;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 15/04/2014
  */
@@ -13,8 +15,8 @@ public class VersionedOntology {
     private final KbDigest kbDigest;
 
     public VersionedOntology(OWLOntology ontology, KbDigest kbDigest) {
-        this.ontology = ontology;
-        this.kbDigest = kbDigest;
+        this.ontology = checkNotNull(ontology);
+        this.kbDigest = checkNotNull(kbDigest);
     }
 
     public KbDigest getKbDigest() {
