@@ -51,4 +51,14 @@ public class HandlerRegistry_TestCase<A extends Action<R, H>, R extends Response
     public void shouldThrowException() {
         registry.handleAction(mock(Action.class));
     }
+
+    @Test(expected = NullPointerException.class)
+    public void shouldThrowNullPointerExceptionIfActionTypeIsNull() {
+        registry.registerHandler(null, actionHandler);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void shouldThrowNullPointerExceptionIfHandlerIsNull() {
+        registry.registerHandler(type, null);
+    }
 }

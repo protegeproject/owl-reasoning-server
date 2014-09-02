@@ -7,6 +7,8 @@ import edu.stanford.protege.reasoning.Action;
 import edu.stanford.protege.reasoning.action.ActionHandler;
 import edu.stanford.protege.reasoning.action.ActionType;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 15/04/2014
  */
@@ -26,7 +28,7 @@ public class HandlerRegistry {
     }
 
     public <H extends ActionHandler> void registerHandler(ActionType<H> type, H handler) {
-        actionHandlerMap.put(type, handler);
+        actionHandlerMap.put(checkNotNull(type), checkNotNull(handler));
     }
 
     @SuppressWarnings("unchecked")
