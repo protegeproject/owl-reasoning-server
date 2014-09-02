@@ -3,17 +3,20 @@ package edu.stanford.protege.reasoning.impl;
 import com.google.common.eventbus.EventBus;
 import com.google.inject.AbstractModule;
 import com.google.inject.Singleton;
+import com.google.inject.assistedinject.FactoryModuleBuilder;
 import edu.stanford.protege.reasoning.ReasoningService;
 
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 20/07/2014
  */
-public class ServerModule extends AbstractModule {
+public class ReasoningServiceModule extends AbstractModule {
     @Override
     protected void configure() {
+
         bind(EventBus.class).in(Singleton.class);
         bind(ReasoningService.class).to(ReasoningServiceImpl.class);
-        bind(KbReasoner.class).to(KbReasonerImpl.class);
         bind(OWLReasonerFactorySelector.class).to(DefaultOWLReasonerFactorySelector.class);
+        install(new FactoryModuleBuilder().implement(KbReasoner.class,
+                                                     KbReasonerImpl.class).build(KbReasonerFactory.class));
     }
 }

@@ -3,6 +3,7 @@ package edu.stanford.protege.reasoning.impl;
 import com.google.common.base.Optional;
 import com.google.common.util.concurrent.*;
 import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
 import edu.stanford.protege.reasoning.*;
 import edu.stanford.protege.reasoning.action.*;
 import org.semanticweb.owlapi.change.AxiomChangeData;
@@ -44,7 +45,7 @@ public class KbReasonerImpl implements KbReasoner {
 
 
     @Inject
-    public KbReasonerImpl(KbId kbId, HandlerRegistry handlerRegistry, KbAxiomSetManager axiomSetManager, OWLReasonerFactorySelector reasonerFactorySelector) {
+    public KbReasonerImpl(@Assisted KbId kbId, HandlerRegistry handlerRegistry, KbAxiomSetManager axiomSetManager, OWLReasonerFactorySelector reasonerFactorySelector) {
         this.kbId = kbId;
         this.handlerRegistry = handlerRegistry;
         this.kbAxiomSetManager = axiomSetManager;
