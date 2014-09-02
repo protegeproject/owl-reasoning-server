@@ -3,7 +3,6 @@ package edu.stanford.protege.reasoning.impl;
 
 import com.google.common.cache.*;
 import com.google.common.eventbus.EventBus;
-import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.inject.Inject;
 import edu.stanford.protege.reasoning.*;
@@ -16,15 +15,17 @@ import java.util.concurrent.ExecutionException;
  */
 public class ReasoningServiceImpl implements ReasoningService {
 
+
     private final HandlerRegistry handlerRegistry;
 
     private final LoadingCache<KbId, KbReasoner> reasonerCache;
 
+
     @Inject
-    public ReasoningServiceImpl(EventBus eventBus, HandlerRegistry serverActionHandlerRegistry) {
-        reasonerCache = CacheBuilder.newBuilder()
+    public ReasoningServiceImpl(KbReasonerFactory kbReasonerFactory, EventBus eventBus, HandlerRegistry serverActionHandlerRegistry) {
+        this.reasonerCache = CacheBuilder.newBuilder()
                 .removalListener(new ReasonerCacheRemovalListener())
-                .build(new ReasonerCacheLoader(eventBus));
+                .build(new ReasonerCacheLoader(kbReasonerFactory));
         this.handlerRegistry = serverActionHandlerRegistry;
     }
 
@@ -66,11 +67,10 @@ public class ReasoningServiceImpl implements ReasoningService {
 
     private static class ReasonerCacheLoader extends CacheLoader<KbId, KbReasoner> {
 
+        private final KbReasonerFactory kbReasonerFactory;
 
-        private EventBus eventBus;
-
-        private ReasonerCacheLoader(EventBus eventBus) {
-            this.eventBus = eventBus;
+        private ReasonerCacheLoader(KbReasonerFactory kbReasonerFactory) {
+            this.kbReasonerFactory = kbReasonerFactory;
         }
 
         @Override
@@ -79,11 +79,7 @@ public class ReasoningServiceImpl implements ReasoningService {
         }
 
         private KbReasoner createKb(KbId kbId) {
-            return new KbReasonerImpl(kbId,
-                    new HandlerRegistry(
-                            new ActionHandlerMap()),
-                    new KbAxiomSetManager(),
-                    new DefaultOWLReasonerFactorySelector());
+            return kbReasonerFactory.createReasoner(kbId);
         }
     }
 
