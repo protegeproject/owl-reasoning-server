@@ -9,6 +9,8 @@ import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.reasoner.*;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 15/04/2014
  */
@@ -20,8 +22,8 @@ public class ReasonerImpl implements Reasoner {
     private OWLReasoner delegate;
 
     public ReasonerImpl(KbDigest kbDigest, OWLReasoner delegate) {
-        this.kbDigest = kbDigest;
-        this.delegate = delegate;
+        this.kbDigest = checkNotNull(kbDigest);
+        this.delegate = checkNotNull(delegate);
     }
 
     public KbDigest getKbDigest() {
