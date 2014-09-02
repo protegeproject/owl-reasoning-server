@@ -184,26 +184,6 @@ public class KbReasonerImpl implements KbReasoner {
                 return new ApplyChangesResponse(kbId, kbDigest);
             }
         });
-//        try {
-//            writeLock.lock();
-//            Optional<VersionedOntology> ontology = kbAxiomSetManager.applyChanges(changeData);
-//            if (ontology.isPresent()) {
-//                VersionedOntology versionedOntology = ontology.get();
-//                OWLReasonerFactory reasonerFactory = reasonerFactorySelector.getReasonerFactory(versionedOntology.getOntology());
-//                return executorService.submit(new ReasonerUpdater(kbId, clock, reasonerFactory, versionedOntology, new ReasonerUpdater.ReasonerUpdaterCallback() {
-//                    @Override
-//                    public void reasonerReady(Reasoner r) {
-//                        reasoner.set(r);
-//                        eventBus.post(new ReasonerReadyEvent(kbAxiomSetManager.getKbDigest()));
-//                    }
-//                }));
-//            }
-//            else {
-//                return Futures.immediateFuture(new ApplyChangesResponse(kbId, kbAxiomSetManager.getKbDigest()));
-//            }
-//        } finally {
-//            writeLock.unlock();
-//        }
     }
 
 
@@ -224,7 +204,6 @@ public class KbReasonerImpl implements KbReasoner {
             }
             else {
                 return Futures.immediateFuture(updateOperation.createResponse(kbId, kbAxiomSetManager.getKbDigest()));
-//                return Futures.immediateFuture(new ApplyChangesResponse(kbId, kbAxiomSetManager.getKbDigest()));
             }
         } finally {
             writeLock.unlock();
@@ -283,7 +262,6 @@ public class KbReasonerImpl implements KbReasoner {
             Reasoner reasoner = new ReasonerImpl(versionedOntology.getKbDigest(), owlReasoner);
             callback.reasonerReady(reasoner);
             return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
-//            return new ApplyChangesResponse(kbId, versionedOntology.getKbDigest());
         }
 
         public static interface ReasonerUpdaterCallback {
