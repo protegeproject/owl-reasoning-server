@@ -1,5 +1,6 @@
 package edu.stanford.protege.reasoning.impl;
 
+import edu.stanford.protege.reasoning.reasonerimpl.HermiTReasonerFactory;
 import org.semanticweb.HermiT.Reasoner;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
@@ -11,6 +12,6 @@ public class DefaultOWLReasonerFactorySelector implements OWLReasonerFactorySele
 
     @Override
     public OWLReasonerFactory getReasonerFactory(OWLOntology ontology) {
-        return new Reasoner.ReasonerFactory();
+        return new HermiTReasonerFactory();
     }
 }
