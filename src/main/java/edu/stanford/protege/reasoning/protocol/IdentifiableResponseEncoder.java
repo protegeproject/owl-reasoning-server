@@ -22,7 +22,8 @@ public class IdentifiableResponseEncoder extends MessageToMessageEncoder<Identif
     protected void encode(ChannelHandlerContext ctx, IdentifiableResponse msg, List<Object> out) throws Exception {
         ReasoningServerCodec codec = registry.getCodec(msg.getResponse());
         byte [] bytes = codec.encodeResponse(msg.getResponse());
-        ByteBuf byteBuf = Unpooled.buffer(8 + bytes.length);
+        ByteBuf byteBuf = Unpooled.buffer(9 + bytes.length);
+        byteBuf.writeByte(0);
         byteBuf.writeInt(msg.getId());
         byteBuf.writeInt(codec.getFrameMarker());
         byteBuf.writeBytes(bytes);

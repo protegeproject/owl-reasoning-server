@@ -20,12 +20,19 @@ public class IdentifiableResponseDecoder extends MessageToMessageDecoder<ByteBuf
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
-        int id = msg.readInt();
-        int marker = msg.readInt();
-        ReasoningServerCodec codec = registry.getCodec(marker);
-        byte [] bytes = new byte[msg.readableBytes()];
-        msg.readBytes(bytes);
-        Response response = codec.decodeResponse(bytes);
-        out.add(new IdentifiableResponse(id, response));
+        if(msg.readableBytes() > 0 && msg.getByte(0) == 0) {
+            msg.readByte();
+            int id = msg.readInt();
+            int marker = msg.readInt();
+            ReasoningServerCodec codec = registry.getCodec(marker);
+            byte [] bytes = new byte[msg.readableBytes()];
+            msg.readBytes(bytes);
+            Response response = codec.decodeResponse(bytes);
+            out.add(new IdentifiableResponse(id, response));
+        }
+        else {
+            msg.retain();
+            out.add(msg);
+        }
     }
 }

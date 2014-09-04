@@ -41,15 +41,21 @@ public class KbReasonerImpl implements KbReasoner {
 
     private final ListeningExecutorService applyChangesExecutorService;
 
+    private final ListeningExecutorService queryExecutorService;
+
     private final AtomicInteger clock = new AtomicInteger();
 
 
     @Inject
-    public KbReasonerImpl(@Assisted KbId kbId, HandlerRegistry handlerRegistry, KbAxiomSetManager axiomSetManager, OWLReasonerFactorySelector reasonerFactorySelector) {
+    public KbReasonerImpl(@Assisted KbId kbId,
+                          HandlerRegistry handlerRegistry,
+                          KbAxiomSetManager axiomSetManager,
+                          OWLReasonerFactorySelector reasonerFactorySelector) {
         this.kbId = kbId;
         this.handlerRegistry = handlerRegistry;
         this.kbAxiomSetManager = axiomSetManager;
-        applyChangesExecutorService = MoreExecutors.listeningDecorator(Executors.newSingleThreadExecutor());
+        this.applyChangesExecutorService = MoreExecutors.listeningDecorator(Executors.newSingleThreadExecutor());
+        this.queryExecutorService = MoreExecutors.listeningDecorator(reasonerFactorySelector.getQueryExecutorService());
         this.reasonerFactorySelector = reasonerFactorySelector;
         this.reasoner = new AtomicReference<Reasoner>(new NullReasoner(KbDigest.emptyDigest()));
 
@@ -66,16 +72,25 @@ public class KbReasonerImpl implements KbReasoner {
     }
 
     @Override
-    public <A extends KbAction<R, H>, R extends Response, H extends ActionHandler> ListenableFuture<R> execute(final A action) {
+    public <A extends KbAction<R, H>, R extends Response, H extends ActionHandler> ListenableFuture<R> execute(final
+                                                                                                                   A action) {
 
         try {
             return handlerRegistry.handleAction(action);
+        } catch (Throwable e) {
+            return wrapException(e);
         }
-        catch (TimeOutException e) {
-            return Futures.immediateFailedFuture(e);
+    }
+
+    private <R extends Response> ListenableFuture<R> wrapException(Throwable t) {
+        if(t instanceof ExecutionException) {
+            return wrapException(t.getCause());
         }
-        catch (RuntimeException e) {
-            return Futures.immediateFailedFuture(new InternalReasonerException(e));
+        if (t instanceof TimeoutException) {
+            return Futures.immediateFailedFuture(t);
+        }
+        else {
+            return Futures.immediateFailedFuture(new InternalReasonerException(t));
         }
     }
 
@@ -100,67 +115,99 @@ public class KbReasonerImpl implements KbReasoner {
     private class IsConsistentActionHandlerImpl implements IsConsistentHandler {
         @Override
         public ListenableFuture<IsConsistentResponse> handleAction(IsConsistentAction action) {
-            Reasoner r = getReasoner();
-            return Futures.immediateFuture(new IsConsistentResponse(kbId, r.getKbDigest(), r.getConsistency()));
+            return queryExecutorService.submit(new Callable<IsConsistentResponse>() {
+                @Override
+                public IsConsistentResponse call() throws Exception {
+                    Reasoner r = getReasoner();
+                    return new IsConsistentResponse(kbId, r.getKbDigest(), r.getConsistency());
+                }
+            });
         }
     }
 
     private class IsEntailedActionHandlerImpl implements IsEntailedActionHandler {
         @Override
-        public ListenableFuture<IsEntailedResponse> handleAction(IsEntailedAction action) {
-            Reasoner r = getReasoner();
-            return Futures.immediateFuture(new IsEntailedResponse(kbId, r.getKbDigest(), action.getAxiom(), r.isEntailed(action.getAxiom())));
-
+        public ListenableFuture<IsEntailedResponse> handleAction(final IsEntailedAction action) {
+            return queryExecutorService.submit(new Callable<IsEntailedResponse>() {
+                @Override
+                public IsEntailedResponse call() throws Exception {
+                    Reasoner r = getReasoner();
+                    return new IsEntailedResponse(kbId,
+                                                  r.getKbDigest(),
+                                                  action.getAxiom(),
+                                                  r.isEntailed(action.getAxiom()));
+                }
+            });
         }
     }
 
     private class GetSubClassesActionHandlerImpl implements GetSubClassesActionHandler {
         @Override
-        public ListenableFuture<GetSubClassesResponse> handleAction(GetSubClassesAction action) {
-            Reasoner r = getReasoner();
-            return Futures.immediateFuture(new GetSubClassesResponse(kbId, r.getKbDigest(), action.getClassExpression(), r.getSubClasses(action.getClassExpression(), true)));
+        public ListenableFuture<GetSubClassesResponse> handleAction(final GetSubClassesAction action) {
+            return queryExecutorService.submit(new Callable<GetSubClassesResponse>() {
+                @Override
+                public GetSubClassesResponse call() throws Exception {
+                    Reasoner r = getReasoner();
+                    return new GetSubClassesResponse(kbId,
+                                                     r.getKbDigest(),
+                                                     action.getClassExpression(),
+                                                     r.getSubClasses(action.getClassExpression(), true));
+                }
+            });
         }
     }
 
     private class GetInstancesActionHandlerImpl implements GetInstancesActionHandler {
         @Override
         public ListenableFuture<GetInstancesResponse> handleAction(final GetInstancesAction action) {
-
-            Reasoner r = getReasoner();
-            return Futures.immediateFuture(new GetInstancesResponse(kbId,
-                    r.getKbDigest(),
-                    action.getClassExpression(),
-                    r.getInstances(action.getClassExpression(), action.getHierarchyQueryType().isDirect())));
+            return queryExecutorService.submit(new Callable<GetInstancesResponse>() {
+                @Override
+                public GetInstancesResponse call() throws Exception {
+                    Reasoner r = getReasoner();
+                    return new GetInstancesResponse(kbId,
+                                                    r.getKbDigest(),
+                                                    action.getClassExpression(),
+                                                    r.getInstances(action.getClassExpression(),
+                                                                   action.getHierarchyQueryType().isDirect()));
+                }
+            });
         }
     }
 
     private class GetSuperClassesActionHandlerImpl implements GetSuperClassesActionHandler {
         @Override
-        public ListenableFuture<GetSuperClassesResponse> handleAction(GetSuperClassesAction action) {
-            Reasoner r = getReasoner();
-            return Futures.immediateFuture(
-                    new GetSuperClassesResponse(
-                            kbId,
-                            r.getKbDigest(),
-                            action.getClassExpression(),
-                            r.getSuperClasses(
-                                    action.getClassExpression(),
-                                    action.getHierarchyQueryType().isDirect()
-                            )
-                    )
-            );
+        public ListenableFuture<GetSuperClassesResponse> handleAction(final GetSuperClassesAction action) {
+            return queryExecutorService.submit(new Callable<GetSuperClassesResponse>() {
+                @Override
+                public GetSuperClassesResponse call() throws Exception {
+                    Reasoner r = getReasoner();
+                    return new GetSuperClassesResponse(kbId,
+                                                       r.getKbDigest(),
+                                                       action.getClassExpression(),
+                                                       r.getSuperClasses(action.getClassExpression(),
+                                                                         action.getHierarchyQueryType().isDirect())
+
+                    );
+                }
+            });
         }
     }
 
     private class GetKbDigestActionHandlerImpl implements GetKbDigestActionHandler {
         @Override
         public ListenableFuture<GetKbDigestResponse> handleAction(GetKbDigestAction action) {
-            try {
-                readLock.lock();
-                return Futures.immediateFuture(new GetKbDigestResponse(kbId, kbAxiomSetManager.getKbDigest()));
-            } finally {
-                readLock.unlock();
-            }
+            return queryExecutorService.submit(new Callable<GetKbDigestResponse>() {
+                @Override
+                public GetKbDigestResponse call() throws Exception {
+                    try {
+                        readLock.lock();
+                        return new GetKbDigestResponse(kbId, kbAxiomSetManager.getKbDigest());
+                    } finally {
+                        readLock.unlock();
+                    }
+                }
+            });
+
         }
     }
 
@@ -196,24 +243,35 @@ public class KbReasonerImpl implements KbReasoner {
     }
 
 
-
     private <R extends Response> ListenableFuture<R> updateKb(KbUpdateOperation<R> updateOperation) {
         try {
+            // This isn't correct.  We want to update the reasoner and only set it as the new reasoner if there
+            // weren't any errors.  I think.
             writeLock.lock();
             Optional<VersionedOntology> ontology = updateOperation.performUpdate(kbAxiomSetManager);
             if (ontology.isPresent()) {
                 VersionedOntology versionedOntology = ontology.get();
-                OWLReasonerFactory reasonerFactory = reasonerFactorySelector.getReasonerFactory(versionedOntology.getOntology());
-                return applyChangesExecutorService.submit(new ReasonerUpdater<>(kbId, clock, reasonerFactory, versionedOntology, new ReasonerUpdater.ReasonerUpdaterCallback() {
-                    @Override
-                    public void reasonerReady(Reasoner r) {
-                        reasoner.set(r);
-                    }
-                }, updateOperation));
+                OWLReasonerFactory reasonerFactory = reasonerFactorySelector.getReasonerFactory(versionedOntology
+                                                                                                        .getOntology());
+                return applyChangesExecutorService.submit(new ReasonerUpdater<>(kbId,
+                                                                                clock,
+                                                                                reasonerFactory,
+                                                                                versionedOntology,
+                                                                                new ReasonerUpdater
+                                                                                        .ReasonerUpdaterCallback() {
+                                                                                    @Override
+                                                                                    public void reasonerReady
+                                                                                            (Reasoner r) {
+                                                                                        reasoner.set(r);
+                                                                                    }
+                                                                                },
+                                                                                updateOperation));
             }
             else {
                 return Futures.immediateFuture(updateOperation.createResponse(kbId, kbAxiomSetManager.getKbDigest()));
             }
+        } catch (Throwable t) {
+            return wrapException(t);
         } finally {
             writeLock.unlock();
         }
@@ -222,6 +280,7 @@ public class KbReasonerImpl implements KbReasoner {
 
     private static interface KbUpdateOperation<R> {
         Optional<VersionedOntology> performUpdate(KbAxiomSetManager axiomSetManager);
+
         R createResponse(KbId kbId, KbDigest digest);
     }
 
@@ -230,22 +289,27 @@ public class KbReasonerImpl implements KbReasoner {
      */
     private static class ReasonerUpdater<R extends Response> implements Callable<R> {
 
-        private KbId kbId;
+        private final KbId kbId;
 
-        private OWLReasonerFactory reasonerFactory;
+        private final OWLReasonerFactory reasonerFactory;
 
-        private VersionedOntology versionedOntology;
+        private final VersionedOntology versionedOntology;
 
-        private ReasonerUpdaterCallback callback;
+        private final ReasonerUpdaterCallback callback;
 
-        private int clockValue;
+        private final int clockValue;
 
-        private AtomicInteger clock;
+        private final AtomicInteger clock;
 
-        private KbUpdateOperation<R> updateOperation;
+        private final KbUpdateOperation<R> updateOperation;
 
 
-        private ReasonerUpdater(KbId kbId, AtomicInteger clock, OWLReasonerFactory reasonerFactory, VersionedOntology versionedOntology, ReasonerUpdaterCallback callback, KbUpdateOperation<R> updateOperation) {
+        private ReasonerUpdater(KbId kbId,
+                                AtomicInteger clock,
+                                OWLReasonerFactory reasonerFactory,
+                                VersionedOntology versionedOntology,
+                                ReasonerUpdaterCallback callback,
+                                KbUpdateOperation<R> updateOperation) {
             this.kbId = kbId;
             this.clockValue = clock.incrementAndGet();
             this.clock = clock;
@@ -258,12 +322,13 @@ public class KbReasonerImpl implements KbReasoner {
         @Override
         public R call() throws Exception {
             if (clock.get() != clockValue) {
-                new ApplyChangesResponse(kbId, versionedOntology.getKbDigest());
+                return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
             }
 
             // Dynamically select best reasoner factory?
             SimpleConfiguration configuration = new SimpleConfiguration(new ConsoleProgressMonitor());
-            OWLReasoner owlReasoner = reasonerFactory.createNonBufferingReasoner(versionedOntology.getOntology(), configuration);
+            OWLReasoner owlReasoner = reasonerFactory.createNonBufferingReasoner(versionedOntology.getOntology(),
+                                                                                 configuration);
             boolean consistent = owlReasoner.isConsistent();
             if (consistent) {
                 owlReasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY, InferenceType.CLASS_ASSERTIONS);

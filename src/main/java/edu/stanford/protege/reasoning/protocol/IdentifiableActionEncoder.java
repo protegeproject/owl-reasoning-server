@@ -24,7 +24,8 @@ public class IdentifiableActionEncoder extends MessageToMessageEncoder<Identifia
         int id = msg.getId();
         int marker = codec.getFrameMarker();
         byte [] bytes = codec.encodeAction(msg.getAction());
-        ByteBuf byteBuf = Unpooled.buffer(8 + bytes.length);
+        ByteBuf byteBuf = Unpooled.buffer(9 + bytes.length);
+        byteBuf.writeByte(0);
         byteBuf.writeInt(id);
         byteBuf.writeInt(marker);
         byteBuf.writeBytes(bytes);

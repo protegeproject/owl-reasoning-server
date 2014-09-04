@@ -22,7 +22,6 @@ public class ReasoningServerHandler extends SimpleChannelInboundHandler<Identifi
     @SuppressWarnings("unchecked")
     @Override
     protected void messageReceived(final ChannelHandlerContext ctx, final IdentifiableAction msg) throws Exception {
-        // TODO: Does this need to executed elsewhere?  Shouldn't block IO.
         ListenableFuture<Response> response = reasoningService.execute(msg.getAction());
         Futures.addCallback(response, new FutureCallback<Response>() {
             @Override
@@ -32,8 +31,7 @@ public class ReasoningServerHandler extends SimpleChannelInboundHandler<Identifi
 
             @Override
             public void onFailure(Throwable t) {
-                t.printStackTrace();
-                ctx.close();
+                ctx.writeAndFlush(new ReasoningServerError(msg.getId(), t.getMessage()));
             }
         });
     }

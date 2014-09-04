@@ -20,12 +20,15 @@ public class IdentifiableActionDecoder extends MessageToMessageDecoder<ByteBuf> 
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
-        int id = msg.readInt();
-        int marker = msg.readInt();
-        byte [] bytes = new byte[msg.readableBytes()];
-        msg.readBytes(bytes);
-        ReasoningServerCodec codec = registry.getCodec(marker);
-        Action action = codec.decodeAction(bytes);
-        out.add(new IdentifiableAction(id, action));
+        if(msg.getByte(0) == 0) {
+            msg.readByte();
+            int id = msg.readInt();
+            int marker = msg.readInt();
+            byte [] bytes = new byte[msg.readableBytes()];
+            msg.readBytes(bytes);
+            ReasoningServerCodec codec = registry.getCodec(marker);
+            Action action = codec.decodeAction(bytes);
+            out.add(new IdentifiableAction(id, action));
+        }
     }
 }
