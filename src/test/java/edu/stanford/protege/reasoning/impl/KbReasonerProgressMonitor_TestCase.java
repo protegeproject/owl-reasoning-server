@@ -1,11 +1,10 @@
 package edu.stanford.protege.reasoning.impl;
 
-import edu.stanford.protege.reasoning.action.ProcessingState;
+import edu.stanford.protege.reasoning.action.ReasonerState;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -26,26 +25,26 @@ public class KbReasonerProgressMonitor_TestCase {
 
     private KbReasonerProgressMonitor monitor;
 
-    private ArgumentCaptor<ProcessingState> captor;
+    private ArgumentCaptor<ReasonerState> captor;
 
     @Before
     public void setUp() throws Exception {
         monitor = spy(new KbReasonerProgressMonitor(REASONER_NAME) {
             @Override
-            public void stateChanged(ProcessingState state) {
+            public void stateChanged(ReasonerState state) {
 
             }
         });
-        captor = ArgumentCaptor.forClass(ProcessingState.class);
+        captor = ArgumentCaptor.forClass(ReasonerState.class);
     }
 
     @Test
     public void shouldCallStateChangedOnTaskStarted() {
         monitor.reasonerTaskStarted(TASK_NAME);
         verify(monitor, times(1)).stateChanged(captor.capture());
-        ProcessingState capturedState = captor.getValue();
+        ReasonerState capturedState = captor.getValue();
         assertThat(capturedState.getReasonerName(), is(REASONER_NAME));
-        assertThat(capturedState.getCurrentTaskDescription(), is(TASK_NAME));
+        assertThat(capturedState.getStateDescription(), is(TASK_NAME));
     }
 
     @Test
@@ -59,9 +58,9 @@ public class KbReasonerProgressMonitor_TestCase {
     public void shouldCallStateChangedOnTaskStopped() {
         monitor.reasonerTaskStopped();
         verify(monitor, times(1)).stateChanged(captor.capture());
-        ProcessingState capturedState = captor.getValue();
+        ReasonerState capturedState = captor.getValue();
         assertThat(capturedState.getReasonerName(), is(REASONER_NAME));
-        assertThat(capturedState.getCurrentTaskDescription(), is(TASK_NAME));
+        assertThat(capturedState.getStateDescription(), is(TASK_NAME));
     }
 
 
@@ -69,9 +68,9 @@ public class KbReasonerProgressMonitor_TestCase {
     public void shouldCallStateChangedOnProgressChanged() {
         monitor.reasonerTaskProgressChanged(10, 20);
         verify(monitor, times(1)).stateChanged(captor.capture());
-        ProcessingState capturedState = captor.getValue();
+        ReasonerState capturedState = captor.getValue();
         assertThat(capturedState.getReasonerName(), is(REASONER_NAME));
-        assertThat(capturedState.getCurrentTaskDescription(), is(TASK_NAME));
+        assertThat(capturedState.getStateDescription(), is(TASK_NAME));
         assertThat(capturedState.getPercentageProcessed(), is(50));
     }
 

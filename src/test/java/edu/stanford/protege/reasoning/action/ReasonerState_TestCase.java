@@ -1,6 +1,5 @@
 package edu.stanford.protege.reasoning.action;
 
-import edu.stanford.protege.reasoning.action.ProcessingState;
 import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +10,7 @@ import static org.hamcrest.Matchers.is;
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 06/09/2014
  */
-public class ProcessingState_TestCase {
+public class ReasonerState_TestCase {
 
     private String reasonerName = "TestName";
 
@@ -19,31 +18,31 @@ public class ProcessingState_TestCase {
 
     private int percentProcessed = 33;
 
-    private ProcessingState state;
+    private ReasonerState state;
 
     @Before
     public void setUp() throws Exception {
-        state = new ProcessingState(reasonerName, currentTaskDescription, percentProcessed);
+        state = new ReasonerState(reasonerName, currentTaskDescription, percentProcessed);
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldThrowNullPointerExceptionIf_ReasonerName_IsNull() {
-        new ProcessingState(null, currentTaskDescription, percentProcessed);
+        new ReasonerState(null, currentTaskDescription, percentProcessed);
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldThrowNullPointerExceptionIf_CurrentTaskDescription_IsNull() {
-        new ProcessingState(reasonerName, null, 0);
+        new ReasonerState(reasonerName, null, 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowIllegalArgumentExceptionIf_PercentageProcessed_IsLessThanZero() {
-        new ProcessingState(reasonerName, currentTaskDescription, -1);
+        new ReasonerState(reasonerName, currentTaskDescription, -1);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowIllegalArgumentExceptionIf_PercentageProcessed_IsGreaterThanOneHundred() {
-        new ProcessingState(reasonerName, currentTaskDescription, 101);
+        new ReasonerState(reasonerName, currentTaskDescription, 101);
     }
 
     @Test
@@ -53,7 +52,7 @@ public class ProcessingState_TestCase {
 
     @Test
     public void shouldReturnSuppliedCurrentTaskDescription() {
-        assertThat(state.getCurrentTaskDescription(), is(currentTaskDescription));
+        assertThat(state.getStateDescription(), is(currentTaskDescription));
     }
 
     @Test
@@ -63,7 +62,7 @@ public class ProcessingState_TestCase {
 
     @Test
     public void shouldBeEqualToOther() {
-        ProcessingState other = new ProcessingState(reasonerName, currentTaskDescription, percentProcessed);
+        ReasonerState other = new ReasonerState(reasonerName, currentTaskDescription, percentProcessed);
         assertThat(state.equals(other), is(true));
     }
 

@@ -20660,7 +20660,7 @@ public final class Messages {
     // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.ReplaceAxiomsResponseMessage)
   }
 
-  public interface GetProcessingStateActionMessageOrBuilder
+  public interface GetReasonerStateActionMessageOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
@@ -20678,24 +20678,24 @@ public final class Messages {
     edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder();
   }
   /**
-   * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetProcessingStateActionMessage}
+   * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetReasonerStateActionMessage}
    */
-  public static final class GetProcessingStateActionMessage extends
+  public static final class GetReasonerStateActionMessage extends
       com.google.protobuf.GeneratedMessage
-      implements GetProcessingStateActionMessageOrBuilder {
-    // Use GetProcessingStateActionMessage.newBuilder() to construct.
-    private GetProcessingStateActionMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements GetReasonerStateActionMessageOrBuilder {
+    // Use GetReasonerStateActionMessage.newBuilder() to construct.
+    private GetReasonerStateActionMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private GetProcessingStateActionMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private GetReasonerStateActionMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final GetProcessingStateActionMessage defaultInstance;
-    public static GetProcessingStateActionMessage getDefaultInstance() {
+    private static final GetReasonerStateActionMessage defaultInstance;
+    public static GetReasonerStateActionMessage getDefaultInstance() {
       return defaultInstance;
     }
 
-    public GetProcessingStateActionMessage getDefaultInstanceForType() {
+    public GetReasonerStateActionMessage getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -20705,7 +20705,7 @@ public final class Messages {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private GetProcessingStateActionMessage(
+    private GetReasonerStateActionMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -20755,28 +20755,28 @@ public final class Messages {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_descriptor;
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateActionMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_fieldAccessorTable
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateActionMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.Builder.class);
+              edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<GetProcessingStateActionMessage> PARSER =
-        new com.google.protobuf.AbstractParser<GetProcessingStateActionMessage>() {
-      public GetProcessingStateActionMessage parsePartialFrom(
+    public static com.google.protobuf.Parser<GetReasonerStateActionMessage> PARSER =
+        new com.google.protobuf.AbstractParser<GetReasonerStateActionMessage>() {
+      public GetReasonerStateActionMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetProcessingStateActionMessage(input, extensionRegistry);
+        return new GetReasonerStateActionMessage(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GetProcessingStateActionMessage> getParserForType() {
+    public com.google.protobuf.Parser<GetReasonerStateActionMessage> getParserForType() {
       return PARSER;
     }
 
@@ -20854,53 +20854,53 @@ public final class Messages {
       return super.writeReplace();
     }
 
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(byte[] data)
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(java.io.InputStream input)
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseDelimitedFrom(java.io.InputStream input)
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseDelimitedFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -20909,7 +20909,7 @@ public final class Messages {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage prototype) {
+    public static Builder newBuilder(edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -20921,24 +20921,24 @@ public final class Messages {
       return builder;
     }
     /**
-     * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetProcessingStateActionMessage}
+     * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetReasonerStateActionMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessageOrBuilder {
+       implements edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_descriptor;
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateActionMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_fieldAccessorTable
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateActionMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.Builder.class);
+                edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage.Builder.class);
       }
 
-      // Construct using edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.newBuilder()
+      // Construct using edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -20974,23 +20974,23 @@ public final class Messages {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_descriptor;
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateActionMessage_descriptor;
       }
 
-      public edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage getDefaultInstanceForType() {
-        return edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.getDefaultInstance();
+      public edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage getDefaultInstanceForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage.getDefaultInstance();
       }
 
-      public edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage build() {
-        edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage result = buildPartial();
+      public edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage build() {
+        edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage buildPartial() {
-        edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage result = new edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage(this);
+      public edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage buildPartial() {
+        edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage result = new edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -21007,16 +21007,16 @@ public final class Messages {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage) {
-          return mergeFrom((edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage)other);
+        if (other instanceof edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage) {
+          return mergeFrom((edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage other) {
-        if (other == edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage other) {
+        if (other == edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage.getDefaultInstance()) return this;
         if (other.hasKbId()) {
           mergeKbId(other.getKbId());
         }
@@ -21040,11 +21040,11 @@ public final class Messages {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parsedMessage = null;
+        edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage) e.getUnfinishedMessage();
+          parsedMessage = (edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateActionMessage) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -21172,18 +21172,18 @@ public final class Messages {
         return kbIdBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:edu.stanford.protege.reasoning.protocol.GetProcessingStateActionMessage)
+      // @@protoc_insertion_point(builder_scope:edu.stanford.protege.reasoning.protocol.GetReasonerStateActionMessage)
     }
 
     static {
-      defaultInstance = new GetProcessingStateActionMessage(true);
+      defaultInstance = new GetReasonerStateActionMessage(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.GetProcessingStateActionMessage)
+    // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.GetReasonerStateActionMessage)
   }
 
-  public interface GetProcessingStateResponseMessageOrBuilder
+  public interface GetReasonerStateResponseMessageOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
@@ -21200,39 +21200,39 @@ public final class Messages {
      */
     edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder();
 
-    // required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;
+    // required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;
     /**
-     * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+     * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
      */
-    boolean hasProcessingState();
+    boolean hasReasonerState();
     /**
-     * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+     * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
      */
-    edu.stanford.protege.reasoning.protocol.Messages.ProcessingState getProcessingState();
+    edu.stanford.protege.reasoning.protocol.Messages.ReasonerState getReasonerState();
     /**
-     * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+     * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
      */
-    edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder getProcessingStateOrBuilder();
+    edu.stanford.protege.reasoning.protocol.Messages.ReasonerStateOrBuilder getReasonerStateOrBuilder();
   }
   /**
-   * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetProcessingStateResponseMessage}
+   * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetReasonerStateResponseMessage}
    */
-  public static final class GetProcessingStateResponseMessage extends
+  public static final class GetReasonerStateResponseMessage extends
       com.google.protobuf.GeneratedMessage
-      implements GetProcessingStateResponseMessageOrBuilder {
-    // Use GetProcessingStateResponseMessage.newBuilder() to construct.
-    private GetProcessingStateResponseMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements GetReasonerStateResponseMessageOrBuilder {
+    // Use GetReasonerStateResponseMessage.newBuilder() to construct.
+    private GetReasonerStateResponseMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private GetProcessingStateResponseMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private GetReasonerStateResponseMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final GetProcessingStateResponseMessage defaultInstance;
-    public static GetProcessingStateResponseMessage getDefaultInstance() {
+    private static final GetReasonerStateResponseMessage defaultInstance;
+    public static GetReasonerStateResponseMessage getDefaultInstance() {
       return defaultInstance;
     }
 
-    public GetProcessingStateResponseMessage getDefaultInstanceForType() {
+    public GetReasonerStateResponseMessage getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -21242,7 +21242,7 @@ public final class Messages {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private GetProcessingStateResponseMessage(
+    private GetReasonerStateResponseMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -21279,14 +21279,14 @@ public final class Messages {
               break;
             }
             case 18: {
-              edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder subBuilder = null;
+              edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.Builder subBuilder = null;
               if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = processingState_.toBuilder();
+                subBuilder = reasonerState_.toBuilder();
               }
-              processingState_ = input.readMessage(edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.PARSER, extensionRegistry);
+              reasonerState_ = input.readMessage(edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(processingState_);
-                processingState_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(reasonerState_);
+                reasonerState_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000002;
               break;
@@ -21305,28 +21305,28 @@ public final class Messages {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_descriptor;
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateResponseMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_fieldAccessorTable
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateResponseMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.Builder.class);
+              edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<GetProcessingStateResponseMessage> PARSER =
-        new com.google.protobuf.AbstractParser<GetProcessingStateResponseMessage>() {
-      public GetProcessingStateResponseMessage parsePartialFrom(
+    public static com.google.protobuf.Parser<GetReasonerStateResponseMessage> PARSER =
+        new com.google.protobuf.AbstractParser<GetReasonerStateResponseMessage>() {
+      public GetReasonerStateResponseMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetProcessingStateResponseMessage(input, extensionRegistry);
+        return new GetReasonerStateResponseMessage(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GetProcessingStateResponseMessage> getParserForType() {
+    public com.google.protobuf.Parser<GetReasonerStateResponseMessage> getParserForType() {
       return PARSER;
     }
 
@@ -21353,31 +21353,31 @@ public final class Messages {
       return kbId_;
     }
 
-    // required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;
-    public static final int PROCESSINGSTATE_FIELD_NUMBER = 2;
-    private edu.stanford.protege.reasoning.protocol.Messages.ProcessingState processingState_;
+    // required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;
+    public static final int REASONERSTATE_FIELD_NUMBER = 2;
+    private edu.stanford.protege.reasoning.protocol.Messages.ReasonerState reasonerState_;
     /**
-     * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+     * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
      */
-    public boolean hasProcessingState() {
+    public boolean hasReasonerState() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+     * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
      */
-    public edu.stanford.protege.reasoning.protocol.Messages.ProcessingState getProcessingState() {
-      return processingState_;
+    public edu.stanford.protege.reasoning.protocol.Messages.ReasonerState getReasonerState() {
+      return reasonerState_;
     }
     /**
-     * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+     * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
      */
-    public edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder getProcessingStateOrBuilder() {
-      return processingState_;
+    public edu.stanford.protege.reasoning.protocol.Messages.ReasonerStateOrBuilder getReasonerStateOrBuilder() {
+      return reasonerState_;
     }
 
     private void initFields() {
       kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
-      processingState_ = edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance();
+      reasonerState_ = edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -21388,7 +21388,7 @@ public final class Messages {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasProcessingState()) {
+      if (!hasReasonerState()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -21396,7 +21396,7 @@ public final class Messages {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!getProcessingState().isInitialized()) {
+      if (!getReasonerState().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -21411,7 +21411,7 @@ public final class Messages {
         output.writeMessage(1, kbId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, processingState_);
+        output.writeMessage(2, reasonerState_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -21428,7 +21428,7 @@ public final class Messages {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, processingState_);
+          .computeMessageSize(2, reasonerState_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -21442,53 +21442,53 @@ public final class Messages {
       return super.writeReplace();
     }
 
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(byte[] data)
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(java.io.InputStream input)
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseDelimitedFrom(java.io.InputStream input)
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseDelimitedFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -21497,7 +21497,7 @@ public final class Messages {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage prototype) {
+    public static Builder newBuilder(edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -21509,24 +21509,24 @@ public final class Messages {
       return builder;
     }
     /**
-     * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetProcessingStateResponseMessage}
+     * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetReasonerStateResponseMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessageOrBuilder {
+       implements edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_descriptor;
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateResponseMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_fieldAccessorTable
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateResponseMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.Builder.class);
+                edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage.Builder.class);
       }
 
-      // Construct using edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.newBuilder()
+      // Construct using edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -21539,7 +21539,7 @@ public final class Messages {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getKbIdFieldBuilder();
-          getProcessingStateFieldBuilder();
+          getReasonerStateFieldBuilder();
         }
       }
       private static Builder create() {
@@ -21554,10 +21554,10 @@ public final class Messages {
           kbIdBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
-        if (processingStateBuilder_ == null) {
-          processingState_ = edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance();
+        if (reasonerStateBuilder_ == null) {
+          reasonerState_ = edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.getDefaultInstance();
         } else {
-          processingStateBuilder_.clear();
+          reasonerStateBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
@@ -21569,23 +21569,23 @@ public final class Messages {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_descriptor;
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateResponseMessage_descriptor;
       }
 
-      public edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage getDefaultInstanceForType() {
-        return edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.getDefaultInstance();
+      public edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage getDefaultInstanceForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage.getDefaultInstance();
       }
 
-      public edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage build() {
-        edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage result = buildPartial();
+      public edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage build() {
+        edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage buildPartial() {
-        edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage result = new edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage(this);
+      public edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage buildPartial() {
+        edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage result = new edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -21599,10 +21599,10 @@ public final class Messages {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        if (processingStateBuilder_ == null) {
-          result.processingState_ = processingState_;
+        if (reasonerStateBuilder_ == null) {
+          result.reasonerState_ = reasonerState_;
         } else {
-          result.processingState_ = processingStateBuilder_.build();
+          result.reasonerState_ = reasonerStateBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -21610,21 +21610,21 @@ public final class Messages {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage) {
-          return mergeFrom((edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage)other);
+        if (other instanceof edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage) {
+          return mergeFrom((edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage other) {
-        if (other == edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage other) {
+        if (other == edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage.getDefaultInstance()) return this;
         if (other.hasKbId()) {
           mergeKbId(other.getKbId());
         }
-        if (other.hasProcessingState()) {
-          mergeProcessingState(other.getProcessingState());
+        if (other.hasReasonerState()) {
+          mergeReasonerState(other.getReasonerState());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -21635,7 +21635,7 @@ public final class Messages {
           
           return false;
         }
-        if (!hasProcessingState()) {
+        if (!hasReasonerState()) {
           
           return false;
         }
@@ -21643,7 +21643,7 @@ public final class Messages {
           
           return false;
         }
-        if (!getProcessingState().isInitialized()) {
+        if (!getReasonerState().isInitialized()) {
           
           return false;
         }
@@ -21654,11 +21654,11 @@ public final class Messages {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parsedMessage = null;
+        edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage) e.getUnfinishedMessage();
+          parsedMessage = (edu.stanford.protege.reasoning.protocol.Messages.GetReasonerStateResponseMessage) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -21786,135 +21786,135 @@ public final class Messages {
         return kbIdBuilder_;
       }
 
-      // required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;
-      private edu.stanford.protege.reasoning.protocol.Messages.ProcessingState processingState_ = edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance();
+      // required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;
+      private edu.stanford.protege.reasoning.protocol.Messages.ReasonerState reasonerState_ = edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          edu.stanford.protege.reasoning.protocol.Messages.ProcessingState, edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder, edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder> processingStateBuilder_;
+          edu.stanford.protege.reasoning.protocol.Messages.ReasonerState, edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.Builder, edu.stanford.protege.reasoning.protocol.Messages.ReasonerStateOrBuilder> reasonerStateBuilder_;
       /**
-       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
        */
-      public boolean hasProcessingState() {
+      public boolean hasReasonerState() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
        */
-      public edu.stanford.protege.reasoning.protocol.Messages.ProcessingState getProcessingState() {
-        if (processingStateBuilder_ == null) {
-          return processingState_;
+      public edu.stanford.protege.reasoning.protocol.Messages.ReasonerState getReasonerState() {
+        if (reasonerStateBuilder_ == null) {
+          return reasonerState_;
         } else {
-          return processingStateBuilder_.getMessage();
+          return reasonerStateBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
        */
-      public Builder setProcessingState(edu.stanford.protege.reasoning.protocol.Messages.ProcessingState value) {
-        if (processingStateBuilder_ == null) {
+      public Builder setReasonerState(edu.stanford.protege.reasoning.protocol.Messages.ReasonerState value) {
+        if (reasonerStateBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          processingState_ = value;
+          reasonerState_ = value;
           onChanged();
         } else {
-          processingStateBuilder_.setMessage(value);
+          reasonerStateBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
        */
-      public Builder setProcessingState(
-          edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder builderForValue) {
-        if (processingStateBuilder_ == null) {
-          processingState_ = builderForValue.build();
+      public Builder setReasonerState(
+          edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.Builder builderForValue) {
+        if (reasonerStateBuilder_ == null) {
+          reasonerState_ = builderForValue.build();
           onChanged();
         } else {
-          processingStateBuilder_.setMessage(builderForValue.build());
+          reasonerStateBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
        */
-      public Builder mergeProcessingState(edu.stanford.protege.reasoning.protocol.Messages.ProcessingState value) {
-        if (processingStateBuilder_ == null) {
+      public Builder mergeReasonerState(edu.stanford.protege.reasoning.protocol.Messages.ReasonerState value) {
+        if (reasonerStateBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              processingState_ != edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance()) {
-            processingState_ =
-              edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.newBuilder(processingState_).mergeFrom(value).buildPartial();
+              reasonerState_ != edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.getDefaultInstance()) {
+            reasonerState_ =
+              edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.newBuilder(reasonerState_).mergeFrom(value).buildPartial();
           } else {
-            processingState_ = value;
+            reasonerState_ = value;
           }
           onChanged();
         } else {
-          processingStateBuilder_.mergeFrom(value);
+          reasonerStateBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
        */
-      public Builder clearProcessingState() {
-        if (processingStateBuilder_ == null) {
-          processingState_ = edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance();
+      public Builder clearReasonerState() {
+        if (reasonerStateBuilder_ == null) {
+          reasonerState_ = edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.getDefaultInstance();
           onChanged();
         } else {
-          processingStateBuilder_.clear();
+          reasonerStateBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
-       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
        */
-      public edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder getProcessingStateBuilder() {
+      public edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.Builder getReasonerStateBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
-        return getProcessingStateFieldBuilder().getBuilder();
+        return getReasonerStateFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
        */
-      public edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder getProcessingStateOrBuilder() {
-        if (processingStateBuilder_ != null) {
-          return processingStateBuilder_.getMessageOrBuilder();
+      public edu.stanford.protege.reasoning.protocol.Messages.ReasonerStateOrBuilder getReasonerStateOrBuilder() {
+        if (reasonerStateBuilder_ != null) {
+          return reasonerStateBuilder_.getMessageOrBuilder();
         } else {
-          return processingState_;
+          return reasonerState_;
         }
       }
       /**
-       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       * <code>required .edu.stanford.protege.reasoning.protocol.ReasonerState reasonerState = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          edu.stanford.protege.reasoning.protocol.Messages.ProcessingState, edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder, edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder> 
-          getProcessingStateFieldBuilder() {
-        if (processingStateBuilder_ == null) {
-          processingStateBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              edu.stanford.protege.reasoning.protocol.Messages.ProcessingState, edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder, edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder>(
-                  processingState_,
+          edu.stanford.protege.reasoning.protocol.Messages.ReasonerState, edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.Builder, edu.stanford.protege.reasoning.protocol.Messages.ReasonerStateOrBuilder> 
+          getReasonerStateFieldBuilder() {
+        if (reasonerStateBuilder_ == null) {
+          reasonerStateBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              edu.stanford.protege.reasoning.protocol.Messages.ReasonerState, edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.Builder, edu.stanford.protege.reasoning.protocol.Messages.ReasonerStateOrBuilder>(
+                  reasonerState_,
                   getParentForChildren(),
                   isClean());
-          processingState_ = null;
+          reasonerState_ = null;
         }
-        return processingStateBuilder_;
+        return reasonerStateBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:edu.stanford.protege.reasoning.protocol.GetProcessingStateResponseMessage)
+      // @@protoc_insertion_point(builder_scope:edu.stanford.protege.reasoning.protocol.GetReasonerStateResponseMessage)
     }
 
     static {
-      defaultInstance = new GetProcessingStateResponseMessage(true);
+      defaultInstance = new GetReasonerStateResponseMessage(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.GetProcessingStateResponseMessage)
+    // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.GetReasonerStateResponseMessage)
   }
 
-  public interface ProcessingStateOrBuilder
+  public interface ReasonerStateOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
     // required string reasonerName = 1;
@@ -21932,50 +21932,64 @@ public final class Messages {
     com.google.protobuf.ByteString
         getReasonerNameBytes();
 
-    // required string currentTask = 2;
+    // required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;
     /**
-     * <code>required string currentTask = 2;</code>
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
      */
-    boolean hasCurrentTask();
+    boolean hasReasonerKbDigest();
     /**
-     * <code>required string currentTask = 2;</code>
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
      */
-    java.lang.String getCurrentTask();
+    edu.stanford.protege.reasoning.protocol.Messages.KbDigest getReasonerKbDigest();
     /**
-     * <code>required string currentTask = 2;</code>
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.KbDigestOrBuilder getReasonerKbDigestOrBuilder();
+
+    // required string stateDescription = 3;
+    /**
+     * <code>required string stateDescription = 3;</code>
+     */
+    boolean hasStateDescription();
+    /**
+     * <code>required string stateDescription = 3;</code>
+     */
+    java.lang.String getStateDescription();
+    /**
+     * <code>required string stateDescription = 3;</code>
      */
     com.google.protobuf.ByteString
-        getCurrentTaskBytes();
+        getStateDescriptionBytes();
 
-    // required int32 percentProcessed = 3;
+    // required int32 percentProcessed = 4;
     /**
-     * <code>required int32 percentProcessed = 3;</code>
+     * <code>required int32 percentProcessed = 4;</code>
      */
     boolean hasPercentProcessed();
     /**
-     * <code>required int32 percentProcessed = 3;</code>
+     * <code>required int32 percentProcessed = 4;</code>
      */
     int getPercentProcessed();
   }
   /**
-   * Protobuf type {@code edu.stanford.protege.reasoning.protocol.ProcessingState}
+   * Protobuf type {@code edu.stanford.protege.reasoning.protocol.ReasonerState}
    */
-  public static final class ProcessingState extends
+  public static final class ReasonerState extends
       com.google.protobuf.GeneratedMessage
-      implements ProcessingStateOrBuilder {
-    // Use ProcessingState.newBuilder() to construct.
-    private ProcessingState(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements ReasonerStateOrBuilder {
+    // Use ReasonerState.newBuilder() to construct.
+    private ReasonerState(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private ProcessingState(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private ReasonerState(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final ProcessingState defaultInstance;
-    public static ProcessingState getDefaultInstance() {
+    private static final ReasonerState defaultInstance;
+    public static ReasonerState getDefaultInstance() {
       return defaultInstance;
     }
 
-    public ProcessingState getDefaultInstanceForType() {
+    public ReasonerState getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -21985,7 +21999,7 @@ public final class Messages {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private ProcessingState(
+    private ReasonerState(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -22014,12 +22028,25 @@ public final class Messages {
               break;
             }
             case 18: {
+              edu.stanford.protege.reasoning.protocol.Messages.KbDigest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = reasonerKbDigest_.toBuilder();
+              }
+              reasonerKbDigest_ = input.readMessage(edu.stanford.protege.reasoning.protocol.Messages.KbDigest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(reasonerKbDigest_);
+                reasonerKbDigest_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000002;
-              currentTask_ = input.readBytes();
               break;
             }
-            case 24: {
+            case 26: {
               bitField0_ |= 0x00000004;
+              stateDescription_ = input.readBytes();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
               percentProcessed_ = input.readInt32();
               break;
             }
@@ -22037,28 +22064,28 @@ public final class Messages {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_descriptor;
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_fieldAccessorTable
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.class, edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder.class);
+              edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.class, edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<ProcessingState> PARSER =
-        new com.google.protobuf.AbstractParser<ProcessingState>() {
-      public ProcessingState parsePartialFrom(
+    public static com.google.protobuf.Parser<ReasonerState> PARSER =
+        new com.google.protobuf.AbstractParser<ReasonerState>() {
+      public ReasonerState parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ProcessingState(input, extensionRegistry);
+        return new ReasonerState(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ProcessingState> getParserForType() {
+    public com.google.protobuf.Parser<ReasonerState> getParserForType() {
       return PARSER;
     }
 
@@ -22106,20 +22133,42 @@ public final class Messages {
       }
     }
 
-    // required string currentTask = 2;
-    public static final int CURRENTTASK_FIELD_NUMBER = 2;
-    private java.lang.Object currentTask_;
+    // required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;
+    public static final int REASONERKBDIGEST_FIELD_NUMBER = 2;
+    private edu.stanford.protege.reasoning.protocol.Messages.KbDigest reasonerKbDigest_;
     /**
-     * <code>required string currentTask = 2;</code>
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
      */
-    public boolean hasCurrentTask() {
+    public boolean hasReasonerKbDigest() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required string currentTask = 2;</code>
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
      */
-    public java.lang.String getCurrentTask() {
-      java.lang.Object ref = currentTask_;
+    public edu.stanford.protege.reasoning.protocol.Messages.KbDigest getReasonerKbDigest() {
+      return reasonerKbDigest_;
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.KbDigestOrBuilder getReasonerKbDigestOrBuilder() {
+      return reasonerKbDigest_;
+    }
+
+    // required string stateDescription = 3;
+    public static final int STATEDESCRIPTION_FIELD_NUMBER = 3;
+    private java.lang.Object stateDescription_;
+    /**
+     * <code>required string stateDescription = 3;</code>
+     */
+    public boolean hasStateDescription() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string stateDescription = 3;</code>
+     */
+    public java.lang.String getStateDescription() {
+      java.lang.Object ref = stateDescription_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -22127,39 +22176,39 @@ public final class Messages {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          currentTask_ = s;
+          stateDescription_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>required string currentTask = 2;</code>
+     * <code>required string stateDescription = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getCurrentTaskBytes() {
-      java.lang.Object ref = currentTask_;
+        getStateDescriptionBytes() {
+      java.lang.Object ref = stateDescription_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        currentTask_ = b;
+        stateDescription_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    // required int32 percentProcessed = 3;
-    public static final int PERCENTPROCESSED_FIELD_NUMBER = 3;
+    // required int32 percentProcessed = 4;
+    public static final int PERCENTPROCESSED_FIELD_NUMBER = 4;
     private int percentProcessed_;
     /**
-     * <code>required int32 percentProcessed = 3;</code>
+     * <code>required int32 percentProcessed = 4;</code>
      */
     public boolean hasPercentProcessed() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required int32 percentProcessed = 3;</code>
+     * <code>required int32 percentProcessed = 4;</code>
      */
     public int getPercentProcessed() {
       return percentProcessed_;
@@ -22167,7 +22216,8 @@ public final class Messages {
 
     private void initFields() {
       reasonerName_ = "";
-      currentTask_ = "";
+      reasonerKbDigest_ = edu.stanford.protege.reasoning.protocol.Messages.KbDigest.getDefaultInstance();
+      stateDescription_ = "";
       percentProcessed_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -22179,11 +22229,19 @@ public final class Messages {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasCurrentTask()) {
+      if (!hasReasonerKbDigest()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasStateDescription()) {
         memoizedIsInitialized = 0;
         return false;
       }
       if (!hasPercentProcessed()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getReasonerKbDigest().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -22198,10 +22256,13 @@ public final class Messages {
         output.writeBytes(1, getReasonerNameBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getCurrentTaskBytes());
+        output.writeMessage(2, reasonerKbDigest_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, percentProcessed_);
+        output.writeBytes(3, getStateDescriptionBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, percentProcessed_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -22218,11 +22279,15 @@ public final class Messages {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getCurrentTaskBytes());
+          .computeMessageSize(2, reasonerKbDigest_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, percentProcessed_);
+          .computeBytesSize(3, getStateDescriptionBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, percentProcessed_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -22236,53 +22301,53 @@ public final class Messages {
       return super.writeReplace();
     }
 
-    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.ReasonerState parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.ReasonerState parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(byte[] data)
+    public static edu.stanford.protege.reasoning.protocol.Messages.ReasonerState parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.ReasonerState parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(java.io.InputStream input)
+    public static edu.stanford.protege.reasoning.protocol.Messages.ReasonerState parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.ReasonerState parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseDelimitedFrom(java.io.InputStream input)
+    public static edu.stanford.protege.reasoning.protocol.Messages.ReasonerState parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseDelimitedFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.ReasonerState parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.ReasonerState parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(
+    public static edu.stanford.protege.reasoning.protocol.Messages.ReasonerState parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -22291,7 +22356,7 @@ public final class Messages {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(edu.stanford.protege.reasoning.protocol.Messages.ProcessingState prototype) {
+    public static Builder newBuilder(edu.stanford.protege.reasoning.protocol.Messages.ReasonerState prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -22303,24 +22368,24 @@ public final class Messages {
       return builder;
     }
     /**
-     * Protobuf type {@code edu.stanford.protege.reasoning.protocol.ProcessingState}
+     * Protobuf type {@code edu.stanford.protege.reasoning.protocol.ReasonerState}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder {
+       implements edu.stanford.protege.reasoning.protocol.Messages.ReasonerStateOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_descriptor;
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_fieldAccessorTable
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.class, edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder.class);
+                edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.class, edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.Builder.class);
       }
 
-      // Construct using edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.newBuilder()
+      // Construct using edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -22332,6 +22397,7 @@ public final class Messages {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getReasonerKbDigestFieldBuilder();
         }
       }
       private static Builder create() {
@@ -22342,10 +22408,16 @@ public final class Messages {
         super.clear();
         reasonerName_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        currentTask_ = "";
+        if (reasonerKbDigestBuilder_ == null) {
+          reasonerKbDigest_ = edu.stanford.protege.reasoning.protocol.Messages.KbDigest.getDefaultInstance();
+        } else {
+          reasonerKbDigestBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000002);
-        percentProcessed_ = 0;
+        stateDescription_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
+        percentProcessed_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -22355,23 +22427,23 @@ public final class Messages {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_descriptor;
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_descriptor;
       }
 
-      public edu.stanford.protege.reasoning.protocol.Messages.ProcessingState getDefaultInstanceForType() {
-        return edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance();
+      public edu.stanford.protege.reasoning.protocol.Messages.ReasonerState getDefaultInstanceForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.getDefaultInstance();
       }
 
-      public edu.stanford.protege.reasoning.protocol.Messages.ProcessingState build() {
-        edu.stanford.protege.reasoning.protocol.Messages.ProcessingState result = buildPartial();
+      public edu.stanford.protege.reasoning.protocol.Messages.ReasonerState build() {
+        edu.stanford.protege.reasoning.protocol.Messages.ReasonerState result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public edu.stanford.protege.reasoning.protocol.Messages.ProcessingState buildPartial() {
-        edu.stanford.protege.reasoning.protocol.Messages.ProcessingState result = new edu.stanford.protege.reasoning.protocol.Messages.ProcessingState(this);
+      public edu.stanford.protege.reasoning.protocol.Messages.ReasonerState buildPartial() {
+        edu.stanford.protege.reasoning.protocol.Messages.ReasonerState result = new edu.stanford.protege.reasoning.protocol.Messages.ReasonerState(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -22381,9 +22453,17 @@ public final class Messages {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.currentTask_ = currentTask_;
+        if (reasonerKbDigestBuilder_ == null) {
+          result.reasonerKbDigest_ = reasonerKbDigest_;
+        } else {
+          result.reasonerKbDigest_ = reasonerKbDigestBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
+        }
+        result.stateDescription_ = stateDescription_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
         }
         result.percentProcessed_ = percentProcessed_;
         result.bitField0_ = to_bitField0_;
@@ -22392,24 +22472,27 @@ public final class Messages {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof edu.stanford.protege.reasoning.protocol.Messages.ProcessingState) {
-          return mergeFrom((edu.stanford.protege.reasoning.protocol.Messages.ProcessingState)other);
+        if (other instanceof edu.stanford.protege.reasoning.protocol.Messages.ReasonerState) {
+          return mergeFrom((edu.stanford.protege.reasoning.protocol.Messages.ReasonerState)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(edu.stanford.protege.reasoning.protocol.Messages.ProcessingState other) {
-        if (other == edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance()) return this;
+      public Builder mergeFrom(edu.stanford.protege.reasoning.protocol.Messages.ReasonerState other) {
+        if (other == edu.stanford.protege.reasoning.protocol.Messages.ReasonerState.getDefaultInstance()) return this;
         if (other.hasReasonerName()) {
           bitField0_ |= 0x00000001;
           reasonerName_ = other.reasonerName_;
           onChanged();
         }
-        if (other.hasCurrentTask()) {
-          bitField0_ |= 0x00000002;
-          currentTask_ = other.currentTask_;
+        if (other.hasReasonerKbDigest()) {
+          mergeReasonerKbDigest(other.getReasonerKbDigest());
+        }
+        if (other.hasStateDescription()) {
+          bitField0_ |= 0x00000004;
+          stateDescription_ = other.stateDescription_;
           onChanged();
         }
         if (other.hasPercentProcessed()) {
@@ -22424,11 +22507,19 @@ public final class Messages {
           
           return false;
         }
-        if (!hasCurrentTask()) {
+        if (!hasReasonerKbDigest()) {
+          
+          return false;
+        }
+        if (!hasStateDescription()) {
           
           return false;
         }
         if (!hasPercentProcessed()) {
+          
+          return false;
+        }
+        if (!getReasonerKbDigest().isInitialized()) {
           
           return false;
         }
@@ -22439,11 +22530,11 @@ public final class Messages {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parsedMessage = null;
+        edu.stanford.protege.reasoning.protocol.Messages.ReasonerState parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (edu.stanford.protege.reasoning.protocol.Messages.ProcessingState) e.getUnfinishedMessage();
+          parsedMessage = (edu.stanford.protege.reasoning.protocol.Messages.ReasonerState) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -22528,122 +22619,239 @@ public final class Messages {
         return this;
       }
 
-      // required string currentTask = 2;
-      private java.lang.Object currentTask_ = "";
+      // required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;
+      private edu.stanford.protege.reasoning.protocol.Messages.KbDigest reasonerKbDigest_ = edu.stanford.protege.reasoning.protocol.Messages.KbDigest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.KbDigest, edu.stanford.protege.reasoning.protocol.Messages.KbDigest.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbDigestOrBuilder> reasonerKbDigestBuilder_;
       /**
-       * <code>required string currentTask = 2;</code>
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
        */
-      public boolean hasCurrentTask() {
+      public boolean hasReasonerKbDigest() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required string currentTask = 2;</code>
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
        */
-      public java.lang.String getCurrentTask() {
-        java.lang.Object ref = currentTask_;
+      public edu.stanford.protege.reasoning.protocol.Messages.KbDigest getReasonerKbDigest() {
+        if (reasonerKbDigestBuilder_ == null) {
+          return reasonerKbDigest_;
+        } else {
+          return reasonerKbDigestBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
+       */
+      public Builder setReasonerKbDigest(edu.stanford.protege.reasoning.protocol.Messages.KbDigest value) {
+        if (reasonerKbDigestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          reasonerKbDigest_ = value;
+          onChanged();
+        } else {
+          reasonerKbDigestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
+       */
+      public Builder setReasonerKbDigest(
+          edu.stanford.protege.reasoning.protocol.Messages.KbDigest.Builder builderForValue) {
+        if (reasonerKbDigestBuilder_ == null) {
+          reasonerKbDigest_ = builderForValue.build();
+          onChanged();
+        } else {
+          reasonerKbDigestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
+       */
+      public Builder mergeReasonerKbDigest(edu.stanford.protege.reasoning.protocol.Messages.KbDigest value) {
+        if (reasonerKbDigestBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              reasonerKbDigest_ != edu.stanford.protege.reasoning.protocol.Messages.KbDigest.getDefaultInstance()) {
+            reasonerKbDigest_ =
+              edu.stanford.protege.reasoning.protocol.Messages.KbDigest.newBuilder(reasonerKbDigest_).mergeFrom(value).buildPartial();
+          } else {
+            reasonerKbDigest_ = value;
+          }
+          onChanged();
+        } else {
+          reasonerKbDigestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
+       */
+      public Builder clearReasonerKbDigest() {
+        if (reasonerKbDigestBuilder_ == null) {
+          reasonerKbDigest_ = edu.stanford.protege.reasoning.protocol.Messages.KbDigest.getDefaultInstance();
+          onChanged();
+        } else {
+          reasonerKbDigestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbDigest.Builder getReasonerKbDigestBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getReasonerKbDigestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbDigestOrBuilder getReasonerKbDigestOrBuilder() {
+        if (reasonerKbDigestBuilder_ != null) {
+          return reasonerKbDigestBuilder_.getMessageOrBuilder();
+        } else {
+          return reasonerKbDigest_;
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest reasonerKbDigest = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.KbDigest, edu.stanford.protege.reasoning.protocol.Messages.KbDigest.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbDigestOrBuilder> 
+          getReasonerKbDigestFieldBuilder() {
+        if (reasonerKbDigestBuilder_ == null) {
+          reasonerKbDigestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              edu.stanford.protege.reasoning.protocol.Messages.KbDigest, edu.stanford.protege.reasoning.protocol.Messages.KbDigest.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbDigestOrBuilder>(
+                  reasonerKbDigest_,
+                  getParentForChildren(),
+                  isClean());
+          reasonerKbDigest_ = null;
+        }
+        return reasonerKbDigestBuilder_;
+      }
+
+      // required string stateDescription = 3;
+      private java.lang.Object stateDescription_ = "";
+      /**
+       * <code>required string stateDescription = 3;</code>
+       */
+      public boolean hasStateDescription() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string stateDescription = 3;</code>
+       */
+      public java.lang.String getStateDescription() {
+        java.lang.Object ref = stateDescription_;
         if (!(ref instanceof java.lang.String)) {
           java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
-          currentTask_ = s;
+          stateDescription_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>required string currentTask = 2;</code>
+       * <code>required string stateDescription = 3;</code>
        */
       public com.google.protobuf.ByteString
-          getCurrentTaskBytes() {
-        java.lang.Object ref = currentTask_;
+          getStateDescriptionBytes() {
+        java.lang.Object ref = stateDescription_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          currentTask_ = b;
+          stateDescription_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string currentTask = 2;</code>
+       * <code>required string stateDescription = 3;</code>
        */
-      public Builder setCurrentTask(
+      public Builder setStateDescription(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
-        currentTask_ = value;
+  bitField0_ |= 0x00000004;
+        stateDescription_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string currentTask = 2;</code>
+       * <code>required string stateDescription = 3;</code>
        */
-      public Builder clearCurrentTask() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        currentTask_ = getDefaultInstance().getCurrentTask();
+      public Builder clearStateDescription() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        stateDescription_ = getDefaultInstance().getStateDescription();
         onChanged();
         return this;
       }
       /**
-       * <code>required string currentTask = 2;</code>
+       * <code>required string stateDescription = 3;</code>
        */
-      public Builder setCurrentTaskBytes(
+      public Builder setStateDescriptionBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
-        currentTask_ = value;
+  bitField0_ |= 0x00000004;
+        stateDescription_ = value;
         onChanged();
         return this;
       }
 
-      // required int32 percentProcessed = 3;
+      // required int32 percentProcessed = 4;
       private int percentProcessed_ ;
       /**
-       * <code>required int32 percentProcessed = 3;</code>
+       * <code>required int32 percentProcessed = 4;</code>
        */
       public boolean hasPercentProcessed() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required int32 percentProcessed = 3;</code>
+       * <code>required int32 percentProcessed = 4;</code>
        */
       public int getPercentProcessed() {
         return percentProcessed_;
       }
       /**
-       * <code>required int32 percentProcessed = 3;</code>
+       * <code>required int32 percentProcessed = 4;</code>
        */
       public Builder setPercentProcessed(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         percentProcessed_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 percentProcessed = 3;</code>
+       * <code>required int32 percentProcessed = 4;</code>
        */
       public Builder clearPercentProcessed() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         percentProcessed_ = 0;
         onChanged();
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:edu.stanford.protege.reasoning.protocol.ProcessingState)
+      // @@protoc_insertion_point(builder_scope:edu.stanford.protege.reasoning.protocol.ReasonerState)
     }
 
     static {
-      defaultInstance = new ProcessingState(true);
+      defaultInstance = new ReasonerState(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.ProcessingState)
+    // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.ReasonerState)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
@@ -22787,20 +22995,20 @@ public final class Messages {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_edu_stanford_protege_reasoning_protocol_ReplaceAxiomsResponseMessage_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_descriptor;
+    internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateActionMessage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_fieldAccessorTable;
+      internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateActionMessage_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_descriptor;
+    internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateResponseMessage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_fieldAccessorTable;
+      internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateResponseMessage_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_descriptor;
+    internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_fieldAccessorTable;
+      internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -22916,20 +23124,22 @@ public final class Messages {
       "msResponseMessage\022;\n\004kbId\030\001 \002(\0132-.edu.st" +
       "anford.protege.reasoning.protocol.KbId\022C" +
       "\n\010kbDigest\030\002 \002(\01321.edu.stanford.protege." +
-      "reasoning.protocol.KbDigest\"^\n\037GetProces" +
-      "singStateActionMessage\022;\n\004kbId\030\001 \002(\0132-.e" +
-      "du.stanford.protege.reasoning.protocol.K" +
-      "bId\"\263\001\n!GetProcessingStateResponseMessag",
-      "e\022;\n\004kbId\030\001 \002(\0132-.edu.stanford.protege.r" +
-      "easoning.protocol.KbId\022Q\n\017processingStat" +
-      "e\030\002 \002(\01328.edu.stanford.protege.reasoning" +
-      ".protocol.ProcessingState\"V\n\017ProcessingS" +
-      "tate\022\024\n\014reasonerName\030\001 \002(\t\022\023\n\013currentTas" +
-      "k\030\002 \002(\t\022\030\n\020percentProcessed\030\003 \002(\005*.\n\022Hie" +
-      "rarchyQueryType\022\n\n\006DIRECT\020\000\022\014\n\010INDIRECT\020" +
-      "\001*/\n\013Consistency\022\016\n\nCONSISTENT\020\000\022\020\n\014INCO" +
-      "NSISTENT\020\001*7\n\025EntailmentCheckResult\022\020\n\014N" +
-      "OT_ENTAILED\020\000\022\014\n\010ENTAILED\020\001"
+      "reasoning.protocol.KbDigest\"\\\n\035GetReason" +
+      "erStateActionMessage\022;\n\004kbId\030\001 \002(\0132-.edu" +
+      ".stanford.protege.reasoning.protocol.KbI" +
+      "d\"\255\001\n\037GetReasonerStateResponseMessage\022;\n",
+      "\004kbId\030\001 \002(\0132-.edu.stanford.protege.reaso" +
+      "ning.protocol.KbId\022M\n\rreasonerState\030\002 \002(" +
+      "\01326.edu.stanford.protege.reasoning.proto" +
+      "col.ReasonerState\"\246\001\n\rReasonerState\022\024\n\014r" +
+      "easonerName\030\001 \002(\t\022K\n\020reasonerKbDigest\030\002 " +
+      "\002(\01321.edu.stanford.protege.reasoning.pro" +
+      "tocol.KbDigest\022\030\n\020stateDescription\030\003 \002(\t" +
+      "\022\030\n\020percentProcessed\030\004 \002(\005*.\n\022HierarchyQ" +
+      "ueryType\022\n\n\006DIRECT\020\000\022\014\n\010INDIRECT\020\001*/\n\013Co" +
+      "nsistency\022\016\n\nCONSISTENT\020\000\022\020\n\014INCONSISTEN",
+      "T\020\001*7\n\025EntailmentCheckResult\022\020\n\014NOT_ENTA" +
+      "ILED\020\000\022\014\n\010ENTAILED\020\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -23104,24 +23314,24 @@ public final class Messages {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_ReplaceAxiomsResponseMessage_descriptor,
               new java.lang.String[] { "KbId", "KbDigest", });
-          internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_descriptor =
+          internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateActionMessage_descriptor =
             getDescriptor().getMessageTypes().get(28);
-          internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_fieldAccessorTable = new
+          internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateActionMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_descriptor,
+              internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateActionMessage_descriptor,
               new java.lang.String[] { "KbId", });
-          internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_descriptor =
+          internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateResponseMessage_descriptor =
             getDescriptor().getMessageTypes().get(29);
-          internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_fieldAccessorTable = new
+          internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateResponseMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_descriptor,
-              new java.lang.String[] { "KbId", "ProcessingState", });
-          internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_descriptor =
+              internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateResponseMessage_descriptor,
+              new java.lang.String[] { "KbId", "ReasonerState", });
+          internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_descriptor =
             getDescriptor().getMessageTypes().get(30);
-          internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_fieldAccessorTable = new
+          internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_descriptor,
-              new java.lang.String[] { "ReasonerName", "CurrentTask", "PercentProcessed", });
+              internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_descriptor,
+              new java.lang.String[] { "ReasonerName", "ReasonerKbDigest", "StateDescription", "PercentProcessed", });
           return null;
         }
       };

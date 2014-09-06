@@ -24,6 +24,6 @@ public class ReasoningServerCodecModule extends AbstractModule {
         codecBinder.addBinding().to(GetSuperClassesCodec.class);
         codecBinder.addBinding().to(GetInstancesCodec.class);
 
-        codecBinder.addBinding().to(GetProcessingStateCodec.class);
+        codecBinder.addBinding().to(GetReasonerStateCodec.class);
     }
 }

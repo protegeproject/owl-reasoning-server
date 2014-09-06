@@ -7,35 +7,35 @@ import edu.stanford.protege.reasoning.KbId;
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 06/09/2014
  */
-public class GetProcessingStateAction extends KbAction<GetProcessingStateResponse, GetProcessingStateActionHandler> {
+public class GetReasonerStateAction extends KbAction<GetReasonerStateResponse, GetReasonerStateActionHandler> {
 
-    public static final ActionType<GetProcessingStateActionHandler> TYPE = ActionType.create();
+    public static final ActionType<GetReasonerStateActionHandler> TYPE = ActionType.create();
 
-    public GetProcessingStateAction(KbId kbId) {
+    public GetReasonerStateAction(KbId kbId) {
         super(kbId);
     }
 
 
     @Override
-    public ActionType<GetProcessingStateActionHandler> getType() {
+    public ActionType<GetReasonerStateActionHandler> getType() {
         return TYPE;
     }
 
     @Override
-    public ListenableFuture<GetProcessingStateResponse> dispatch(GetProcessingStateActionHandler handler) {
+    public ListenableFuture<GetReasonerStateResponse> dispatch(GetReasonerStateActionHandler handler) {
         return handler.handleAction(this);
     }
 
     @Override
     public String toString() {
-        return Objects.toStringHelper("GetProcessingStateAction")
+        return Objects.toStringHelper("GetReasonerStateAction")
                       .addValue(getKbId())
                       .toString();
     }
 
     @Override
     public int hashCode() {
-        return "GetProcessingStateAction".hashCode() + getKbId().hashCode();
+        return "GetReasonerStateAction".hashCode() + getKbId().hashCode();
     }
 
     @Override
@@ -43,10 +43,10 @@ public class GetProcessingStateAction extends KbAction<GetProcessingStateRespons
         if(o == this) {
             return true;
         }
-        if(!(o instanceof GetProcessingStateAction)) {
+        if(!(o instanceof GetReasonerStateAction)) {
             return false;
         }
-        GetProcessingStateAction other = (GetProcessingStateAction) o;
+        GetReasonerStateAction other = (GetReasonerStateAction) o;
         return this.getKbId().equals(other.getKbId());
     }
 }

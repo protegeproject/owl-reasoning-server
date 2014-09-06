@@ -38,7 +38,7 @@ public class KbReasonerImpl implements KbReasoner {
 
     private final AtomicReference<ReasoningStats> stats;
 
-    private final AtomicReference<ProcessingState> processingState;
+    private final AtomicReference<ReasonerState> processingState;
 
     private final KbAxiomSetManager kbAxiomSetManager;
 
@@ -64,7 +64,7 @@ public class KbReasonerImpl implements KbReasoner {
         this.reasonerFactorySelector = reasonerFactorySelector;
         this.reasoner = new AtomicReference<Reasoner>(new NullReasoner(KbDigest.emptyDigest()));
         this.stats = new AtomicReference<>(new ReasoningStats());
-        this.processingState = new AtomicReference<>(new ProcessingState("None", "Idle", 0));
+        this.processingState = new AtomicReference<>(new ReasonerState("None", "Idle", 0));
 
         // Seems bad... doing work in constructor
         handlerRegistry.registerHandler(ApplyChangesAction.TYPE, new ApplyChangesActionHandlerImpl());
@@ -75,7 +75,7 @@ public class KbReasonerImpl implements KbReasoner {
         handlerRegistry.registerHandler(GetKbDigestAction.TYPE, new GetKbDigestActionHandlerImpl());
         handlerRegistry.registerHandler(ReplaceAxiomsAction.TYPE, new ReplaceAxiomsHandlerImpl());
         handlerRegistry.registerHandler(GetSuperClassesAction.TYPE, new GetSuperClassesActionHandlerImpl());
-        handlerRegistry.registerHandler(GetProcessingStateAction.TYPE, new GetProcessingStateActionHandlerImpl());
+        handlerRegistry.registerHandler(GetReasonerStateAction.TYPE, new GetReasonerStateActionHandlerImpl());
 
     }
 
@@ -250,10 +250,10 @@ public class KbReasonerImpl implements KbReasoner {
         });
     }
 
-    private class GetProcessingStateActionHandlerImpl implements GetProcessingStateActionHandler {
+    private class GetReasonerStateActionHandlerImpl implements GetReasonerStateActionHandler {
         @Override
-        public ListenableFuture<GetProcessingStateResponse> handleAction(GetProcessingStateAction action) {
-            return Futures.immediateFuture(new GetProcessingStateResponse(kbId, processingState.get()));
+        public ListenableFuture<GetReasonerStateResponse> handleAction(GetReasonerStateAction action) {
+            return Futures.immediateFuture(new GetReasonerStateResponse(kbId, processingState.get()));
         }
     }
 
@@ -283,7 +283,7 @@ public class KbReasonerImpl implements KbReasoner {
 
                                                                                     @Override
                                                                                     public void processing(
-                                                                                            ProcessingState state) {
+                                                                                            ReasonerState state) {
                                                                                         processingState.set(state);
                                                                                     }
                                                                                 },
@@ -346,12 +346,12 @@ public class KbReasonerImpl implements KbReasoner {
             if (clock.get() != clockValue) {
                 return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
             }
-            callback.processing(new ProcessingState(reasonerFactory.getReasonerName(), "Loading reasoner", 0));
+            callback.processing(new ReasonerState(reasonerFactory.getReasonerName(), "Loading reasoner", 0));
             // Dynamically select best reasoner factory?
             Stopwatch stopwatch = Stopwatch.createStarted();
             SimpleConfiguration configuration = new SimpleConfiguration(new KbReasonerProgressMonitor(reasonerFactory.getReasonerName()) {
                 @Override
-                public void stateChanged(ProcessingState processingState) {
+                public void stateChanged(ReasonerState processingState) {
                     callback.processing(processingState);
                 }
             });
@@ -364,12 +364,12 @@ public class KbReasonerImpl implements KbReasoner {
             stopwatch.stop();
             Reasoner reasoner = new ReasonerImpl(versionedOntology.getKbDigest(), owlReasoner);
             callback.reasonerReady(reasoner, new ReasoningStats(reasonerFactory.getReasonerName(), stopwatch.elapsed(TimeUnit.MILLISECONDS)));
-            callback.processing(new ProcessingState(reasonerFactory.getReasonerName(), "Ready", 0));
+            callback.processing(new ReasonerState(reasonerFactory.getReasonerName(), "Ready", 0));
             return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
         }
 
         public static interface ReasonerUpdaterCallback {
-            void processing(ProcessingState processingState);
+            void processing(ReasonerState reasonerState);
             void reasonerReady(Reasoner reasoner, ReasoningStats reasoningStats);
         }
     }

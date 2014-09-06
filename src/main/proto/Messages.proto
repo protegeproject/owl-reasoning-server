@@ -196,17 +196,18 @@ message ReplaceAxiomsResponseMessage {
 
 ////////////////////////////////////////////////////////////////
 
-message GetProcessingStateActionMessage {
+message GetReasonerStateActionMessage {
     required KbId kbId = 1;
 }
 
-message GetProcessingStateResponseMessage {
+message GetReasonerStateResponseMessage {
     required KbId kbId = 1;
-    required ProcessingState processingState = 2;
+    required ReasonerState reasonerState = 2;
 }
 
-message ProcessingState {
+message ReasonerState {
     required string reasonerName = 1;
-    required string currentTask = 2;
-    required int32 percentProcessed = 3;
+    required KbDigest reasonerKbDigest = 2;
+    required string stateDescription = 3;
+    required int32 percentProcessed = 4;
 }

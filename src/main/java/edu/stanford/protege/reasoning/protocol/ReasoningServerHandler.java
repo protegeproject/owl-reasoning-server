@@ -5,7 +5,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import edu.stanford.protege.reasoning.ReasoningService;
 import edu.stanford.protege.reasoning.Response;
-import edu.stanford.protege.reasoning.action.GetProcessingStateResponse;
+import edu.stanford.protege.reasoning.action.GetReasonerStateResponse;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 

@@ -1,7 +1,7 @@
 package edu.stanford.protege.reasoning.impl;
 
 import com.google.common.base.Optional;
-import edu.stanford.protege.reasoning.action.ProcessingState;
+import edu.stanford.protege.reasoning.action.ReasonerState;
 import org.semanticweb.owlapi.reasoner.ReasonerProgressMonitor;
 
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -21,11 +21,11 @@ public abstract class KbReasonerProgressMonitor implements ReasonerProgressMonit
         this.reasonerName = checkNotNull(reasonerName);
     }
 
-    public ProcessingState getProcessingState() {
-        return new ProcessingState(reasonerName, taskName.or("Idle"), progress.or(0));
+    public ReasonerState getProcessingState() {
+        return new ReasonerState(reasonerName, taskName.or("Idle"), progress.or(0));
     }
 
-    public abstract void stateChanged(ProcessingState state);
+    public abstract void stateChanged(ReasonerState state);
 
     @Override
     public void reasonerTaskStarted(String task) {

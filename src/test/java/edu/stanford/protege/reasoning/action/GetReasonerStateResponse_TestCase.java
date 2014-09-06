@@ -18,24 +18,24 @@ import static org.mockito.Mockito.mock;
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 06/09/2014
  */
 @RunWith(MockitoJUnitRunner.class)
-public class GetProcessingStateResponse_TestCase {
+public class GetReasonerStateResponse_TestCase {
 
     @Mock
     private KbId kbId;
 
     @Mock
-    private ProcessingState processingState;
+    private ReasonerState reasonerState;
 
-    private GetProcessingStateResponse response;
+    private GetReasonerStateResponse response;
 
     @Before
     public void setUp() {
-        response = new GetProcessingStateResponse(kbId, processingState);
+        response = new GetReasonerStateResponse(kbId, reasonerState);
     }
 
     @Test
     public void shouldBeEqual() {
-        GetProcessingStateResponse actionB = new GetProcessingStateResponse(kbId, processingState);
+        GetReasonerStateResponse actionB = new GetReasonerStateResponse(kbId, reasonerState);
         assertThat(response, is(equalTo(actionB)));
     }
 
@@ -51,23 +51,23 @@ public class GetProcessingStateResponse_TestCase {
 
     @Test
     public void shouldHaveSameHashCode() {
-        GetProcessingStateResponse actionB = new GetProcessingStateResponse(kbId, processingState);
+        GetReasonerStateResponse actionB = new GetReasonerStateResponse(kbId, reasonerState);
         assertThat(response.hashCode(), is(equalTo(actionB.hashCode())));
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldThrowNullPointerExceptionForNullId() {
-        new GetProcessingStateResponse(null, processingState);
+        new GetReasonerStateResponse(null, reasonerState);
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldThrowNullPointerExceptionForNullDigest() {
-        new GetProcessingStateResponse(kbId, null);
+        new GetReasonerStateResponse(kbId, null);
     }
 
     @Test
     public void shouldNotBeEqual() {
-        GetProcessingStateResponse actionB = new GetProcessingStateResponse(mock(KbId.class), mock(ProcessingState.class));
+        GetReasonerStateResponse actionB = new GetReasonerStateResponse(mock(KbId.class), mock(ReasonerState.class));
         assertThat(response, is(not(equalTo(actionB))));
     }
 
@@ -78,7 +78,7 @@ public class GetProcessingStateResponse_TestCase {
 
     @Test
     public void shouldReturnProvidedState() {
-        assertThat(response.getProcessingState(), is(equalTo(processingState)));
+        assertThat(response.getReasonerState(), is(equalTo(reasonerState)));
     }
 
     @Test

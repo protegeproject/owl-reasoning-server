@@ -7,17 +7,17 @@ import static com.google.common.base.Preconditions.*;
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 06/09/2014
  */
-public class ProcessingState {
+public class ReasonerState {
 
     private final String reasonerName;
 
-    private final String currentTaskDescription;
+    private final String stateDescription;
 
     private final int percentageProcessed;
 
-    public ProcessingState(String reasonerName, String currentTaskDescription, int percentageProcessed) {
+    public ReasonerState(String reasonerName, String stateDescription, int percentageProcessed) {
         this.reasonerName = checkNotNull(reasonerName);
-        this.currentTaskDescription = checkNotNull(currentTaskDescription);
+        this.stateDescription = checkNotNull(stateDescription);
         checkArgument(0 <= percentageProcessed && percentageProcessed <= 100);
         this.percentageProcessed = percentageProcessed;
     }
@@ -26,8 +26,8 @@ public class ProcessingState {
         return reasonerName;
     }
 
-    public String getCurrentTaskDescription() {
-        return currentTaskDescription;
+    public String getStateDescription() {
+        return stateDescription;
     }
 
     public int getPercentageProcessed() {
@@ -36,16 +36,16 @@ public class ProcessingState {
 
     @Override
     public String toString() {
-        return Objects.toStringHelper("ProcessingState")
+        return Objects.toStringHelper("ReasonerState")
                       .add("reasonerName", reasonerName)
-                      .add("task", currentTaskDescription)
+                      .add("task", stateDescription)
                       .add("percentage", percentageProcessed).toString();
     }
 
     @Override
     public int hashCode() {
-        return "ProcessingState".hashCode()
-                + reasonerName.hashCode() + currentTaskDescription.hashCode()
+        return "ReasonerState".hashCode()
+                + reasonerName.hashCode() + stateDescription.hashCode()
                 + percentageProcessed;
     }
 
@@ -54,12 +54,12 @@ public class ProcessingState {
         if(o == this) {
             return true;
         }
-        if(!(o instanceof ProcessingState)) {
+        if(!(o instanceof ReasonerState)) {
             return false;
         }
-        ProcessingState other = (ProcessingState) o;
+        ReasonerState other = (ReasonerState) o;
         return this.reasonerName.equals(other.reasonerName)
-                && this.currentTaskDescription.equals(other.currentTaskDescription)
+                && this.stateDescription.equals(other.stateDescription)
                 && this.percentageProcessed == other.percentageProcessed;
     }
 }

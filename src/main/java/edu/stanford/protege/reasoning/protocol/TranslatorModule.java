@@ -104,14 +104,14 @@ public class TranslatorModule extends AbstractModule {
         bind(new TypeLiteral<Translator<ReplaceAxiomsResponse, Messages.ReplaceAxiomsResponseMessage>>() {})
                 .to(ReplaceAxiomsResponseTranslator.class).in(SINGLETON);
 
-        bind(new TypeLiteral<Translator<ProcessingState, Messages.ProcessingState>>() {})
-                .to(ProcessingStateTranslator.class).in(SINGLETON);
+        bind(new TypeLiteral<Translator<ReasonerState, Messages.ReasonerState>>() {})
+                .to(ReasonerStateTranslator.class).in(SINGLETON);
 
-        bind(new TypeLiteral<Translator<GetProcessingStateAction, Messages.GetProcessingStateActionMessage>>() {})
-                .to(GetProcessingStateActionTranslator.class).in(SINGLETON);
+        bind(new TypeLiteral<Translator<GetReasonerStateAction, Messages.GetReasonerStateActionMessage>>() {})
+                .to(GetReasonerStateActionTranslator.class).in(SINGLETON);
 
-        bind(new TypeLiteral<Translator<GetProcessingStateResponse, Messages.GetProcessingStateResponseMessage>>() {})
-                .to(GetProcessingStateResponseTranslator.class).in(SINGLETON);
+        bind(new TypeLiteral<Translator<GetReasonerStateResponse, Messages.GetReasonerStateResponseMessage>>() {})
+                .to(GetReasonerStateResponseTranslator.class).in(SINGLETON);
 
 
     }

@@ -9,36 +9,36 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 06/09/2014
  */
-public class GetProcessingStateResponse implements Response {
+public class GetReasonerStateResponse implements Response {
 
     private KbId kbId;
 
-    private ProcessingState processingState;
+    private ReasonerState reasonerState;
 
-    public GetProcessingStateResponse(KbId kbId, ProcessingState processingState) {
+    public GetReasonerStateResponse(KbId kbId, ReasonerState reasonerState) {
         this.kbId = checkNotNull(kbId);
-        this.processingState = checkNotNull(processingState);
+        this.reasonerState = checkNotNull(reasonerState);
     }
 
     public KbId getKbId() {
         return kbId;
     }
 
-    public ProcessingState getProcessingState() {
-        return processingState;
+    public ReasonerState getReasonerState() {
+        return reasonerState;
     }
 
     @Override
     public String toString() {
-        return Objects.toStringHelper("GetProcessingStateResponse")
+        return Objects.toStringHelper("GetReasonerStateResponse")
                       .addValue(kbId)
-                      .addValue(processingState)
+                      .addValue(reasonerState)
                       .toString();
     }
 
     @Override
     public int hashCode() {
-        return "GetProcessingStateResponse".hashCode() + kbId.hashCode() + processingState.hashCode();
+        return "GetReasonerStateResponse".hashCode() + kbId.hashCode() + reasonerState.hashCode();
     }
 
     @Override
@@ -46,10 +46,10 @@ public class GetProcessingStateResponse implements Response {
         if(o == this) {
             return true;
         }
-        if(!(o instanceof GetProcessingStateResponse)) {
+        if(!(o instanceof GetReasonerStateResponse)) {
             return false;
         }
-        GetProcessingStateResponse other = (GetProcessingStateResponse) o;
-        return this.kbId.equals(other.kbId) && this.processingState.equals(other.processingState);
+        GetReasonerStateResponse other = (GetReasonerStateResponse) o;
+        return this.kbId.equals(other.kbId) && this.reasonerState.equals(other.reasonerState);
     }
 }

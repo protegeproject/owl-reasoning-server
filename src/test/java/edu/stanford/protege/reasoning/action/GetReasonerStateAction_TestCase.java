@@ -20,21 +20,21 @@ import static org.mockito.Mockito.verify;
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 06/09/2014
  */
 @RunWith(MockitoJUnitRunner.class)
-public class GetProcessingStateAction_TestCase {
+public class GetReasonerStateAction_TestCase {
 
     @Mock
     private KbId kbId;
 
-    private GetProcessingStateAction action;
+    private GetReasonerStateAction action;
 
     @Before
     public void setUp() {
-        action = new GetProcessingStateAction(kbId);
+        action = new GetReasonerStateAction(kbId);
     }
 
     @Test
     public void shouldBeEqual() {
-        GetProcessingStateAction actionB = new GetProcessingStateAction(kbId);
+        GetReasonerStateAction actionB = new GetReasonerStateAction(kbId);
         assertThat(action, is(equalTo(actionB)));
     }
 
@@ -45,40 +45,40 @@ public class GetProcessingStateAction_TestCase {
 
     @Test
     public void shouldHaveSameHashCode() {
-        GetProcessingStateAction actionB = new GetProcessingStateAction(kbId);
+        GetReasonerStateAction actionB = new GetReasonerStateAction(kbId);
         assertThat(action.hashCode(), is(equalTo(actionB.hashCode())));
     }
 
     @Test
     public void shouldReturnSameActionType() {
-        ActionType<GetProcessingStateActionHandler> typeA = action.getType();
-        ActionType<GetProcessingStateActionHandler> typeB = action.getType();
+        ActionType<GetReasonerStateActionHandler> typeA = action.getType();
+        ActionType<GetReasonerStateActionHandler> typeB = action.getType();
         assertThat(typeA, is(typeB));
     }
 
     @Test
     public void shouldReturnSameActionTypeForDifferentActions() {
-        ActionType<GetProcessingStateActionHandler> typeA = action.getType();
-        GetProcessingStateAction actionB = new GetProcessingStateAction(kbId);
-        ActionType<GetProcessingStateActionHandler> typeB = actionB.getType();
+        ActionType<GetReasonerStateActionHandler> typeA = action.getType();
+        GetReasonerStateAction actionB = new GetReasonerStateAction(kbId);
+        ActionType<GetReasonerStateActionHandler> typeB = actionB.getType();
         assertThat(typeA, is(typeB));
     }
 
     @Test
     public void shouldDispatchToHandler() {
-        GetProcessingStateActionHandler handler = mock(GetProcessingStateActionHandler.class);
+        GetReasonerStateActionHandler handler = mock(GetReasonerStateActionHandler.class);
         action.dispatch(handler);
         verify(handler, times(1)).handleAction(action);
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldThrowNullPointerException() {
-        new GetProcessingStateAction(null);
+        new GetReasonerStateAction(null);
     }
 
     @Test
     public void shouldNotBeEqual() {
-        GetProcessingStateAction actionB = new GetProcessingStateAction(mock(KbId.class));
+        GetReasonerStateAction actionB = new GetReasonerStateAction(mock(KbId.class));
         assertThat(action, is(not(equalTo(actionB))));
     }
 
