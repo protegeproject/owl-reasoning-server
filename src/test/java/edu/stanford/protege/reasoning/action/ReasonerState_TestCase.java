@@ -1,8 +1,12 @@
 package edu.stanford.protege.reasoning.action;
 
+import com.google.common.base.Optional;
 import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -10,39 +14,37 @@ import static org.hamcrest.Matchers.is;
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 06/09/2014
  */
+@RunWith(MockitoJUnitRunner.class)
 public class ReasonerState_TestCase {
 
     private String reasonerName = "TestName";
 
     private String currentTaskDescription = "CurrentTask";
 
-    private int percentProcessed = 33;
+    @Mock
+    private Optional<Progress> progress;
 
     private ReasonerState state;
 
     @Before
     public void setUp() throws Exception {
-        state = new ReasonerState(reasonerName, currentTaskDescription, percentProcessed);
+        state = new ReasonerState(reasonerName, currentTaskDescription, progress);
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldThrowNullPointerExceptionIf_ReasonerName_IsNull() {
-        new ReasonerState(null, currentTaskDescription, percentProcessed);
+        new ReasonerState(null, currentTaskDescription, progress);
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldThrowNullPointerExceptionIf_CurrentTaskDescription_IsNull() {
-        new ReasonerState(reasonerName, null, 0);
+        new ReasonerState(reasonerName, null, progress);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowIllegalArgumentExceptionIf_PercentageProcessed_IsLessThanZero() {
-        new ReasonerState(reasonerName, currentTaskDescription, -1);
-    }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldThrowIllegalArgumentExceptionIf_PercentageProcessed_IsGreaterThanOneHundred() {
-        new ReasonerState(reasonerName, currentTaskDescription, 101);
+    @Test(expected = NullPointerException.class)
+    public void shouldThrowNullPointerExceptionIf_Progress_IsNull() {
+        new ReasonerState(reasonerName, currentTaskDescription, null);
     }
 
     @Test
@@ -57,12 +59,12 @@ public class ReasonerState_TestCase {
 
     @Test
     public void shouldReturnSuppliedPercentProcessed() {
-        assertThat(state.getPercentageProcessed(), is(percentProcessed));
+        assertThat(state.getProgress(), is(progress));
     }
 
     @Test
     public void shouldBeEqualToOther() {
-        ReasonerState other = new ReasonerState(reasonerName, currentTaskDescription, percentProcessed);
+        ReasonerState other = new ReasonerState(reasonerName, currentTaskDescription, progress);
         assertThat(state.equals(other), is(true));
     }
 

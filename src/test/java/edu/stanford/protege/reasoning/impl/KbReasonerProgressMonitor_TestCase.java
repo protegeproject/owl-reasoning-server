@@ -73,7 +73,7 @@ public class KbReasonerProgressMonitor_TestCase {
         ReasonerState capturedState = captor.getValue();
         assertThat(capturedState.getReasonerName(), is(REASONER_NAME));
         assertThat(capturedState.getStateDescription(), is(TASK_NAME));
-        assertThat(capturedState.getPercentageProcessed(), is(50));
+        assertThat(capturedState.getProgress().get().getPercentageValue(), is(50));
     }
 
 

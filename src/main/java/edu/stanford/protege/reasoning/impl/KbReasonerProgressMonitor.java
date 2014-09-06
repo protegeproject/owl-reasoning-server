@@ -1,6 +1,7 @@
 package edu.stanford.protege.reasoning.impl;
 
 import com.google.common.base.Optional;
+import edu.stanford.protege.reasoning.action.Progress;
 import edu.stanford.protege.reasoning.action.ReasonerState;
 import org.semanticweb.owlapi.reasoner.ReasonerProgressMonitor;
 
@@ -15,14 +16,14 @@ public abstract class KbReasonerProgressMonitor implements ReasonerProgressMonit
 
     private Optional<String> taskName = Optional.absent();
 
-    private Optional<Integer> progress = Optional.absent();
+    private Optional<Progress> progress = Optional.absent();
 
     public KbReasonerProgressMonitor(String reasonerName) {
         this.reasonerName = checkNotNull(reasonerName);
     }
 
     public ReasonerState getProcessingState() {
-        return new ReasonerState(reasonerName, taskName.or("Idle"), progress.or(0));
+        return new ReasonerState(reasonerName, taskName.or("Idle"), progress);
     }
 
     public abstract void stateChanged(ReasonerState state);
@@ -41,13 +42,13 @@ public abstract class KbReasonerProgressMonitor implements ReasonerProgressMonit
 
     @Override
     public void reasonerTaskProgressChanged(int value, int max) {
-        int percent = (int) Math.round(100.0 * value / max);
-        progress = Optional.of(percent);
+        progress = Optional.of(Progress.from(0).to(max).withValue(value));
         stateChanged(getProcessingState());
     }
 
     @Override
     public void reasonerTaskBusy() {
+        progress = Optional.of(Progress.indeterminate());
         stateChanged(getProcessingState());
     }
 }

@@ -209,5 +209,12 @@ message ReasonerState {
     required string reasonerName = 1;
     required KbDigest reasonerKbDigest = 2;
     required string stateDescription = 3;
-    required int32 percentProcessed = 4;
+    optional Progress progress = 4;
+}
+
+message Progress {
+    required bool determinate = 1;
+    optional int32 initialValue = 2;
+    optional int32 finalValue = 3;
+    optional int32 value = 4;
 }

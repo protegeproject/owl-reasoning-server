@@ -21961,15 +21961,19 @@ public final class Messages {
     com.google.protobuf.ByteString
         getStateDescriptionBytes();
 
-    // required int32 percentProcessed = 4;
+    // optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;
     /**
-     * <code>required int32 percentProcessed = 4;</code>
+     * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
      */
-    boolean hasPercentProcessed();
+    boolean hasProgress();
     /**
-     * <code>required int32 percentProcessed = 4;</code>
+     * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
      */
-    int getPercentProcessed();
+    edu.stanford.protege.reasoning.protocol.Messages.Progress getProgress();
+    /**
+     * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.ProgressOrBuilder getProgressOrBuilder();
   }
   /**
    * Protobuf type {@code edu.stanford.protege.reasoning.protocol.ReasonerState}
@@ -22045,9 +22049,17 @@ public final class Messages {
               stateDescription_ = input.readBytes();
               break;
             }
-            case 32: {
+            case 34: {
+              edu.stanford.protege.reasoning.protocol.Messages.Progress.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = progress_.toBuilder();
+              }
+              progress_ = input.readMessage(edu.stanford.protege.reasoning.protocol.Messages.Progress.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(progress_);
+                progress_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000008;
-              percentProcessed_ = input.readInt32();
               break;
             }
           }
@@ -22198,27 +22210,33 @@ public final class Messages {
       }
     }
 
-    // required int32 percentProcessed = 4;
-    public static final int PERCENTPROCESSED_FIELD_NUMBER = 4;
-    private int percentProcessed_;
+    // optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;
+    public static final int PROGRESS_FIELD_NUMBER = 4;
+    private edu.stanford.protege.reasoning.protocol.Messages.Progress progress_;
     /**
-     * <code>required int32 percentProcessed = 4;</code>
+     * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
      */
-    public boolean hasPercentProcessed() {
+    public boolean hasProgress() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required int32 percentProcessed = 4;</code>
+     * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
      */
-    public int getPercentProcessed() {
-      return percentProcessed_;
+    public edu.stanford.protege.reasoning.protocol.Messages.Progress getProgress() {
+      return progress_;
+    }
+    /**
+     * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.ProgressOrBuilder getProgressOrBuilder() {
+      return progress_;
     }
 
     private void initFields() {
       reasonerName_ = "";
       reasonerKbDigest_ = edu.stanford.protege.reasoning.protocol.Messages.KbDigest.getDefaultInstance();
       stateDescription_ = "";
-      percentProcessed_ = 0;
+      progress_ = edu.stanford.protege.reasoning.protocol.Messages.Progress.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -22237,13 +22255,15 @@ public final class Messages {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasPercentProcessed()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       if (!getReasonerKbDigest().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
+      }
+      if (hasProgress()) {
+        if (!getProgress().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -22262,7 +22282,7 @@ public final class Messages {
         output.writeBytes(3, getStateDescriptionBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, percentProcessed_);
+        output.writeMessage(4, progress_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -22287,7 +22307,7 @@ public final class Messages {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, percentProcessed_);
+          .computeMessageSize(4, progress_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -22398,6 +22418,7 @@ public final class Messages {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getReasonerKbDigestFieldBuilder();
+          getProgressFieldBuilder();
         }
       }
       private static Builder create() {
@@ -22416,7 +22437,11 @@ public final class Messages {
         bitField0_ = (bitField0_ & ~0x00000002);
         stateDescription_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
-        percentProcessed_ = 0;
+        if (progressBuilder_ == null) {
+          progress_ = edu.stanford.protege.reasoning.protocol.Messages.Progress.getDefaultInstance();
+        } else {
+          progressBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -22465,7 +22490,11 @@ public final class Messages {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.percentProcessed_ = percentProcessed_;
+        if (progressBuilder_ == null) {
+          result.progress_ = progress_;
+        } else {
+          result.progress_ = progressBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -22495,8 +22524,8 @@ public final class Messages {
           stateDescription_ = other.stateDescription_;
           onChanged();
         }
-        if (other.hasPercentProcessed()) {
-          setPercentProcessed(other.getPercentProcessed());
+        if (other.hasProgress()) {
+          mergeProgress(other.getProgress());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -22515,13 +22544,15 @@ public final class Messages {
           
           return false;
         }
-        if (!hasPercentProcessed()) {
-          
-          return false;
-        }
         if (!getReasonerKbDigest().isInitialized()) {
           
           return false;
+        }
+        if (hasProgress()) {
+          if (!getProgress().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -22810,37 +22841,121 @@ public final class Messages {
         return this;
       }
 
-      // required int32 percentProcessed = 4;
-      private int percentProcessed_ ;
+      // optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;
+      private edu.stanford.protege.reasoning.protocol.Messages.Progress progress_ = edu.stanford.protege.reasoning.protocol.Messages.Progress.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.Progress, edu.stanford.protege.reasoning.protocol.Messages.Progress.Builder, edu.stanford.protege.reasoning.protocol.Messages.ProgressOrBuilder> progressBuilder_;
       /**
-       * <code>required int32 percentProcessed = 4;</code>
+       * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
        */
-      public boolean hasPercentProcessed() {
+      public boolean hasProgress() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required int32 percentProcessed = 4;</code>
+       * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
        */
-      public int getPercentProcessed() {
-        return percentProcessed_;
+      public edu.stanford.protege.reasoning.protocol.Messages.Progress getProgress() {
+        if (progressBuilder_ == null) {
+          return progress_;
+        } else {
+          return progressBuilder_.getMessage();
+        }
       }
       /**
-       * <code>required int32 percentProcessed = 4;</code>
+       * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
        */
-      public Builder setPercentProcessed(int value) {
+      public Builder setProgress(edu.stanford.protege.reasoning.protocol.Messages.Progress value) {
+        if (progressBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          progress_ = value;
+          onChanged();
+        } else {
+          progressBuilder_.setMessage(value);
+        }
         bitField0_ |= 0x00000008;
-        percentProcessed_ = value;
-        onChanged();
         return this;
       }
       /**
-       * <code>required int32 percentProcessed = 4;</code>
+       * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
        */
-      public Builder clearPercentProcessed() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        percentProcessed_ = 0;
-        onChanged();
+      public Builder setProgress(
+          edu.stanford.protege.reasoning.protocol.Messages.Progress.Builder builderForValue) {
+        if (progressBuilder_ == null) {
+          progress_ = builderForValue.build();
+          onChanged();
+        } else {
+          progressBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
         return this;
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
+       */
+      public Builder mergeProgress(edu.stanford.protege.reasoning.protocol.Messages.Progress value) {
+        if (progressBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              progress_ != edu.stanford.protege.reasoning.protocol.Messages.Progress.getDefaultInstance()) {
+            progress_ =
+              edu.stanford.protege.reasoning.protocol.Messages.Progress.newBuilder(progress_).mergeFrom(value).buildPartial();
+          } else {
+            progress_ = value;
+          }
+          onChanged();
+        } else {
+          progressBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
+       */
+      public Builder clearProgress() {
+        if (progressBuilder_ == null) {
+          progress_ = edu.stanford.protege.reasoning.protocol.Messages.Progress.getDefaultInstance();
+          onChanged();
+        } else {
+          progressBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.Progress.Builder getProgressBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getProgressFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.ProgressOrBuilder getProgressOrBuilder() {
+        if (progressBuilder_ != null) {
+          return progressBuilder_.getMessageOrBuilder();
+        } else {
+          return progress_;
+        }
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.Progress progress = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.Progress, edu.stanford.protege.reasoning.protocol.Messages.Progress.Builder, edu.stanford.protege.reasoning.protocol.Messages.ProgressOrBuilder> 
+          getProgressFieldBuilder() {
+        if (progressBuilder_ == null) {
+          progressBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              edu.stanford.protege.reasoning.protocol.Messages.Progress, edu.stanford.protege.reasoning.protocol.Messages.Progress.Builder, edu.stanford.protege.reasoning.protocol.Messages.ProgressOrBuilder>(
+                  progress_,
+                  getParentForChildren(),
+                  isClean());
+          progress_ = null;
+        }
+        return progressBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:edu.stanford.protege.reasoning.protocol.ReasonerState)
@@ -22852,6 +22967,653 @@ public final class Messages {
     }
 
     // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.ReasonerState)
+  }
+
+  public interface ProgressOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required bool determinate = 1;
+    /**
+     * <code>required bool determinate = 1;</code>
+     */
+    boolean hasDeterminate();
+    /**
+     * <code>required bool determinate = 1;</code>
+     */
+    boolean getDeterminate();
+
+    // optional int32 initialValue = 2;
+    /**
+     * <code>optional int32 initialValue = 2;</code>
+     */
+    boolean hasInitialValue();
+    /**
+     * <code>optional int32 initialValue = 2;</code>
+     */
+    int getInitialValue();
+
+    // optional int32 finalValue = 3;
+    /**
+     * <code>optional int32 finalValue = 3;</code>
+     */
+    boolean hasFinalValue();
+    /**
+     * <code>optional int32 finalValue = 3;</code>
+     */
+    int getFinalValue();
+
+    // optional int32 value = 4;
+    /**
+     * <code>optional int32 value = 4;</code>
+     */
+    boolean hasValue();
+    /**
+     * <code>optional int32 value = 4;</code>
+     */
+    int getValue();
+  }
+  /**
+   * Protobuf type {@code edu.stanford.protege.reasoning.protocol.Progress}
+   */
+  public static final class Progress extends
+      com.google.protobuf.GeneratedMessage
+      implements ProgressOrBuilder {
+    // Use Progress.newBuilder() to construct.
+    private Progress(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private Progress(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Progress defaultInstance;
+    public static Progress getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public Progress getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Progress(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              determinate_ = input.readBool();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              initialValue_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              finalValue_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              value_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_Progress_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_Progress_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              edu.stanford.protege.reasoning.protocol.Messages.Progress.class, edu.stanford.protege.reasoning.protocol.Messages.Progress.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Progress> PARSER =
+        new com.google.protobuf.AbstractParser<Progress>() {
+      public Progress parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Progress(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Progress> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required bool determinate = 1;
+    public static final int DETERMINATE_FIELD_NUMBER = 1;
+    private boolean determinate_;
+    /**
+     * <code>required bool determinate = 1;</code>
+     */
+    public boolean hasDeterminate() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required bool determinate = 1;</code>
+     */
+    public boolean getDeterminate() {
+      return determinate_;
+    }
+
+    // optional int32 initialValue = 2;
+    public static final int INITIALVALUE_FIELD_NUMBER = 2;
+    private int initialValue_;
+    /**
+     * <code>optional int32 initialValue = 2;</code>
+     */
+    public boolean hasInitialValue() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 initialValue = 2;</code>
+     */
+    public int getInitialValue() {
+      return initialValue_;
+    }
+
+    // optional int32 finalValue = 3;
+    public static final int FINALVALUE_FIELD_NUMBER = 3;
+    private int finalValue_;
+    /**
+     * <code>optional int32 finalValue = 3;</code>
+     */
+    public boolean hasFinalValue() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 finalValue = 3;</code>
+     */
+    public int getFinalValue() {
+      return finalValue_;
+    }
+
+    // optional int32 value = 4;
+    public static final int VALUE_FIELD_NUMBER = 4;
+    private int value_;
+    /**
+     * <code>optional int32 value = 4;</code>
+     */
+    public boolean hasValue() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 value = 4;</code>
+     */
+    public int getValue() {
+      return value_;
+    }
+
+    private void initFields() {
+      determinate_ = false;
+      initialValue_ = 0;
+      finalValue_ = 0;
+      value_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasDeterminate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBool(1, determinate_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, initialValue_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, finalValue_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, value_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, determinate_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, initialValue_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, finalValue_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, value_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static edu.stanford.protege.reasoning.protocol.Messages.Progress parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.Progress parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.Progress parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.Progress parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.Progress parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.Progress parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.Progress parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.Progress parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.Progress parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.Progress parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(edu.stanford.protege.reasoning.protocol.Messages.Progress prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code edu.stanford.protege.reasoning.protocol.Progress}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements edu.stanford.protege.reasoning.protocol.Messages.ProgressOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_Progress_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_Progress_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                edu.stanford.protege.reasoning.protocol.Messages.Progress.class, edu.stanford.protege.reasoning.protocol.Messages.Progress.Builder.class);
+      }
+
+      // Construct using edu.stanford.protege.reasoning.protocol.Messages.Progress.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        determinate_ = false;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        initialValue_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        finalValue_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        value_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_Progress_descriptor;
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.Progress getDefaultInstanceForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.Progress.getDefaultInstance();
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.Progress build() {
+        edu.stanford.protege.reasoning.protocol.Messages.Progress result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.Progress buildPartial() {
+        edu.stanford.protege.reasoning.protocol.Messages.Progress result = new edu.stanford.protege.reasoning.protocol.Messages.Progress(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.determinate_ = determinate_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.initialValue_ = initialValue_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.finalValue_ = finalValue_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.value_ = value_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof edu.stanford.protege.reasoning.protocol.Messages.Progress) {
+          return mergeFrom((edu.stanford.protege.reasoning.protocol.Messages.Progress)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(edu.stanford.protege.reasoning.protocol.Messages.Progress other) {
+        if (other == edu.stanford.protege.reasoning.protocol.Messages.Progress.getDefaultInstance()) return this;
+        if (other.hasDeterminate()) {
+          setDeterminate(other.getDeterminate());
+        }
+        if (other.hasInitialValue()) {
+          setInitialValue(other.getInitialValue());
+        }
+        if (other.hasFinalValue()) {
+          setFinalValue(other.getFinalValue());
+        }
+        if (other.hasValue()) {
+          setValue(other.getValue());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasDeterminate()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        edu.stanford.protege.reasoning.protocol.Messages.Progress parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (edu.stanford.protege.reasoning.protocol.Messages.Progress) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required bool determinate = 1;
+      private boolean determinate_ ;
+      /**
+       * <code>required bool determinate = 1;</code>
+       */
+      public boolean hasDeterminate() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required bool determinate = 1;</code>
+       */
+      public boolean getDeterminate() {
+        return determinate_;
+      }
+      /**
+       * <code>required bool determinate = 1;</code>
+       */
+      public Builder setDeterminate(boolean value) {
+        bitField0_ |= 0x00000001;
+        determinate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool determinate = 1;</code>
+       */
+      public Builder clearDeterminate() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        determinate_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 initialValue = 2;
+      private int initialValue_ ;
+      /**
+       * <code>optional int32 initialValue = 2;</code>
+       */
+      public boolean hasInitialValue() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 initialValue = 2;</code>
+       */
+      public int getInitialValue() {
+        return initialValue_;
+      }
+      /**
+       * <code>optional int32 initialValue = 2;</code>
+       */
+      public Builder setInitialValue(int value) {
+        bitField0_ |= 0x00000002;
+        initialValue_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 initialValue = 2;</code>
+       */
+      public Builder clearInitialValue() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        initialValue_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 finalValue = 3;
+      private int finalValue_ ;
+      /**
+       * <code>optional int32 finalValue = 3;</code>
+       */
+      public boolean hasFinalValue() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 finalValue = 3;</code>
+       */
+      public int getFinalValue() {
+        return finalValue_;
+      }
+      /**
+       * <code>optional int32 finalValue = 3;</code>
+       */
+      public Builder setFinalValue(int value) {
+        bitField0_ |= 0x00000004;
+        finalValue_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 finalValue = 3;</code>
+       */
+      public Builder clearFinalValue() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        finalValue_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 value = 4;
+      private int value_ ;
+      /**
+       * <code>optional int32 value = 4;</code>
+       */
+      public boolean hasValue() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 value = 4;</code>
+       */
+      public int getValue() {
+        return value_;
+      }
+      /**
+       * <code>optional int32 value = 4;</code>
+       */
+      public Builder setValue(int value) {
+        bitField0_ |= 0x00000008;
+        value_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 value = 4;</code>
+       */
+      public Builder clearValue() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        value_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:edu.stanford.protege.reasoning.protocol.Progress)
+    }
+
+    static {
+      defaultInstance = new Progress(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.Progress)
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
@@ -23009,6 +23771,11 @@ public final class Messages {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_edu_stanford_protege_reasoning_protocol_Progress_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_edu_stanford_protege_reasoning_protocol_Progress_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -23131,15 +23898,18 @@ public final class Messages {
       "\004kbId\030\001 \002(\0132-.edu.stanford.protege.reaso" +
       "ning.protocol.KbId\022M\n\rreasonerState\030\002 \002(" +
       "\01326.edu.stanford.protege.reasoning.proto" +
-      "col.ReasonerState\"\246\001\n\rReasonerState\022\024\n\014r" +
+      "col.ReasonerState\"\321\001\n\rReasonerState\022\024\n\014r" +
       "easonerName\030\001 \002(\t\022K\n\020reasonerKbDigest\030\002 " +
       "\002(\01321.edu.stanford.protege.reasoning.pro" +
       "tocol.KbDigest\022\030\n\020stateDescription\030\003 \002(\t" +
-      "\022\030\n\020percentProcessed\030\004 \002(\005*.\n\022HierarchyQ" +
-      "ueryType\022\n\n\006DIRECT\020\000\022\014\n\010INDIRECT\020\001*/\n\013Co" +
-      "nsistency\022\016\n\nCONSISTENT\020\000\022\020\n\014INCONSISTEN",
-      "T\020\001*7\n\025EntailmentCheckResult\022\020\n\014NOT_ENTA" +
-      "ILED\020\000\022\014\n\010ENTAILED\020\001"
+      "\022C\n\010progress\030\004 \001(\01321.edu.stanford.proteg" +
+      "e.reasoning.protocol.Progress\"X\n\010Progres" +
+      "s\022\023\n\013determinate\030\001 \002(\010\022\024\n\014initialValue\030\002",
+      " \001(\005\022\022\n\nfinalValue\030\003 \001(\005\022\r\n\005value\030\004 \001(\005*" +
+      ".\n\022HierarchyQueryType\022\n\n\006DIRECT\020\000\022\014\n\010IND" +
+      "IRECT\020\001*/\n\013Consistency\022\016\n\nCONSISTENT\020\000\022\020" +
+      "\n\014INCONSISTENT\020\001*7\n\025EntailmentCheckResul" +
+      "t\022\020\n\014NOT_ENTAILED\020\000\022\014\n\010ENTAILED\020\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -23331,7 +24101,13 @@ public final class Messages {
           internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_descriptor,
-              new java.lang.String[] { "ReasonerName", "ReasonerKbDigest", "StateDescription", "PercentProcessed", });
+              new java.lang.String[] { "ReasonerName", "ReasonerKbDigest", "StateDescription", "Progress", });
+          internal_static_edu_stanford_protege_reasoning_protocol_Progress_descriptor =
+            getDescriptor().getMessageTypes().get(31);
+          internal_static_edu_stanford_protege_reasoning_protocol_Progress_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_edu_stanford_protege_reasoning_protocol_Progress_descriptor,
+              new java.lang.String[] { "Determinate", "InitialValue", "FinalValue", "Value", });
           return null;
         }
       };

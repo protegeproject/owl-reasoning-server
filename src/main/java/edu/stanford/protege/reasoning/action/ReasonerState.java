@@ -1,6 +1,7 @@
 package edu.stanford.protege.reasoning.action;
 
 import com.google.common.base.Objects;
+import com.google.common.base.Optional;
 
 import static com.google.common.base.Preconditions.*;
 
@@ -13,13 +14,12 @@ public class ReasonerState {
 
     private final String stateDescription;
 
-    private final int percentageProcessed;
+    private final Optional<Progress> progress;
 
-    public ReasonerState(String reasonerName, String stateDescription, int percentageProcessed) {
+    public ReasonerState(String reasonerName, String stateDescription, Optional<Progress> progress) {
         this.reasonerName = checkNotNull(reasonerName);
         this.stateDescription = checkNotNull(stateDescription);
-        checkArgument(0 <= percentageProcessed && percentageProcessed <= 100);
-        this.percentageProcessed = percentageProcessed;
+        this.progress = checkNotNull(progress);
     }
 
     public String getReasonerName() {
@@ -30,8 +30,8 @@ public class ReasonerState {
         return stateDescription;
     }
 
-    public int getPercentageProcessed() {
-        return percentageProcessed;
+    public Optional<Progress> getProgress() {
+        return progress;
     }
 
     @Override
@@ -39,14 +39,14 @@ public class ReasonerState {
         return Objects.toStringHelper("ReasonerState")
                       .add("reasonerName", reasonerName)
                       .add("task", stateDescription)
-                      .add("percentage", percentageProcessed).toString();
+                      .add("progress", progress.isPresent() ? progress.get() : "Idle").toString();
     }
 
     @Override
     public int hashCode() {
         return "ReasonerState".hashCode()
                 + reasonerName.hashCode() + stateDescription.hashCode()
-                + percentageProcessed;
+                + progress.hashCode();
     }
 
     @Override
@@ -60,6 +60,6 @@ public class ReasonerState {
         ReasonerState other = (ReasonerState) o;
         return this.reasonerName.equals(other.reasonerName)
                 && this.stateDescription.equals(other.stateDescription)
-                && this.percentageProcessed == other.percentageProcessed;
+                && this.progress.equals(other.progress);
     }
 }
