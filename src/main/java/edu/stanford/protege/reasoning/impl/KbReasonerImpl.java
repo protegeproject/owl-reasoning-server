@@ -1,6 +1,7 @@
 package edu.stanford.protege.reasoning.impl;
 
 import com.google.common.base.Optional;
+import com.google.common.base.Stopwatch;
 import com.google.common.util.concurrent.*;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
@@ -35,6 +36,8 @@ public class KbReasonerImpl implements KbReasoner {
     // We don't modify the axioms in a reasoner.  We always create a fresh reasoner.
     private final AtomicReference<Reasoner> reasoner;
 
+    private final AtomicReference<ReasoningStats> stats;
+
     private final KbAxiomSetManager kbAxiomSetManager;
 
     private final HandlerRegistry handlerRegistry;
@@ -58,6 +61,7 @@ public class KbReasonerImpl implements KbReasoner {
         this.queryExecutorService = MoreExecutors.listeningDecorator(reasonerFactorySelector.getQueryExecutorService());
         this.reasonerFactorySelector = reasonerFactorySelector;
         this.reasoner = new AtomicReference<Reasoner>(new NullReasoner(KbDigest.emptyDigest()));
+        this.stats = new AtomicReference<>(new ReasoningStats());
 
         // Seems bad... doing work in constructor
         handlerRegistry.registerHandler(ApplyChangesAction.TYPE, new ApplyChangesActionHandlerImpl());
@@ -261,8 +265,9 @@ public class KbReasonerImpl implements KbReasoner {
                                                                                         .ReasonerUpdaterCallback() {
                                                                                     @Override
                                                                                     public void reasonerReady
-                                                                                            (Reasoner r) {
+                                                                                            (Reasoner r, ReasoningStats reasoningStats) {
                                                                                         reasoner.set(r);
+                                                                                        stats.set(reasoningStats);
                                                                                     }
                                                                                 },
                                                                                 updateOperation));
@@ -326,6 +331,7 @@ public class KbReasonerImpl implements KbReasoner {
             }
 
             // Dynamically select best reasoner factory?
+            Stopwatch stopwatch = Stopwatch.createStarted();
             SimpleConfiguration configuration = new SimpleConfiguration(new ConsoleProgressMonitor());
             OWLReasoner owlReasoner = reasonerFactory.createNonBufferingReasoner(versionedOntology.getOntology(),
                                                                                  configuration);
@@ -333,13 +339,14 @@ public class KbReasonerImpl implements KbReasoner {
             if (consistent) {
                 owlReasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY, InferenceType.CLASS_ASSERTIONS);
             }
+            stopwatch.stop();
             Reasoner reasoner = new ReasonerImpl(versionedOntology.getKbDigest(), owlReasoner);
-            callback.reasonerReady(reasoner);
+            callback.reasonerReady(reasoner, new ReasoningStats(owlReasoner.getReasonerName(), stopwatch.elapsed(TimeUnit.MILLISECONDS)));
             return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
         }
 
         public static interface ReasonerUpdaterCallback {
-            void reasonerReady(Reasoner reasoner);
+            void reasonerReady(Reasoner reasoner, ReasoningStats reasoningStats);
         }
     }
 }
