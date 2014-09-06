@@ -1,5 +1,6 @@
 package edu.stanford.protege.reasoning.protocol;
 
+import com.google.inject.Inject;
 import edu.stanford.protege.reasoning.ReasoningService;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -29,6 +30,7 @@ public class ReasoningServer {
 
     private final EventLoopGroup eventLoopGroup;
 
+    @Inject
     public ReasoningServer(ReasoningService reasoningService, ReasoningServerCodecRegistry codecRegistry) {
         this.reasoningService = reasoningService;
         this.codecRegistry = codecRegistry;

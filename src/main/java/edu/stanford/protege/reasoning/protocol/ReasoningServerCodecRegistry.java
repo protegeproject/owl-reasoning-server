@@ -4,7 +4,10 @@ import com.google.common.collect.Maps;
 import edu.stanford.protege.reasoning.Response;
 import edu.stanford.protege.reasoning.Action;
 
+import javax.inject.Inject;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 29/08/2014
@@ -18,7 +21,14 @@ public class ReasoningServerCodecRegistry {
 
     private Map<Integer, ReasoningServerCodec> marker2CodedMap = Maps.newHashMap();
 
-    public void register(ReasoningServerCodec codec) {
+    @Inject
+    public ReasoningServerCodecRegistry(Set<ReasoningServerCodec> codecs) {
+        for(ReasoningServerCodec codec : codecs) {
+            register(codec);
+        }
+    }
+
+    private void register(ReasoningServerCodec codec) {
         actionCodecMap.put(codec.getActionClass(), codec);
         responseCodecMap.put(codec.getResponseClass(), codec);
         marker2CodedMap.put(codec.getFrameMarker(), codec);

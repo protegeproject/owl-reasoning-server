@@ -1,10 +1,12 @@
-package edu.stanford.protege.reasoning.impl;
+package edu.stanford.protege.reasoning.inject;
 
 import com.google.common.eventbus.EventBus;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import edu.stanford.protege.reasoning.KbId;
 import edu.stanford.protege.reasoning.ReasoningService;
+import edu.stanford.protege.reasoning.impl.KbReasonerFactory;
+import edu.stanford.protege.reasoning.inject.ReasoningServiceModule;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

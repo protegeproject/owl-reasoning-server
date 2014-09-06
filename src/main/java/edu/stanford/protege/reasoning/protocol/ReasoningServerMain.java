@@ -2,8 +2,7 @@ package edu.stanford.protege.reasoning.protocol;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import edu.stanford.protege.reasoning.ReasoningService;
-import edu.stanford.protege.reasoning.impl.ReasoningServiceModule;
+import edu.stanford.protege.reasoning.inject.ReasoningServerModule;
 
 import java.net.InetSocketAddress;
 
@@ -13,13 +12,9 @@ import java.net.InetSocketAddress;
 public class ReasoningServerMain {
 
     public static void main(String[] args) throws Exception {
-        Injector injector = Guice.createInjector(new ReasoningServiceModule());
-        ReasoningService reasoningService = injector.getInstance(ReasoningService.class);
+        Injector injector = Guice.createInjector(new ReasoningServerModule());
         InetSocketAddress address = new InetSocketAddress(3456);
-
-        ReasoningServerCodecRegistry codecRegistry = DefaultCodecRegistry.getRegistry();
-
-        ReasoningServer server = new ReasoningServer(reasoningService, codecRegistry);
+        ReasoningServer server = injector.getInstance(ReasoningServer.class);
         server.start(address);
     }
 }
