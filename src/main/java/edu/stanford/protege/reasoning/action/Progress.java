@@ -11,6 +11,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public abstract class Progress {
 
+    private static final IndeterminateProgress INDETERMINATE_PROGRESS = new IndeterminateProgress();
+
     private final Optional<Integer> initialValue;
 
     private final Optional<Integer> finalValue;
@@ -69,7 +71,7 @@ public abstract class Progress {
 
 
     public static Progress indeterminate() {
-        return new IndeterminateProgress();
+        return INDETERMINATE_PROGRESS;
     }
 
 
@@ -131,6 +133,26 @@ public abstract class Progress {
                           .add("to", getFinalValue())
                           .toString();
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if(o == this) {
+                return true;
+            }
+            if(!(o instanceof DeterminateProgress)) {
+                return false;
+            }
+            DeterminateProgress other = (DeterminateProgress) o;
+            return this.getInitialValue() == other.getInitialValue()
+                    && this.getFinalValue() == other.getFinalValue()
+                    && this.getValue() == other.getValue();
+        }
+
+        @Override
+        public int hashCode() {
+            return "DeterminateProgress".hashCode()
+                    + getInitialValue() + getFinalValue() * 13 + getValue();
+        }
     }
 
     private static final class IndeterminateProgress extends Progress {
@@ -149,6 +171,11 @@ public abstract class Progress {
             return Objects.toStringHelper("Progress")
                           .addValue("Indeterminate")
                           .toString();
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            return o == this || o instanceof IndeterminateProgress;
         }
     }
 

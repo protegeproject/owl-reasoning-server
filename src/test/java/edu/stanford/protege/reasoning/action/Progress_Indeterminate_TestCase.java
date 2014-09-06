@@ -42,4 +42,20 @@ public class Progress_Indeterminate_TestCase {
     public void shouldThrowIllegalStateExceptionOnGetPerscentageValue() {
         progress.getPercentageValue();
     }
+
+    @Test
+    public void shouldBeEqualToOther() {
+        Progress other = Progress.indeterminate();
+        assertThat(progress.equals(other), is(true));
+    }
+
+    @Test
+    public void shouldNotBeEqualToNull() {
+        assertThat(progress.equals(null), is(false));
+    }
+
+    @Test
+    public void shouldBeEqualToSelf() {
+        assertThat(progress.equals(progress), is(true));
+    }
 }
