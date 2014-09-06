@@ -67,6 +67,12 @@ public abstract class Progress {
         return (int) (100.0 * (value.get() - initialValue.get()) / (finalValue.get() - initialValue.get()));
     }
 
+
+    public static Progress indeterminate() {
+        return new IndeterminateProgress();
+    }
+
+
     public static ProgressBuilderInitial from(int initialValue) {
         return new ProgressBuilderInitial(initialValue);
     }
