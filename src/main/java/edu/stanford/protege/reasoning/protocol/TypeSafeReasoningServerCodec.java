@@ -1,5 +1,6 @@
 package edu.stanford.protege.reasoning.protocol;
 
+import com.google.inject.Inject;
 import edu.stanford.protege.reasoning.Response;
 import edu.stanford.protege.reasoning.Action;
 
@@ -14,6 +15,7 @@ public abstract class TypeSafeReasoningServerCodec<A extends Action, R extends R
 
     private final Class<R> responseClass;
 
+    @Inject
     protected TypeSafeReasoningServerCodec(Class<A> actionClass, Class<R> responseClass) {
         this.actionClass = actionClass;
         this.responseClass = responseClass;

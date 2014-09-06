@@ -103,5 +103,16 @@ public class TranslatorModule extends AbstractModule {
 
         bind(new TypeLiteral<Translator<ReplaceAxiomsResponse, Messages.ReplaceAxiomsResponseMessage>>() {})
                 .to(ReplaceAxiomsResponseTranslator.class).in(SINGLETON);
+
+        bind(new TypeLiteral<Translator<ProcessingState, Messages.ProcessingState>>() {})
+                .to(ProcessingStateTranslator.class).in(SINGLETON);
+
+        bind(new TypeLiteral<Translator<GetProcessingStateAction, Messages.GetProcessingStateActionMessage>>() {})
+                .to(GetProcessingStateActionTranslator.class).in(SINGLETON);
+
+        bind(new TypeLiteral<Translator<GetProcessingStateResponse, Messages.GetProcessingStateResponseMessage>>() {})
+                .to(GetProcessingStateResponseTranslator.class).in(SINGLETON);
+
+
     }
 }

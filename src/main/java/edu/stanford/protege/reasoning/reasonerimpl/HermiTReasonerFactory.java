@@ -21,7 +21,7 @@ public class HermiTReasonerFactory implements OWLReasonerFactory {
 
     @Override
     public String getReasonerName() {
-        return delegate.getReasonerName();
+        return "HermiT";
     }
 
     @Override

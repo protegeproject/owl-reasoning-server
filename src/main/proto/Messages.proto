@@ -193,3 +193,20 @@ message ReplaceAxiomsResponseMessage {
     required KbId kbId = 1;
     required KbDigest kbDigest = 2;
 }
+
+////////////////////////////////////////////////////////////////
+
+message GetProcessingStateActionMessage {
+    required KbId kbId = 1;
+}
+
+message GetProcessingStateResponseMessage {
+    required KbId kbId = 1;
+    required ProcessingState processingState = 2;
+}
+
+message ProcessingState {
+    required string reasonerName = 1;
+    required string currentTask = 2;
+    required int32 percentProcessed = 3;
+}

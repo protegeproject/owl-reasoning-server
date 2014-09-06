@@ -20660,6 +20660,1992 @@ public final class Messages {
     // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.ReplaceAxiomsResponseMessage)
   }
 
+  public interface GetProcessingStateActionMessageOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    boolean hasKbId();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.KbId getKbId();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder();
+  }
+  /**
+   * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetProcessingStateActionMessage}
+   */
+  public static final class GetProcessingStateActionMessage extends
+      com.google.protobuf.GeneratedMessage
+      implements GetProcessingStateActionMessageOrBuilder {
+    // Use GetProcessingStateActionMessage.newBuilder() to construct.
+    private GetProcessingStateActionMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private GetProcessingStateActionMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final GetProcessingStateActionMessage defaultInstance;
+    public static GetProcessingStateActionMessage getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public GetProcessingStateActionMessage getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GetProcessingStateActionMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = kbId_.toBuilder();
+              }
+              kbId_ = input.readMessage(edu.stanford.protege.reasoning.protocol.Messages.KbId.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(kbId_);
+                kbId_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<GetProcessingStateActionMessage> PARSER =
+        new com.google.protobuf.AbstractParser<GetProcessingStateActionMessage>() {
+      public GetProcessingStateActionMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GetProcessingStateActionMessage(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetProcessingStateActionMessage> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
+    public static final int KBID_FIELD_NUMBER = 1;
+    private edu.stanford.protege.reasoning.protocol.Messages.KbId kbId_;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    public boolean hasKbId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.KbId getKbId() {
+      return kbId_;
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder() {
+      return kbId_;
+    }
+
+    private void initFields() {
+      kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasKbId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getKbId().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, kbId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, kbId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetProcessingStateActionMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.Builder.class);
+      }
+
+      // Construct using edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getKbIdFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (kbIdBuilder_ == null) {
+          kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+        } else {
+          kbIdBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_descriptor;
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage getDefaultInstanceForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.getDefaultInstance();
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage build() {
+        edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage buildPartial() {
+        edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage result = new edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (kbIdBuilder_ == null) {
+          result.kbId_ = kbId_;
+        } else {
+          result.kbId_ = kbIdBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage) {
+          return mergeFrom((edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage other) {
+        if (other == edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage.getDefaultInstance()) return this;
+        if (other.hasKbId()) {
+          mergeKbId(other.getKbId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasKbId()) {
+          
+          return false;
+        }
+        if (!getKbId().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateActionMessage) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
+      private edu.stanford.protege.reasoning.protocol.Messages.KbId kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.KbId, edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder> kbIdBuilder_;
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public boolean hasKbId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbId getKbId() {
+        if (kbIdBuilder_ == null) {
+          return kbId_;
+        } else {
+          return kbIdBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder setKbId(edu.stanford.protege.reasoning.protocol.Messages.KbId value) {
+        if (kbIdBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          kbId_ = value;
+          onChanged();
+        } else {
+          kbIdBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder setKbId(
+          edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder builderForValue) {
+        if (kbIdBuilder_ == null) {
+          kbId_ = builderForValue.build();
+          onChanged();
+        } else {
+          kbIdBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder mergeKbId(edu.stanford.protege.reasoning.protocol.Messages.KbId value) {
+        if (kbIdBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              kbId_ != edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance()) {
+            kbId_ =
+              edu.stanford.protege.reasoning.protocol.Messages.KbId.newBuilder(kbId_).mergeFrom(value).buildPartial();
+          } else {
+            kbId_ = value;
+          }
+          onChanged();
+        } else {
+          kbIdBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder clearKbId() {
+        if (kbIdBuilder_ == null) {
+          kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+          onChanged();
+        } else {
+          kbIdBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder getKbIdBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getKbIdFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder() {
+        if (kbIdBuilder_ != null) {
+          return kbIdBuilder_.getMessageOrBuilder();
+        } else {
+          return kbId_;
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.KbId, edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder> 
+          getKbIdFieldBuilder() {
+        if (kbIdBuilder_ == null) {
+          kbIdBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              edu.stanford.protege.reasoning.protocol.Messages.KbId, edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder>(
+                  kbId_,
+                  getParentForChildren(),
+                  isClean());
+          kbId_ = null;
+        }
+        return kbIdBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:edu.stanford.protege.reasoning.protocol.GetProcessingStateActionMessage)
+    }
+
+    static {
+      defaultInstance = new GetProcessingStateActionMessage(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.GetProcessingStateActionMessage)
+  }
+
+  public interface GetProcessingStateResponseMessageOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    boolean hasKbId();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.KbId getKbId();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder();
+
+    // required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+     */
+    boolean hasProcessingState();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.ProcessingState getProcessingState();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder getProcessingStateOrBuilder();
+  }
+  /**
+   * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetProcessingStateResponseMessage}
+   */
+  public static final class GetProcessingStateResponseMessage extends
+      com.google.protobuf.GeneratedMessage
+      implements GetProcessingStateResponseMessageOrBuilder {
+    // Use GetProcessingStateResponseMessage.newBuilder() to construct.
+    private GetProcessingStateResponseMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private GetProcessingStateResponseMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final GetProcessingStateResponseMessage defaultInstance;
+    public static GetProcessingStateResponseMessage getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public GetProcessingStateResponseMessage getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GetProcessingStateResponseMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = kbId_.toBuilder();
+              }
+              kbId_ = input.readMessage(edu.stanford.protege.reasoning.protocol.Messages.KbId.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(kbId_);
+                kbId_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = processingState_.toBuilder();
+              }
+              processingState_ = input.readMessage(edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(processingState_);
+                processingState_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<GetProcessingStateResponseMessage> PARSER =
+        new com.google.protobuf.AbstractParser<GetProcessingStateResponseMessage>() {
+      public GetProcessingStateResponseMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GetProcessingStateResponseMessage(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetProcessingStateResponseMessage> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
+    public static final int KBID_FIELD_NUMBER = 1;
+    private edu.stanford.protege.reasoning.protocol.Messages.KbId kbId_;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    public boolean hasKbId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.KbId getKbId() {
+      return kbId_;
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder() {
+      return kbId_;
+    }
+
+    // required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;
+    public static final int PROCESSINGSTATE_FIELD_NUMBER = 2;
+    private edu.stanford.protege.reasoning.protocol.Messages.ProcessingState processingState_;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+     */
+    public boolean hasProcessingState() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.ProcessingState getProcessingState() {
+      return processingState_;
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder getProcessingStateOrBuilder() {
+      return processingState_;
+    }
+
+    private void initFields() {
+      kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+      processingState_ = edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasKbId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasProcessingState()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getKbId().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getProcessingState().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, kbId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, processingState_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, kbId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, processingState_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetProcessingStateResponseMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.Builder.class);
+      }
+
+      // Construct using edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getKbIdFieldBuilder();
+          getProcessingStateFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (kbIdBuilder_ == null) {
+          kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+        } else {
+          kbIdBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (processingStateBuilder_ == null) {
+          processingState_ = edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance();
+        } else {
+          processingStateBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_descriptor;
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage getDefaultInstanceForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.getDefaultInstance();
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage build() {
+        edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage buildPartial() {
+        edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage result = new edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (kbIdBuilder_ == null) {
+          result.kbId_ = kbId_;
+        } else {
+          result.kbId_ = kbIdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (processingStateBuilder_ == null) {
+          result.processingState_ = processingState_;
+        } else {
+          result.processingState_ = processingStateBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage) {
+          return mergeFrom((edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage other) {
+        if (other == edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage.getDefaultInstance()) return this;
+        if (other.hasKbId()) {
+          mergeKbId(other.getKbId());
+        }
+        if (other.hasProcessingState()) {
+          mergeProcessingState(other.getProcessingState());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasKbId()) {
+          
+          return false;
+        }
+        if (!hasProcessingState()) {
+          
+          return false;
+        }
+        if (!getKbId().isInitialized()) {
+          
+          return false;
+        }
+        if (!getProcessingState().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (edu.stanford.protege.reasoning.protocol.Messages.GetProcessingStateResponseMessage) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
+      private edu.stanford.protege.reasoning.protocol.Messages.KbId kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.KbId, edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder> kbIdBuilder_;
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public boolean hasKbId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbId getKbId() {
+        if (kbIdBuilder_ == null) {
+          return kbId_;
+        } else {
+          return kbIdBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder setKbId(edu.stanford.protege.reasoning.protocol.Messages.KbId value) {
+        if (kbIdBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          kbId_ = value;
+          onChanged();
+        } else {
+          kbIdBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder setKbId(
+          edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder builderForValue) {
+        if (kbIdBuilder_ == null) {
+          kbId_ = builderForValue.build();
+          onChanged();
+        } else {
+          kbIdBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder mergeKbId(edu.stanford.protege.reasoning.protocol.Messages.KbId value) {
+        if (kbIdBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              kbId_ != edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance()) {
+            kbId_ =
+              edu.stanford.protege.reasoning.protocol.Messages.KbId.newBuilder(kbId_).mergeFrom(value).buildPartial();
+          } else {
+            kbId_ = value;
+          }
+          onChanged();
+        } else {
+          kbIdBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder clearKbId() {
+        if (kbIdBuilder_ == null) {
+          kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+          onChanged();
+        } else {
+          kbIdBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder getKbIdBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getKbIdFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder() {
+        if (kbIdBuilder_ != null) {
+          return kbIdBuilder_.getMessageOrBuilder();
+        } else {
+          return kbId_;
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.KbId, edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder> 
+          getKbIdFieldBuilder() {
+        if (kbIdBuilder_ == null) {
+          kbIdBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              edu.stanford.protege.reasoning.protocol.Messages.KbId, edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder>(
+                  kbId_,
+                  getParentForChildren(),
+                  isClean());
+          kbId_ = null;
+        }
+        return kbIdBuilder_;
+      }
+
+      // required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;
+      private edu.stanford.protege.reasoning.protocol.Messages.ProcessingState processingState_ = edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.ProcessingState, edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder, edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder> processingStateBuilder_;
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       */
+      public boolean hasProcessingState() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.ProcessingState getProcessingState() {
+        if (processingStateBuilder_ == null) {
+          return processingState_;
+        } else {
+          return processingStateBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       */
+      public Builder setProcessingState(edu.stanford.protege.reasoning.protocol.Messages.ProcessingState value) {
+        if (processingStateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          processingState_ = value;
+          onChanged();
+        } else {
+          processingStateBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       */
+      public Builder setProcessingState(
+          edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder builderForValue) {
+        if (processingStateBuilder_ == null) {
+          processingState_ = builderForValue.build();
+          onChanged();
+        } else {
+          processingStateBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       */
+      public Builder mergeProcessingState(edu.stanford.protege.reasoning.protocol.Messages.ProcessingState value) {
+        if (processingStateBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              processingState_ != edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance()) {
+            processingState_ =
+              edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.newBuilder(processingState_).mergeFrom(value).buildPartial();
+          } else {
+            processingState_ = value;
+          }
+          onChanged();
+        } else {
+          processingStateBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       */
+      public Builder clearProcessingState() {
+        if (processingStateBuilder_ == null) {
+          processingState_ = edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance();
+          onChanged();
+        } else {
+          processingStateBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder getProcessingStateBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getProcessingStateFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder getProcessingStateOrBuilder() {
+        if (processingStateBuilder_ != null) {
+          return processingStateBuilder_.getMessageOrBuilder();
+        } else {
+          return processingState_;
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ProcessingState processingState = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.ProcessingState, edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder, edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder> 
+          getProcessingStateFieldBuilder() {
+        if (processingStateBuilder_ == null) {
+          processingStateBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              edu.stanford.protege.reasoning.protocol.Messages.ProcessingState, edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder, edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder>(
+                  processingState_,
+                  getParentForChildren(),
+                  isClean());
+          processingState_ = null;
+        }
+        return processingStateBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:edu.stanford.protege.reasoning.protocol.GetProcessingStateResponseMessage)
+    }
+
+    static {
+      defaultInstance = new GetProcessingStateResponseMessage(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.GetProcessingStateResponseMessage)
+  }
+
+  public interface ProcessingStateOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string reasonerName = 1;
+    /**
+     * <code>required string reasonerName = 1;</code>
+     */
+    boolean hasReasonerName();
+    /**
+     * <code>required string reasonerName = 1;</code>
+     */
+    java.lang.String getReasonerName();
+    /**
+     * <code>required string reasonerName = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getReasonerNameBytes();
+
+    // required string currentTask = 2;
+    /**
+     * <code>required string currentTask = 2;</code>
+     */
+    boolean hasCurrentTask();
+    /**
+     * <code>required string currentTask = 2;</code>
+     */
+    java.lang.String getCurrentTask();
+    /**
+     * <code>required string currentTask = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getCurrentTaskBytes();
+
+    // required int32 percentProcessed = 3;
+    /**
+     * <code>required int32 percentProcessed = 3;</code>
+     */
+    boolean hasPercentProcessed();
+    /**
+     * <code>required int32 percentProcessed = 3;</code>
+     */
+    int getPercentProcessed();
+  }
+  /**
+   * Protobuf type {@code edu.stanford.protege.reasoning.protocol.ProcessingState}
+   */
+  public static final class ProcessingState extends
+      com.google.protobuf.GeneratedMessage
+      implements ProcessingStateOrBuilder {
+    // Use ProcessingState.newBuilder() to construct.
+    private ProcessingState(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ProcessingState(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ProcessingState defaultInstance;
+    public static ProcessingState getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ProcessingState getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ProcessingState(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              reasonerName_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              currentTask_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              percentProcessed_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.class, edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ProcessingState> PARSER =
+        new com.google.protobuf.AbstractParser<ProcessingState>() {
+      public ProcessingState parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ProcessingState(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ProcessingState> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string reasonerName = 1;
+    public static final int REASONERNAME_FIELD_NUMBER = 1;
+    private java.lang.Object reasonerName_;
+    /**
+     * <code>required string reasonerName = 1;</code>
+     */
+    public boolean hasReasonerName() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string reasonerName = 1;</code>
+     */
+    public java.lang.String getReasonerName() {
+      java.lang.Object ref = reasonerName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          reasonerName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string reasonerName = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getReasonerNameBytes() {
+      java.lang.Object ref = reasonerName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        reasonerName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required string currentTask = 2;
+    public static final int CURRENTTASK_FIELD_NUMBER = 2;
+    private java.lang.Object currentTask_;
+    /**
+     * <code>required string currentTask = 2;</code>
+     */
+    public boolean hasCurrentTask() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string currentTask = 2;</code>
+     */
+    public java.lang.String getCurrentTask() {
+      java.lang.Object ref = currentTask_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          currentTask_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string currentTask = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCurrentTaskBytes() {
+      java.lang.Object ref = currentTask_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        currentTask_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required int32 percentProcessed = 3;
+    public static final int PERCENTPROCESSED_FIELD_NUMBER = 3;
+    private int percentProcessed_;
+    /**
+     * <code>required int32 percentProcessed = 3;</code>
+     */
+    public boolean hasPercentProcessed() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 percentProcessed = 3;</code>
+     */
+    public int getPercentProcessed() {
+      return percentProcessed_;
+    }
+
+    private void initFields() {
+      reasonerName_ = "";
+      currentTask_ = "";
+      percentProcessed_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasReasonerName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCurrentTask()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPercentProcessed()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getReasonerNameBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getCurrentTaskBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, percentProcessed_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getReasonerNameBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getCurrentTaskBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, percentProcessed_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(edu.stanford.protege.reasoning.protocol.Messages.ProcessingState prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code edu.stanford.protege.reasoning.protocol.ProcessingState}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements edu.stanford.protege.reasoning.protocol.Messages.ProcessingStateOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.class, edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.Builder.class);
+      }
+
+      // Construct using edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        reasonerName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        currentTask_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        percentProcessed_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_descriptor;
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.ProcessingState getDefaultInstanceForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance();
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.ProcessingState build() {
+        edu.stanford.protege.reasoning.protocol.Messages.ProcessingState result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.ProcessingState buildPartial() {
+        edu.stanford.protege.reasoning.protocol.Messages.ProcessingState result = new edu.stanford.protege.reasoning.protocol.Messages.ProcessingState(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.reasonerName_ = reasonerName_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.currentTask_ = currentTask_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.percentProcessed_ = percentProcessed_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof edu.stanford.protege.reasoning.protocol.Messages.ProcessingState) {
+          return mergeFrom((edu.stanford.protege.reasoning.protocol.Messages.ProcessingState)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(edu.stanford.protege.reasoning.protocol.Messages.ProcessingState other) {
+        if (other == edu.stanford.protege.reasoning.protocol.Messages.ProcessingState.getDefaultInstance()) return this;
+        if (other.hasReasonerName()) {
+          bitField0_ |= 0x00000001;
+          reasonerName_ = other.reasonerName_;
+          onChanged();
+        }
+        if (other.hasCurrentTask()) {
+          bitField0_ |= 0x00000002;
+          currentTask_ = other.currentTask_;
+          onChanged();
+        }
+        if (other.hasPercentProcessed()) {
+          setPercentProcessed(other.getPercentProcessed());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasReasonerName()) {
+          
+          return false;
+        }
+        if (!hasCurrentTask()) {
+          
+          return false;
+        }
+        if (!hasPercentProcessed()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        edu.stanford.protege.reasoning.protocol.Messages.ProcessingState parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (edu.stanford.protege.reasoning.protocol.Messages.ProcessingState) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string reasonerName = 1;
+      private java.lang.Object reasonerName_ = "";
+      /**
+       * <code>required string reasonerName = 1;</code>
+       */
+      public boolean hasReasonerName() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string reasonerName = 1;</code>
+       */
+      public java.lang.String getReasonerName() {
+        java.lang.Object ref = reasonerName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          reasonerName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string reasonerName = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getReasonerNameBytes() {
+        java.lang.Object ref = reasonerName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          reasonerName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string reasonerName = 1;</code>
+       */
+      public Builder setReasonerName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        reasonerName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string reasonerName = 1;</code>
+       */
+      public Builder clearReasonerName() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        reasonerName_ = getDefaultInstance().getReasonerName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string reasonerName = 1;</code>
+       */
+      public Builder setReasonerNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        reasonerName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required string currentTask = 2;
+      private java.lang.Object currentTask_ = "";
+      /**
+       * <code>required string currentTask = 2;</code>
+       */
+      public boolean hasCurrentTask() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string currentTask = 2;</code>
+       */
+      public java.lang.String getCurrentTask() {
+        java.lang.Object ref = currentTask_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          currentTask_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string currentTask = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCurrentTaskBytes() {
+        java.lang.Object ref = currentTask_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          currentTask_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string currentTask = 2;</code>
+       */
+      public Builder setCurrentTask(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        currentTask_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string currentTask = 2;</code>
+       */
+      public Builder clearCurrentTask() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        currentTask_ = getDefaultInstance().getCurrentTask();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string currentTask = 2;</code>
+       */
+      public Builder setCurrentTaskBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        currentTask_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required int32 percentProcessed = 3;
+      private int percentProcessed_ ;
+      /**
+       * <code>required int32 percentProcessed = 3;</code>
+       */
+      public boolean hasPercentProcessed() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 percentProcessed = 3;</code>
+       */
+      public int getPercentProcessed() {
+        return percentProcessed_;
+      }
+      /**
+       * <code>required int32 percentProcessed = 3;</code>
+       */
+      public Builder setPercentProcessed(int value) {
+        bitField0_ |= 0x00000004;
+        percentProcessed_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 percentProcessed = 3;</code>
+       */
+      public Builder clearPercentProcessed() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        percentProcessed_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:edu.stanford.protege.reasoning.protocol.ProcessingState)
+    }
+
+    static {
+      defaultInstance = new ProcessingState(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.ProcessingState)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_edu_stanford_protege_reasoning_protocol_CreateKbActionMessage_descriptor;
   private static
@@ -20800,6 +22786,21 @@ public final class Messages {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_edu_stanford_protege_reasoning_protocol_ReplaceAxiomsResponseMessage_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -20915,11 +22916,20 @@ public final class Messages {
       "msResponseMessage\022;\n\004kbId\030\001 \002(\0132-.edu.st" +
       "anford.protege.reasoning.protocol.KbId\022C" +
       "\n\010kbDigest\030\002 \002(\01321.edu.stanford.protege." +
-      "reasoning.protocol.KbDigest*.\n\022Hierarchy" +
-      "QueryType\022\n\n\006DIRECT\020\000\022\014\n\010INDIRECT\020\001*/\n\013C" +
-      "onsistency\022\016\n\nCONSISTENT\020\000\022\020\n\014INCONSISTE" +
-      "NT\020\001*7\n\025EntailmentCheckResult\022\020\n\014NOT_ENT",
-      "AILED\020\000\022\014\n\010ENTAILED\020\001"
+      "reasoning.protocol.KbDigest\"^\n\037GetProces" +
+      "singStateActionMessage\022;\n\004kbId\030\001 \002(\0132-.e" +
+      "du.stanford.protege.reasoning.protocol.K" +
+      "bId\"\263\001\n!GetProcessingStateResponseMessag",
+      "e\022;\n\004kbId\030\001 \002(\0132-.edu.stanford.protege.r" +
+      "easoning.protocol.KbId\022Q\n\017processingStat" +
+      "e\030\002 \002(\01328.edu.stanford.protege.reasoning" +
+      ".protocol.ProcessingState\"V\n\017ProcessingS" +
+      "tate\022\024\n\014reasonerName\030\001 \002(\t\022\023\n\013currentTas" +
+      "k\030\002 \002(\t\022\030\n\020percentProcessed\030\003 \002(\005*.\n\022Hie" +
+      "rarchyQueryType\022\n\n\006DIRECT\020\000\022\014\n\010INDIRECT\020" +
+      "\001*/\n\013Consistency\022\016\n\nCONSISTENT\020\000\022\020\n\014INCO" +
+      "NSISTENT\020\001*7\n\025EntailmentCheckResult\022\020\n\014N" +
+      "OT_ENTAILED\020\000\022\014\n\010ENTAILED\020\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -21094,6 +23104,24 @@ public final class Messages {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_ReplaceAxiomsResponseMessage_descriptor,
               new java.lang.String[] { "KbId", "KbDigest", });
+          internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_descriptor =
+            getDescriptor().getMessageTypes().get(28);
+          internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateActionMessage_descriptor,
+              new java.lang.String[] { "KbId", });
+          internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_descriptor =
+            getDescriptor().getMessageTypes().get(29);
+          internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_edu_stanford_protege_reasoning_protocol_GetProcessingStateResponseMessage_descriptor,
+              new java.lang.String[] { "KbId", "ProcessingState", });
+          internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_descriptor =
+            getDescriptor().getMessageTypes().get(30);
+          internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_edu_stanford_protege_reasoning_protocol_ProcessingState_descriptor,
+              new java.lang.String[] { "ReasonerName", "CurrentTask", "PercentProcessed", });
           return null;
         }
       };
