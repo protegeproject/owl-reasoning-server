@@ -61,7 +61,7 @@ public abstract class Progress {
      * and final values are equal then the value will be 100.
      */
     public int getPercentageValue() {
-        if(initialValue.equals(finalValue)) {
+        if(initialValue.get().equals(finalValue.get())) {
             return 100;
         }
         return (int) (100.0 * (value.get() - initialValue.get()) / (finalValue.get() - initialValue.get()));

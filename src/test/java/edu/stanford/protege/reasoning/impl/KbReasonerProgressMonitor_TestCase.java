@@ -56,8 +56,9 @@ public class KbReasonerProgressMonitor_TestCase {
 
     @Test
     public void shouldCallStateChangedOnTaskStopped() {
+        monitor.reasonerTaskStarted(TASK_NAME);
         monitor.reasonerTaskStopped();
-        verify(monitor, times(1)).stateChanged(captor.capture());
+        verify(monitor, times(2)).stateChanged(captor.capture());
         ReasonerState capturedState = captor.getValue();
         assertThat(capturedState.getReasonerName(), is(REASONER_NAME));
         assertThat(capturedState.getStateDescription(), is(TASK_NAME));
@@ -66,8 +67,9 @@ public class KbReasonerProgressMonitor_TestCase {
 
     @Test
     public void shouldCallStateChangedOnProgressChanged() {
+        monitor.reasonerTaskStarted(TASK_NAME);
         monitor.reasonerTaskProgressChanged(10, 20);
-        verify(monitor, times(1)).stateChanged(captor.capture());
+        verify(monitor, times(2)).stateChanged(captor.capture());
         ReasonerState capturedState = captor.getValue();
         assertThat(capturedState.getReasonerName(), is(REASONER_NAME));
         assertThat(capturedState.getStateDescription(), is(TASK_NAME));

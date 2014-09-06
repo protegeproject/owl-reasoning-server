@@ -35,13 +35,12 @@ public abstract class KbReasonerProgressMonitor implements ReasonerProgressMonit
 
     @Override
     public void reasonerTaskStopped() {
-        taskName = Optional.absent();
         stateChanged(getProcessingState());
+        taskName = Optional.absent();
     }
 
     @Override
     public void reasonerTaskProgressChanged(int value, int max) {
-        System.out.println(value + " of " + max);
         int percent = (int) Math.round(100.0 * value / max);
         progress = Optional.of(percent);
         stateChanged(getProcessingState());
