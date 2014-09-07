@@ -1,6 +1,7 @@
 package edu.stanford.protege.reasoning.action;
 
 import com.google.common.base.Optional;
+import edu.stanford.protege.reasoning.KbDigest;
 import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,33 +20,43 @@ public class ReasonerState_TestCase {
 
     private String reasonerName = "TestName";
 
-    private String currentTaskDescription = "CurrentTask";
+    private String stateDescription = "CurrentTask";
 
     @Mock
     private Optional<Progress> progress;
+
+    @Mock
+    private KbDigest kbDigest;
+
 
     private ReasonerState state;
 
     @Before
     public void setUp() throws Exception {
-        state = new ReasonerState(reasonerName, currentTaskDescription, progress);
+        state = new ReasonerState(reasonerName, kbDigest, stateDescription, progress);
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldThrowNullPointerExceptionIf_ReasonerName_IsNull() {
-        new ReasonerState(null, currentTaskDescription, progress);
+        new ReasonerState(null, kbDigest, stateDescription, progress);
     }
 
     @Test(expected = NullPointerException.class)
     public void shouldThrowNullPointerExceptionIf_CurrentTaskDescription_IsNull() {
-        new ReasonerState(reasonerName, null, progress);
+        new ReasonerState(reasonerName, kbDigest, null, progress);
     }
 
 
     @Test(expected = NullPointerException.class)
     public void shouldThrowNullPointerExceptionIf_Progress_IsNull() {
-        new ReasonerState(reasonerName, currentTaskDescription, null);
+        new ReasonerState(reasonerName, kbDigest, stateDescription, null);
     }
+
+    @Test(expected = NullPointerException.class)
+    public void shouldThrowNullPointerExceptionIf_KbDigest_IsNull() {
+        new ReasonerState(reasonerName, null, stateDescription, null);
+    }
+
 
     @Test
     public void shouldReturnSuppliedReasonerName() {
@@ -54,7 +65,7 @@ public class ReasonerState_TestCase {
 
     @Test
     public void shouldReturnSuppliedCurrentTaskDescription() {
-        assertThat(state.getStateDescription(), is(currentTaskDescription));
+        assertThat(state.getStateDescription(), is(stateDescription));
     }
 
     @Test
@@ -64,7 +75,7 @@ public class ReasonerState_TestCase {
 
     @Test
     public void shouldBeEqualToOther() {
-        ReasonerState other = new ReasonerState(reasonerName, currentTaskDescription, progress);
+        ReasonerState other = new ReasonerState(reasonerName, kbDigest, stateDescription, progress);
         assertThat(state.equals(other), is(true));
     }
 

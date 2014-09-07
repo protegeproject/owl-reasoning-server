@@ -1,10 +1,12 @@
 package edu.stanford.protege.reasoning.impl;
 
+import edu.stanford.protege.reasoning.KbDigest;
 import edu.stanford.protege.reasoning.action.ReasonerState;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -27,9 +29,12 @@ public class KbReasonerProgressMonitor_TestCase {
 
     private ArgumentCaptor<ReasonerState> captor;
 
+    @Mock
+    private KbDigest kbDigest;
+
     @Before
     public void setUp() throws Exception {
-        monitor = spy(new KbReasonerProgressMonitor(REASONER_NAME) {
+        monitor = spy(new KbReasonerProgressMonitor(REASONER_NAME, kbDigest) {
             @Override
             public void stateChanged(ReasonerState state) {
 

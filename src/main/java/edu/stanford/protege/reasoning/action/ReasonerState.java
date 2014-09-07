@@ -2,6 +2,7 @@ package edu.stanford.protege.reasoning.action;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Optional;
+import edu.stanford.protege.reasoning.KbDigest;
 
 import static com.google.common.base.Preconditions.*;
 
@@ -14,16 +15,23 @@ public class ReasonerState {
 
     private final String stateDescription;
 
+    private final KbDigest reasonerKbDigest;
+
     private final Optional<Progress> progress;
 
-    public ReasonerState(String reasonerName, String stateDescription, Optional<Progress> progress) {
+    public ReasonerState(String reasonerName, KbDigest kbDigest, String stateDescription, Optional<Progress> progress) {
         this.reasonerName = checkNotNull(reasonerName);
+        this.reasonerKbDigest = checkNotNull(kbDigest);
         this.stateDescription = checkNotNull(stateDescription);
         this.progress = checkNotNull(progress);
     }
 
     public String getReasonerName() {
         return reasonerName;
+    }
+
+    public KbDigest getReasonerKbDigest() {
+        return reasonerKbDigest;
     }
 
     public String getStateDescription() {
@@ -38,14 +46,15 @@ public class ReasonerState {
     public String toString() {
         return Objects.toStringHelper("ReasonerState")
                       .add("reasonerName", reasonerName)
+                      .addValue(getReasonerKbDigest())
                       .add("task", stateDescription)
-                      .add("progress", progress.isPresent() ? progress.get() : "Idle").toString();
+                      .add("progress", progress).toString();
     }
 
     @Override
     public int hashCode() {
         return "ReasonerState".hashCode()
-                + reasonerName.hashCode() + stateDescription.hashCode()
+                + reasonerName.hashCode() + getReasonerKbDigest().hashCode() + stateDescription.hashCode()
                 + progress.hashCode();
     }
 
@@ -59,6 +68,7 @@ public class ReasonerState {
         }
         ReasonerState other = (ReasonerState) o;
         return this.reasonerName.equals(other.reasonerName)
+                && this.getReasonerKbDigest().equals(other.getReasonerKbDigest())
                 && this.stateDescription.equals(other.stateDescription)
                 && this.progress.equals(other.progress);
     }

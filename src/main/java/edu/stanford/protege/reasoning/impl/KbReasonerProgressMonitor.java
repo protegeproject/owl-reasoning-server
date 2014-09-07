@@ -1,6 +1,7 @@
 package edu.stanford.protege.reasoning.impl;
 
 import com.google.common.base.Optional;
+import edu.stanford.protege.reasoning.KbDigest;
 import edu.stanford.protege.reasoning.action.Progress;
 import edu.stanford.protege.reasoning.action.ReasonerState;
 import org.semanticweb.owlapi.reasoner.ReasonerProgressMonitor;
@@ -12,18 +13,21 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public abstract class KbReasonerProgressMonitor implements ReasonerProgressMonitor {
 
-    private String reasonerName;
+    private final String reasonerName;
 
     private Optional<String> taskName = Optional.absent();
 
     private Optional<Progress> progress = Optional.absent();
 
-    public KbReasonerProgressMonitor(String reasonerName) {
+    private final KbDigest reasonerKbDigest;
+
+    public KbReasonerProgressMonitor(String reasonerName, KbDigest reasonerKbDigest) {
         this.reasonerName = checkNotNull(reasonerName);
+        this.reasonerKbDigest = reasonerKbDigest;
     }
 
     public ReasonerState getProcessingState() {
-        return new ReasonerState(reasonerName, taskName.or("Idle"), progress);
+        return new ReasonerState(reasonerName, reasonerKbDigest, taskName.or("Idle"), progress);
     }
 
     public abstract void stateChanged(ReasonerState state);

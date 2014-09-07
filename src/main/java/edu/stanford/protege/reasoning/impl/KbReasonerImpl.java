@@ -64,7 +64,7 @@ public class KbReasonerImpl implements KbReasoner {
         this.reasonerFactorySelector = reasonerFactorySelector;
         this.reasoner = new AtomicReference<Reasoner>(new NullReasoner(KbDigest.emptyDigest()));
         this.stats = new AtomicReference<>(new ReasoningStats());
-        this.processingState = new AtomicReference<>(new ReasonerState("None", "Idle", Optional.<Progress>absent()));
+        this.processingState = new AtomicReference<>(new ReasonerState("None", KbDigest.emptyDigest(), "Idle", Optional.<Progress>absent()));
 
         // Seems bad... doing work in constructor
         handlerRegistry.registerHandler(ApplyChangesAction.TYPE, new ApplyChangesActionHandlerImpl());
@@ -346,10 +346,10 @@ public class KbReasonerImpl implements KbReasoner {
             if (clock.get() != clockValue) {
                 return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
             }
-            callback.processing(new ReasonerState(reasonerFactory.getReasonerName(), "Loading reasoner", Optional.of(Progress.indeterminate())));
+            callback.processing(new ReasonerState(reasonerFactory.getReasonerName(), versionedOntology.getKbDigest(), "Loading reasoner", Optional.of(Progress.indeterminate())));
             // Dynamically select best reasoner factory?
             Stopwatch stopwatch = Stopwatch.createStarted();
-            SimpleConfiguration configuration = new SimpleConfiguration(new KbReasonerProgressMonitor(reasonerFactory.getReasonerName()) {
+            SimpleConfiguration configuration = new SimpleConfiguration(new KbReasonerProgressMonitor(reasonerFactory.getReasonerName(), versionedOntology.getKbDigest()) {
                 @Override
                 public void stateChanged(ReasonerState processingState) {
                     callback.processing(processingState);
@@ -364,7 +364,7 @@ public class KbReasonerImpl implements KbReasoner {
             stopwatch.stop();
             Reasoner reasoner = new ReasonerImpl(versionedOntology.getKbDigest(), owlReasoner);
             callback.reasonerReady(reasoner, new ReasoningStats(reasonerFactory.getReasonerName(), stopwatch.elapsed(TimeUnit.MILLISECONDS)));
-            callback.processing(new ReasonerState(reasonerFactory.getReasonerName(), "Ready", Optional.<Progress>absent()));
+            callback.processing(new ReasonerState(reasonerFactory.getReasonerName(), reasoner.getKbDigest(), "Ready", Optional.<Progress>absent()));
             return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
         }
 

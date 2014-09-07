@@ -1,8 +1,10 @@
 package edu.stanford.protege.reasoning.protocol;
 
 import com.google.common.base.Optional;
+import edu.stanford.protege.reasoning.KbDigest;
 import edu.stanford.protege.reasoning.action.Progress;
 
+import javax.inject.Inject;
 import java.io.IOException;
 
 /**
@@ -10,14 +12,30 @@ import java.io.IOException;
  */
 public class ReasonerStateTranslator implements Translator<edu.stanford.protege.reasoning.action.ReasonerState, Messages.ReasonerState> {
 
+    private Translator<KbDigest, Messages.KbDigest> kbDigestTranslator;
+
     private Translator<Progress, Messages.Progress> progressTranslator;
+
+    @Inject
+    public ReasonerStateTranslator(Translator<KbDigest, Messages.KbDigest> kbDigestTranslator,
+                                   Translator<Progress, Messages.Progress> progressTranslator) {
+        this.kbDigestTranslator = kbDigestTranslator;
+        this.progressTranslator = progressTranslator;
+    }
 
     @Override
     public edu.stanford.protege.reasoning.action.ReasonerState decode(Messages.ReasonerState message) {
+        Optional<Progress> progress;
+        if(message.hasProgress()) {
+            progress = Optional.<Progress>of(progressTranslator.decode(message.getProgress()));
+        }
+        else {
+            progress = Optional.absent();
+        }
         return new edu.stanford.protege.reasoning.action.ReasonerState(
                 message.getReasonerName(),
-                message.getStateDescription(),
-                Optional.<Progress>of(progressTranslator.decode(message.getProgress()))
+                kbDigestTranslator.decode(message.getReasonerKbDigest()),
+                message.getStateDescription(), progress
         );
     }
 
@@ -32,6 +50,7 @@ public class ReasonerStateTranslator implements Translator<edu.stanford.protege.
         if(object.getProgress().isPresent()) {
             builder.setProgress(progressTranslator.encode(object.getProgress().get()));
         }
+        builder.setReasonerKbDigest(kbDigestTranslator.encode(object.getReasonerKbDigest()));
         return builder
                 .setReasonerName(object.getReasonerName())
                 .setStateDescription(object.getStateDescription())
