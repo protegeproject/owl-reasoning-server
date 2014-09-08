@@ -15,26 +15,19 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 29/08/2014
  */
-public class GetSuperClassesResponse extends KbQueryResponse {
+public class GetSuperClassesResponse extends KbQueryResultResponse<NodeSet<OWLClass>> {
 
     private OWLClassExpression classExpression;
-
-    private Optional<KbQueryResult<NodeSet<OWLClass>>> result;
 
     public GetSuperClassesResponse(KbId kbId, KbDigest kbDigest,
                                    OWLClassExpression classExpression,
                                    Optional<KbQueryResult<NodeSet<OWLClass>>> result) {
-        super(kbId, kbDigest);
+        super(kbId, kbDigest, result);
         this.classExpression = checkNotNull(classExpression);
-        this.result = checkNotNull(result);
     }
 
     public OWLClassExpression getClassExpression() {
         return classExpression;
-    }
-
-    public Optional<KbQueryResult<NodeSet<OWLClass>>> getResult() {
-        return result;
     }
 
     @Override
@@ -43,7 +36,7 @@ public class GetSuperClassesResponse extends KbQueryResponse {
                 .addValue(getKbId())
                 .addValue(getKbDigest())
                 .addValue(classExpression)
-                .addValue(result)
+                .addValue(getResult())
                 .toString();
     }
 
@@ -53,7 +46,7 @@ public class GetSuperClassesResponse extends KbQueryResponse {
                 + getKbId().hashCode()
                 + getKbDigest().hashCode()
                 + classExpression.hashCode()
-                + result.hashCode();
+                + getResult().hashCode();
     }
 
     @Override
