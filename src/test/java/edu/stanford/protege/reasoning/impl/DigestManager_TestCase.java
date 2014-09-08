@@ -28,6 +28,11 @@ public class DigestManager_TestCase {
         digestManager = new DigestManager();
     }
 
+    @Test(expected = NullPointerException.class)
+    public void shouldThrowNullPointerException() {
+        digestManager.updateDigest(null);
+    }
+
     @Test
     public void shouldReturnEmptyDigest() {
         KbDigest digest = digestManager.getDigest();
