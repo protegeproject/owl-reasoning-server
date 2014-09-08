@@ -209,7 +209,7 @@ public class KbReasonerImpl implements KbReasoner {
                 public GetKbDigestResponse call() throws Exception {
                     try {
                         readLock.lock();
-                        return new GetKbDigestResponse(kbId, kbAxiomSetManager.getKbDigest());
+                        return new GetKbDigestResponse(kbId, reasoner.get().getKbDigest());
                     } finally {
                         readLock.unlock();
                     }
@@ -290,7 +290,7 @@ public class KbReasonerImpl implements KbReasoner {
                                                                                 updateOperation));
             }
             else {
-                return Futures.immediateFuture(updateOperation.createResponse(kbId, kbAxiomSetManager.getKbDigest()));
+                return Futures.immediateFuture(updateOperation.createResponse(kbId, reasoner.get().getKbDigest()));
             }
         } catch (Throwable t) {
             return wrapException(t);

@@ -36,9 +36,9 @@ public class KbAxiomSetManager {
         createOntology();
     }
 
-    public KbDigest getKbDigest() {
-        return digestManager.getDigest();
-    }
+//    public KbDigest getKbDigest() {
+//        return digestManager.getDigest();
+//    }
 
 
     public Optional<VersionedOntology> replaceAxioms(List<OWLAxiom> replacementAxioms) {
@@ -66,8 +66,8 @@ public class KbAxiomSetManager {
             for (AxiomChangeData changeData : changeDataList) {
                 changeData.accept(changeDataVisitor);
             }
+            digestManager.updateDigest(axioms);
             if (changeDataVisitor.isChanged()) {
-                digestManager.updateDigest(axioms);
                 return Optional.of(createOntology());
             }
             else {

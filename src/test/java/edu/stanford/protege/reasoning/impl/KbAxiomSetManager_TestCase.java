@@ -41,12 +41,6 @@ public class KbAxiomSetManager_TestCase {
     }
 
     @Test
-    public void shouldReturnEmptyDigestByDefault() {
-        KbDigest digest = manager.getKbDigest();
-        assertThat(digest, is(KbDigest.emptyDigest()));
-    }
-
-    @Test
     public void shouldReturnAbsentIfNoChangesAreApplied() {
         Optional<VersionedOntology> ont = manager.applyChanges(Collections.<AxiomChangeData>emptyList());
         assertThat(ont.isPresent(), is(false));
@@ -97,11 +91,9 @@ public class KbAxiomSetManager_TestCase {
     @Test
     public void shouldReturnCopyOfOntology() {
         Optional<VersionedOntology> ont = manager.applyChanges(getAddAxiomList());
-        KbDigest digest = manager.getKbDigest();
         VersionedOntology versionedOntology = ont.get();
         OWLOntology ontology = versionedOntology.getOntology();
         ontology.getOWLOntologyManager().removeAxiom(ontology, ax);
-        assertThat(manager.getKbDigest(), is(digest));
     }
 
 
