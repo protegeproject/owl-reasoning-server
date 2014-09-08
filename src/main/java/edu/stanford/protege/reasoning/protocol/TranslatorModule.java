@@ -116,5 +116,11 @@ public class TranslatorModule extends AbstractModule {
         bind(new TypeLiteral<Translator<Progress, Messages.Progress>>() {})
                 .to(ProgressTranslator.class).in(SINGLETON);
 
+        bind(new TypeLiteral<Translator<GetEquivalentClassesAction, Messages.GetEquivalentClassesActionMessage>>() {})
+                .to(GetEquivalentClassesActionTranslator.class).in(SINGLETON);
+
+        bind(new TypeLiteral<Translator<GetEquivalentClassesResponse, Messages.GetEquivalentClassesResponseMessage>>() {})
+                .to(GetEquivalentClassesResponseTranslator.class).in(SINGLETON);
+
     }
 }

@@ -148,6 +148,25 @@ message GetSuperClassesResponseMessage {
 }
 
 
+message GetEquivalentClassesActionMessage {
+    required KbId kbId = 1;
+    required ClassExpression classExpression = 2;
+}
+
+message GetEquivalentClassesResponseMessage {
+
+    required KbId kbId = 1;
+    required KbDigest kbDigest = 2;
+
+    required ClassExpression classExpression = 3;
+
+    required bool present = 4;
+    optional Consistency consistency = 5;
+    optional ClassHierarchyNode equivalentClasses = 6;
+}
+
+
+
 
 message GetInstancesActionMessage {
     required KbId kbId = 1;

@@ -14684,6 +14684,2059 @@ public final class Messages {
     // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.GetSuperClassesResponseMessage)
   }
 
+  public interface GetEquivalentClassesActionMessageOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    boolean hasKbId();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.KbId getKbId();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder();
+
+    // required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+     */
+    boolean hasClassExpression();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.ClassExpression getClassExpression();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.ClassExpressionOrBuilder getClassExpressionOrBuilder();
+  }
+  /**
+   * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetEquivalentClassesActionMessage}
+   */
+  public static final class GetEquivalentClassesActionMessage extends
+      com.google.protobuf.GeneratedMessage
+      implements GetEquivalentClassesActionMessageOrBuilder {
+    // Use GetEquivalentClassesActionMessage.newBuilder() to construct.
+    private GetEquivalentClassesActionMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private GetEquivalentClassesActionMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final GetEquivalentClassesActionMessage defaultInstance;
+    public static GetEquivalentClassesActionMessage getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public GetEquivalentClassesActionMessage getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GetEquivalentClassesActionMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = kbId_.toBuilder();
+              }
+              kbId_ = input.readMessage(edu.stanford.protege.reasoning.protocol.Messages.KbId.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(kbId_);
+                kbId_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = classExpression_.toBuilder();
+              }
+              classExpression_ = input.readMessage(edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(classExpression_);
+                classExpression_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesActionMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesActionMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<GetEquivalentClassesActionMessage> PARSER =
+        new com.google.protobuf.AbstractParser<GetEquivalentClassesActionMessage>() {
+      public GetEquivalentClassesActionMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GetEquivalentClassesActionMessage(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetEquivalentClassesActionMessage> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
+    public static final int KBID_FIELD_NUMBER = 1;
+    private edu.stanford.protege.reasoning.protocol.Messages.KbId kbId_;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    public boolean hasKbId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.KbId getKbId() {
+      return kbId_;
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder() {
+      return kbId_;
+    }
+
+    // required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;
+    public static final int CLASSEXPRESSION_FIELD_NUMBER = 2;
+    private edu.stanford.protege.reasoning.protocol.Messages.ClassExpression classExpression_;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+     */
+    public boolean hasClassExpression() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.ClassExpression getClassExpression() {
+      return classExpression_;
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.ClassExpressionOrBuilder getClassExpressionOrBuilder() {
+      return classExpression_;
+    }
+
+    private void initFields() {
+      kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+      classExpression_ = edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasKbId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasClassExpression()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getKbId().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getClassExpression().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, kbId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, classExpression_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, kbId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, classExpression_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetEquivalentClassesActionMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesActionMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesActionMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage.Builder.class);
+      }
+
+      // Construct using edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getKbIdFieldBuilder();
+          getClassExpressionFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (kbIdBuilder_ == null) {
+          kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+        } else {
+          kbIdBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (classExpressionBuilder_ == null) {
+          classExpression_ = edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.getDefaultInstance();
+        } else {
+          classExpressionBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesActionMessage_descriptor;
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage getDefaultInstanceForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage.getDefaultInstance();
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage build() {
+        edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage buildPartial() {
+        edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage result = new edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (kbIdBuilder_ == null) {
+          result.kbId_ = kbId_;
+        } else {
+          result.kbId_ = kbIdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (classExpressionBuilder_ == null) {
+          result.classExpression_ = classExpression_;
+        } else {
+          result.classExpression_ = classExpressionBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage) {
+          return mergeFrom((edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage other) {
+        if (other == edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage.getDefaultInstance()) return this;
+        if (other.hasKbId()) {
+          mergeKbId(other.getKbId());
+        }
+        if (other.hasClassExpression()) {
+          mergeClassExpression(other.getClassExpression());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasKbId()) {
+          
+          return false;
+        }
+        if (!hasClassExpression()) {
+          
+          return false;
+        }
+        if (!getKbId().isInitialized()) {
+          
+          return false;
+        }
+        if (!getClassExpression().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesActionMessage) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
+      private edu.stanford.protege.reasoning.protocol.Messages.KbId kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.KbId, edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder> kbIdBuilder_;
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public boolean hasKbId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbId getKbId() {
+        if (kbIdBuilder_ == null) {
+          return kbId_;
+        } else {
+          return kbIdBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder setKbId(edu.stanford.protege.reasoning.protocol.Messages.KbId value) {
+        if (kbIdBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          kbId_ = value;
+          onChanged();
+        } else {
+          kbIdBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder setKbId(
+          edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder builderForValue) {
+        if (kbIdBuilder_ == null) {
+          kbId_ = builderForValue.build();
+          onChanged();
+        } else {
+          kbIdBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder mergeKbId(edu.stanford.protege.reasoning.protocol.Messages.KbId value) {
+        if (kbIdBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              kbId_ != edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance()) {
+            kbId_ =
+              edu.stanford.protege.reasoning.protocol.Messages.KbId.newBuilder(kbId_).mergeFrom(value).buildPartial();
+          } else {
+            kbId_ = value;
+          }
+          onChanged();
+        } else {
+          kbIdBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder clearKbId() {
+        if (kbIdBuilder_ == null) {
+          kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+          onChanged();
+        } else {
+          kbIdBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder getKbIdBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getKbIdFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder() {
+        if (kbIdBuilder_ != null) {
+          return kbIdBuilder_.getMessageOrBuilder();
+        } else {
+          return kbId_;
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.KbId, edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder> 
+          getKbIdFieldBuilder() {
+        if (kbIdBuilder_ == null) {
+          kbIdBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              edu.stanford.protege.reasoning.protocol.Messages.KbId, edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder>(
+                  kbId_,
+                  getParentForChildren(),
+                  isClean());
+          kbId_ = null;
+        }
+        return kbIdBuilder_;
+      }
+
+      // required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;
+      private edu.stanford.protege.reasoning.protocol.Messages.ClassExpression classExpression_ = edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.ClassExpression, edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.Builder, edu.stanford.protege.reasoning.protocol.Messages.ClassExpressionOrBuilder> classExpressionBuilder_;
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+       */
+      public boolean hasClassExpression() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.ClassExpression getClassExpression() {
+        if (classExpressionBuilder_ == null) {
+          return classExpression_;
+        } else {
+          return classExpressionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+       */
+      public Builder setClassExpression(edu.stanford.protege.reasoning.protocol.Messages.ClassExpression value) {
+        if (classExpressionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          classExpression_ = value;
+          onChanged();
+        } else {
+          classExpressionBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+       */
+      public Builder setClassExpression(
+          edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.Builder builderForValue) {
+        if (classExpressionBuilder_ == null) {
+          classExpression_ = builderForValue.build();
+          onChanged();
+        } else {
+          classExpressionBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+       */
+      public Builder mergeClassExpression(edu.stanford.protege.reasoning.protocol.Messages.ClassExpression value) {
+        if (classExpressionBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              classExpression_ != edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.getDefaultInstance()) {
+            classExpression_ =
+              edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.newBuilder(classExpression_).mergeFrom(value).buildPartial();
+          } else {
+            classExpression_ = value;
+          }
+          onChanged();
+        } else {
+          classExpressionBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+       */
+      public Builder clearClassExpression() {
+        if (classExpressionBuilder_ == null) {
+          classExpression_ = edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.getDefaultInstance();
+          onChanged();
+        } else {
+          classExpressionBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.Builder getClassExpressionBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getClassExpressionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.ClassExpressionOrBuilder getClassExpressionOrBuilder() {
+        if (classExpressionBuilder_ != null) {
+          return classExpressionBuilder_.getMessageOrBuilder();
+        } else {
+          return classExpression_;
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.ClassExpression, edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.Builder, edu.stanford.protege.reasoning.protocol.Messages.ClassExpressionOrBuilder> 
+          getClassExpressionFieldBuilder() {
+        if (classExpressionBuilder_ == null) {
+          classExpressionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              edu.stanford.protege.reasoning.protocol.Messages.ClassExpression, edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.Builder, edu.stanford.protege.reasoning.protocol.Messages.ClassExpressionOrBuilder>(
+                  classExpression_,
+                  getParentForChildren(),
+                  isClean());
+          classExpression_ = null;
+        }
+        return classExpressionBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:edu.stanford.protege.reasoning.protocol.GetEquivalentClassesActionMessage)
+    }
+
+    static {
+      defaultInstance = new GetEquivalentClassesActionMessage(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.GetEquivalentClassesActionMessage)
+  }
+
+  public interface GetEquivalentClassesResponseMessageOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    boolean hasKbId();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.KbId getKbId();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder();
+
+    // required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+     */
+    boolean hasKbDigest();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.KbDigest getKbDigest();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.KbDigestOrBuilder getKbDigestOrBuilder();
+
+    // required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+     */
+    boolean hasClassExpression();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.ClassExpression getClassExpression();
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.ClassExpressionOrBuilder getClassExpressionOrBuilder();
+
+    // required bool present = 4;
+    /**
+     * <code>required bool present = 4;</code>
+     */
+    boolean hasPresent();
+    /**
+     * <code>required bool present = 4;</code>
+     */
+    boolean getPresent();
+
+    // optional .edu.stanford.protege.reasoning.protocol.Consistency consistency = 5;
+    /**
+     * <code>optional .edu.stanford.protege.reasoning.protocol.Consistency consistency = 5;</code>
+     */
+    boolean hasConsistency();
+    /**
+     * <code>optional .edu.stanford.protege.reasoning.protocol.Consistency consistency = 5;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.Consistency getConsistency();
+
+    // optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;
+    /**
+     * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+     */
+    boolean hasEquivalentClasses();
+    /**
+     * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode getEquivalentClasses();
+    /**
+     * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+     */
+    edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNodeOrBuilder getEquivalentClassesOrBuilder();
+  }
+  /**
+   * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetEquivalentClassesResponseMessage}
+   */
+  public static final class GetEquivalentClassesResponseMessage extends
+      com.google.protobuf.GeneratedMessage
+      implements GetEquivalentClassesResponseMessageOrBuilder {
+    // Use GetEquivalentClassesResponseMessage.newBuilder() to construct.
+    private GetEquivalentClassesResponseMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private GetEquivalentClassesResponseMessage(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final GetEquivalentClassesResponseMessage defaultInstance;
+    public static GetEquivalentClassesResponseMessage getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public GetEquivalentClassesResponseMessage getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GetEquivalentClassesResponseMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = kbId_.toBuilder();
+              }
+              kbId_ = input.readMessage(edu.stanford.protege.reasoning.protocol.Messages.KbId.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(kbId_);
+                kbId_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              edu.stanford.protege.reasoning.protocol.Messages.KbDigest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = kbDigest_.toBuilder();
+              }
+              kbDigest_ = input.readMessage(edu.stanford.protege.reasoning.protocol.Messages.KbDigest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(kbDigest_);
+                kbDigest_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = classExpression_.toBuilder();
+              }
+              classExpression_ = input.readMessage(edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(classExpression_);
+                classExpression_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              present_ = input.readBool();
+              break;
+            }
+            case 40: {
+              int rawValue = input.readEnum();
+              edu.stanford.protege.reasoning.protocol.Messages.Consistency value = edu.stanford.protege.reasoning.protocol.Messages.Consistency.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(5, rawValue);
+              } else {
+                bitField0_ |= 0x00000010;
+                consistency_ = value;
+              }
+              break;
+            }
+            case 50: {
+              edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = equivalentClasses_.toBuilder();
+              }
+              equivalentClasses_ = input.readMessage(edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(equivalentClasses_);
+                equivalentClasses_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesResponseMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesResponseMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<GetEquivalentClassesResponseMessage> PARSER =
+        new com.google.protobuf.AbstractParser<GetEquivalentClassesResponseMessage>() {
+      public GetEquivalentClassesResponseMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GetEquivalentClassesResponseMessage(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetEquivalentClassesResponseMessage> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
+    public static final int KBID_FIELD_NUMBER = 1;
+    private edu.stanford.protege.reasoning.protocol.Messages.KbId kbId_;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    public boolean hasKbId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.KbId getKbId() {
+      return kbId_;
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder() {
+      return kbId_;
+    }
+
+    // required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;
+    public static final int KBDIGEST_FIELD_NUMBER = 2;
+    private edu.stanford.protege.reasoning.protocol.Messages.KbDigest kbDigest_;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+     */
+    public boolean hasKbDigest() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.KbDigest getKbDigest() {
+      return kbDigest_;
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.KbDigestOrBuilder getKbDigestOrBuilder() {
+      return kbDigest_;
+    }
+
+    // required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;
+    public static final int CLASSEXPRESSION_FIELD_NUMBER = 3;
+    private edu.stanford.protege.reasoning.protocol.Messages.ClassExpression classExpression_;
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+     */
+    public boolean hasClassExpression() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.ClassExpression getClassExpression() {
+      return classExpression_;
+    }
+    /**
+     * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.ClassExpressionOrBuilder getClassExpressionOrBuilder() {
+      return classExpression_;
+    }
+
+    // required bool present = 4;
+    public static final int PRESENT_FIELD_NUMBER = 4;
+    private boolean present_;
+    /**
+     * <code>required bool present = 4;</code>
+     */
+    public boolean hasPresent() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required bool present = 4;</code>
+     */
+    public boolean getPresent() {
+      return present_;
+    }
+
+    // optional .edu.stanford.protege.reasoning.protocol.Consistency consistency = 5;
+    public static final int CONSISTENCY_FIELD_NUMBER = 5;
+    private edu.stanford.protege.reasoning.protocol.Messages.Consistency consistency_;
+    /**
+     * <code>optional .edu.stanford.protege.reasoning.protocol.Consistency consistency = 5;</code>
+     */
+    public boolean hasConsistency() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional .edu.stanford.protege.reasoning.protocol.Consistency consistency = 5;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.Consistency getConsistency() {
+      return consistency_;
+    }
+
+    // optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;
+    public static final int EQUIVALENTCLASSES_FIELD_NUMBER = 6;
+    private edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode equivalentClasses_;
+    /**
+     * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+     */
+    public boolean hasEquivalentClasses() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode getEquivalentClasses() {
+      return equivalentClasses_;
+    }
+    /**
+     * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+     */
+    public edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNodeOrBuilder getEquivalentClassesOrBuilder() {
+      return equivalentClasses_;
+    }
+
+    private void initFields() {
+      kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+      kbDigest_ = edu.stanford.protege.reasoning.protocol.Messages.KbDigest.getDefaultInstance();
+      classExpression_ = edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.getDefaultInstance();
+      present_ = false;
+      consistency_ = edu.stanford.protege.reasoning.protocol.Messages.Consistency.CONSISTENT;
+      equivalentClasses_ = edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasKbId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasKbDigest()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasClassExpression()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPresent()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getKbId().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getKbDigest().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getClassExpression().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (hasEquivalentClasses()) {
+        if (!getEquivalentClasses().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, kbId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, kbDigest_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, classExpression_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBool(4, present_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeEnum(5, consistency_.getNumber());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(6, equivalentClasses_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, kbId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, kbDigest_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, classExpression_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, present_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, consistency_.getNumber());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, equivalentClasses_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code edu.stanford.protege.reasoning.protocol.GetEquivalentClassesResponseMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesResponseMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesResponseMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage.class, edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage.Builder.class);
+      }
+
+      // Construct using edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getKbIdFieldBuilder();
+          getKbDigestFieldBuilder();
+          getClassExpressionFieldBuilder();
+          getEquivalentClassesFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (kbIdBuilder_ == null) {
+          kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+        } else {
+          kbIdBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (kbDigestBuilder_ == null) {
+          kbDigest_ = edu.stanford.protege.reasoning.protocol.Messages.KbDigest.getDefaultInstance();
+        } else {
+          kbDigestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (classExpressionBuilder_ == null) {
+          classExpression_ = edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.getDefaultInstance();
+        } else {
+          classExpressionBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        present_ = false;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        consistency_ = edu.stanford.protege.reasoning.protocol.Messages.Consistency.CONSISTENT;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        if (equivalentClassesBuilder_ == null) {
+          equivalentClasses_ = edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode.getDefaultInstance();
+        } else {
+          equivalentClassesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesResponseMessage_descriptor;
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage getDefaultInstanceForType() {
+        return edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage.getDefaultInstance();
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage build() {
+        edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage buildPartial() {
+        edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage result = new edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (kbIdBuilder_ == null) {
+          result.kbId_ = kbId_;
+        } else {
+          result.kbId_ = kbIdBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (kbDigestBuilder_ == null) {
+          result.kbDigest_ = kbDigest_;
+        } else {
+          result.kbDigest_ = kbDigestBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (classExpressionBuilder_ == null) {
+          result.classExpression_ = classExpression_;
+        } else {
+          result.classExpression_ = classExpressionBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.present_ = present_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.consistency_ = consistency_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        if (equivalentClassesBuilder_ == null) {
+          result.equivalentClasses_ = equivalentClasses_;
+        } else {
+          result.equivalentClasses_ = equivalentClassesBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage) {
+          return mergeFrom((edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage other) {
+        if (other == edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage.getDefaultInstance()) return this;
+        if (other.hasKbId()) {
+          mergeKbId(other.getKbId());
+        }
+        if (other.hasKbDigest()) {
+          mergeKbDigest(other.getKbDigest());
+        }
+        if (other.hasClassExpression()) {
+          mergeClassExpression(other.getClassExpression());
+        }
+        if (other.hasPresent()) {
+          setPresent(other.getPresent());
+        }
+        if (other.hasConsistency()) {
+          setConsistency(other.getConsistency());
+        }
+        if (other.hasEquivalentClasses()) {
+          mergeEquivalentClasses(other.getEquivalentClasses());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasKbId()) {
+          
+          return false;
+        }
+        if (!hasKbDigest()) {
+          
+          return false;
+        }
+        if (!hasClassExpression()) {
+          
+          return false;
+        }
+        if (!hasPresent()) {
+          
+          return false;
+        }
+        if (!getKbId().isInitialized()) {
+          
+          return false;
+        }
+        if (!getKbDigest().isInitialized()) {
+          
+          return false;
+        }
+        if (!getClassExpression().isInitialized()) {
+          
+          return false;
+        }
+        if (hasEquivalentClasses()) {
+          if (!getEquivalentClasses().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (edu.stanford.protege.reasoning.protocol.Messages.GetEquivalentClassesResponseMessage) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;
+      private edu.stanford.protege.reasoning.protocol.Messages.KbId kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.KbId, edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder> kbIdBuilder_;
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public boolean hasKbId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbId getKbId() {
+        if (kbIdBuilder_ == null) {
+          return kbId_;
+        } else {
+          return kbIdBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder setKbId(edu.stanford.protege.reasoning.protocol.Messages.KbId value) {
+        if (kbIdBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          kbId_ = value;
+          onChanged();
+        } else {
+          kbIdBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder setKbId(
+          edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder builderForValue) {
+        if (kbIdBuilder_ == null) {
+          kbId_ = builderForValue.build();
+          onChanged();
+        } else {
+          kbIdBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder mergeKbId(edu.stanford.protege.reasoning.protocol.Messages.KbId value) {
+        if (kbIdBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              kbId_ != edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance()) {
+            kbId_ =
+              edu.stanford.protege.reasoning.protocol.Messages.KbId.newBuilder(kbId_).mergeFrom(value).buildPartial();
+          } else {
+            kbId_ = value;
+          }
+          onChanged();
+        } else {
+          kbIdBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public Builder clearKbId() {
+        if (kbIdBuilder_ == null) {
+          kbId_ = edu.stanford.protege.reasoning.protocol.Messages.KbId.getDefaultInstance();
+          onChanged();
+        } else {
+          kbIdBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder getKbIdBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getKbIdFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder getKbIdOrBuilder() {
+        if (kbIdBuilder_ != null) {
+          return kbIdBuilder_.getMessageOrBuilder();
+        } else {
+          return kbId_;
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbId kbId = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.KbId, edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder> 
+          getKbIdFieldBuilder() {
+        if (kbIdBuilder_ == null) {
+          kbIdBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              edu.stanford.protege.reasoning.protocol.Messages.KbId, edu.stanford.protege.reasoning.protocol.Messages.KbId.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbIdOrBuilder>(
+                  kbId_,
+                  getParentForChildren(),
+                  isClean());
+          kbId_ = null;
+        }
+        return kbIdBuilder_;
+      }
+
+      // required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;
+      private edu.stanford.protege.reasoning.protocol.Messages.KbDigest kbDigest_ = edu.stanford.protege.reasoning.protocol.Messages.KbDigest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.KbDigest, edu.stanford.protege.reasoning.protocol.Messages.KbDigest.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbDigestOrBuilder> kbDigestBuilder_;
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+       */
+      public boolean hasKbDigest() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbDigest getKbDigest() {
+        if (kbDigestBuilder_ == null) {
+          return kbDigest_;
+        } else {
+          return kbDigestBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+       */
+      public Builder setKbDigest(edu.stanford.protege.reasoning.protocol.Messages.KbDigest value) {
+        if (kbDigestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          kbDigest_ = value;
+          onChanged();
+        } else {
+          kbDigestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+       */
+      public Builder setKbDigest(
+          edu.stanford.protege.reasoning.protocol.Messages.KbDigest.Builder builderForValue) {
+        if (kbDigestBuilder_ == null) {
+          kbDigest_ = builderForValue.build();
+          onChanged();
+        } else {
+          kbDigestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+       */
+      public Builder mergeKbDigest(edu.stanford.protege.reasoning.protocol.Messages.KbDigest value) {
+        if (kbDigestBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              kbDigest_ != edu.stanford.protege.reasoning.protocol.Messages.KbDigest.getDefaultInstance()) {
+            kbDigest_ =
+              edu.stanford.protege.reasoning.protocol.Messages.KbDigest.newBuilder(kbDigest_).mergeFrom(value).buildPartial();
+          } else {
+            kbDigest_ = value;
+          }
+          onChanged();
+        } else {
+          kbDigestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+       */
+      public Builder clearKbDigest() {
+        if (kbDigestBuilder_ == null) {
+          kbDigest_ = edu.stanford.protege.reasoning.protocol.Messages.KbDigest.getDefaultInstance();
+          onChanged();
+        } else {
+          kbDigestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbDigest.Builder getKbDigestBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getKbDigestFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.KbDigestOrBuilder getKbDigestOrBuilder() {
+        if (kbDigestBuilder_ != null) {
+          return kbDigestBuilder_.getMessageOrBuilder();
+        } else {
+          return kbDigest_;
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.KbDigest kbDigest = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.KbDigest, edu.stanford.protege.reasoning.protocol.Messages.KbDigest.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbDigestOrBuilder> 
+          getKbDigestFieldBuilder() {
+        if (kbDigestBuilder_ == null) {
+          kbDigestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              edu.stanford.protege.reasoning.protocol.Messages.KbDigest, edu.stanford.protege.reasoning.protocol.Messages.KbDigest.Builder, edu.stanford.protege.reasoning.protocol.Messages.KbDigestOrBuilder>(
+                  kbDigest_,
+                  getParentForChildren(),
+                  isClean());
+          kbDigest_ = null;
+        }
+        return kbDigestBuilder_;
+      }
+
+      // required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;
+      private edu.stanford.protege.reasoning.protocol.Messages.ClassExpression classExpression_ = edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.ClassExpression, edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.Builder, edu.stanford.protege.reasoning.protocol.Messages.ClassExpressionOrBuilder> classExpressionBuilder_;
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+       */
+      public boolean hasClassExpression() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.ClassExpression getClassExpression() {
+        if (classExpressionBuilder_ == null) {
+          return classExpression_;
+        } else {
+          return classExpressionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+       */
+      public Builder setClassExpression(edu.stanford.protege.reasoning.protocol.Messages.ClassExpression value) {
+        if (classExpressionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          classExpression_ = value;
+          onChanged();
+        } else {
+          classExpressionBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+       */
+      public Builder setClassExpression(
+          edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.Builder builderForValue) {
+        if (classExpressionBuilder_ == null) {
+          classExpression_ = builderForValue.build();
+          onChanged();
+        } else {
+          classExpressionBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+       */
+      public Builder mergeClassExpression(edu.stanford.protege.reasoning.protocol.Messages.ClassExpression value) {
+        if (classExpressionBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              classExpression_ != edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.getDefaultInstance()) {
+            classExpression_ =
+              edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.newBuilder(classExpression_).mergeFrom(value).buildPartial();
+          } else {
+            classExpression_ = value;
+          }
+          onChanged();
+        } else {
+          classExpressionBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+       */
+      public Builder clearClassExpression() {
+        if (classExpressionBuilder_ == null) {
+          classExpression_ = edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.getDefaultInstance();
+          onChanged();
+        } else {
+          classExpressionBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.Builder getClassExpressionBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getClassExpressionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.ClassExpressionOrBuilder getClassExpressionOrBuilder() {
+        if (classExpressionBuilder_ != null) {
+          return classExpressionBuilder_.getMessageOrBuilder();
+        } else {
+          return classExpression_;
+        }
+      }
+      /**
+       * <code>required .edu.stanford.protege.reasoning.protocol.ClassExpression classExpression = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.ClassExpression, edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.Builder, edu.stanford.protege.reasoning.protocol.Messages.ClassExpressionOrBuilder> 
+          getClassExpressionFieldBuilder() {
+        if (classExpressionBuilder_ == null) {
+          classExpressionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              edu.stanford.protege.reasoning.protocol.Messages.ClassExpression, edu.stanford.protege.reasoning.protocol.Messages.ClassExpression.Builder, edu.stanford.protege.reasoning.protocol.Messages.ClassExpressionOrBuilder>(
+                  classExpression_,
+                  getParentForChildren(),
+                  isClean());
+          classExpression_ = null;
+        }
+        return classExpressionBuilder_;
+      }
+
+      // required bool present = 4;
+      private boolean present_ ;
+      /**
+       * <code>required bool present = 4;</code>
+       */
+      public boolean hasPresent() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required bool present = 4;</code>
+       */
+      public boolean getPresent() {
+        return present_;
+      }
+      /**
+       * <code>required bool present = 4;</code>
+       */
+      public Builder setPresent(boolean value) {
+        bitField0_ |= 0x00000008;
+        present_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool present = 4;</code>
+       */
+      public Builder clearPresent() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        present_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional .edu.stanford.protege.reasoning.protocol.Consistency consistency = 5;
+      private edu.stanford.protege.reasoning.protocol.Messages.Consistency consistency_ = edu.stanford.protege.reasoning.protocol.Messages.Consistency.CONSISTENT;
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.Consistency consistency = 5;</code>
+       */
+      public boolean hasConsistency() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.Consistency consistency = 5;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.Consistency getConsistency() {
+        return consistency_;
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.Consistency consistency = 5;</code>
+       */
+      public Builder setConsistency(edu.stanford.protege.reasoning.protocol.Messages.Consistency value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000010;
+        consistency_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.Consistency consistency = 5;</code>
+       */
+      public Builder clearConsistency() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        consistency_ = edu.stanford.protege.reasoning.protocol.Messages.Consistency.CONSISTENT;
+        onChanged();
+        return this;
+      }
+
+      // optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;
+      private edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode equivalentClasses_ = edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode, edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode.Builder, edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNodeOrBuilder> equivalentClassesBuilder_;
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+       */
+      public boolean hasEquivalentClasses() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode getEquivalentClasses() {
+        if (equivalentClassesBuilder_ == null) {
+          return equivalentClasses_;
+        } else {
+          return equivalentClassesBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+       */
+      public Builder setEquivalentClasses(edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode value) {
+        if (equivalentClassesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          equivalentClasses_ = value;
+          onChanged();
+        } else {
+          equivalentClassesBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+       */
+      public Builder setEquivalentClasses(
+          edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode.Builder builderForValue) {
+        if (equivalentClassesBuilder_ == null) {
+          equivalentClasses_ = builderForValue.build();
+          onChanged();
+        } else {
+          equivalentClassesBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+       */
+      public Builder mergeEquivalentClasses(edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode value) {
+        if (equivalentClassesBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              equivalentClasses_ != edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode.getDefaultInstance()) {
+            equivalentClasses_ =
+              edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode.newBuilder(equivalentClasses_).mergeFrom(value).buildPartial();
+          } else {
+            equivalentClasses_ = value;
+          }
+          onChanged();
+        } else {
+          equivalentClassesBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+       */
+      public Builder clearEquivalentClasses() {
+        if (equivalentClassesBuilder_ == null) {
+          equivalentClasses_ = edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode.getDefaultInstance();
+          onChanged();
+        } else {
+          equivalentClassesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode.Builder getEquivalentClassesBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getEquivalentClassesFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+       */
+      public edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNodeOrBuilder getEquivalentClassesOrBuilder() {
+        if (equivalentClassesBuilder_ != null) {
+          return equivalentClassesBuilder_.getMessageOrBuilder();
+        } else {
+          return equivalentClasses_;
+        }
+      }
+      /**
+       * <code>optional .edu.stanford.protege.reasoning.protocol.ClassHierarchyNode equivalentClasses = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode, edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode.Builder, edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNodeOrBuilder> 
+          getEquivalentClassesFieldBuilder() {
+        if (equivalentClassesBuilder_ == null) {
+          equivalentClassesBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode, edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNode.Builder, edu.stanford.protege.reasoning.protocol.Messages.ClassHierarchyNodeOrBuilder>(
+                  equivalentClasses_,
+                  getParentForChildren(),
+                  isClean());
+          equivalentClasses_ = null;
+        }
+        return equivalentClassesBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:edu.stanford.protege.reasoning.protocol.GetEquivalentClassesResponseMessage)
+    }
+
+    static {
+      defaultInstance = new GetEquivalentClassesResponseMessage(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:edu.stanford.protege.reasoning.protocol.GetEquivalentClassesResponseMessage)
+  }
+
   public interface GetInstancesActionMessageOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -23722,6 +25775,16 @@ public final class Messages {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_edu_stanford_protege_reasoning_protocol_GetSuperClassesResponseMessage_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesActionMessage_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesActionMessage_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesResponseMessage_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesResponseMessage_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_edu_stanford_protege_reasoning_protocol_GetInstancesActionMessage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -23857,59 +25920,75 @@ public final class Messages {
       "onsistency\030\005 \001(\01624.edu.stanford.protege.",
       "reasoning.protocol.Consistency\022Q\n\014superC" +
       "lasses\030\006 \003(\0132;.edu.stanford.protege.reas" +
-      "oning.protocol.ClassHierarchyNode\"\203\002\n\031Ge" +
-      "tInstancesActionMessage\022;\n\004kbId\030\001 \002(\0132-." +
+      "oning.protocol.ClassHierarchyNode\"\263\001\n!Ge" +
+      "tEquivalentClassesActionMessage\022;\n\004kbId\030" +
+      "\001 \002(\0132-.edu.stanford.protege.reasoning.p" +
+      "rotocol.KbId\022Q\n\017classExpression\030\002 \002(\01328." +
       "edu.stanford.protege.reasoning.protocol." +
-      "KbId\022P\n\016classExpresion\030\002 \002(\01328.edu.stanf" +
-      "ord.protege.reasoning.protocol.ClassExpr" +
-      "ession\022W\n\022hierarchyQueryType\030\003 \001(\0162;.edu" +
-      ".stanford.protege.reasoning.protocol.Hie" +
-      "rarchyQueryType\"\232\003\n\033GetInstancesResponse",
-      "Message\022;\n\004kbId\030\001 \002(\0132-.edu.stanford.pro" +
-      "tege.reasoning.protocol.KbId\022C\n\010kbDigest" +
-      "\030\002 \002(\01321.edu.stanford.protege.reasoning." +
-      "protocol.KbDigest\022Q\n\017classExpression\030\003 \002" +
-      "(\01328.edu.stanford.protege.reasoning.prot" +
-      "ocol.ClassExpression\022\017\n\007present\030\004 \002(\010\022I\n" +
-      "\013consistency\030\005 \001(\01624.edu.stanford.proteg" +
-      "e.reasoning.protocol.Consistency\022J\n\tinst" +
-      "ances\030\006 \003(\01327.edu.stanford.protege.reaso" +
-      "ning.protocol.IndividualName\"#\n\nChangeDa",
-      "ta\022\025\n\rserialization\030\001 \002(\014\"\236\001\n\031ApplyChang" +
-      "esActionMessage\022;\n\004kbId\030\001 \002(\0132-.edu.stan" +
-      "ford.protege.reasoning.protocol.KbId\022D\n\007" +
-      "changes\030\002 \003(\01323.edu.stanford.protege.rea" +
-      "soning.protocol.ChangeData\"\237\001\n\033ApplyChan" +
-      "gesResponseMessage\022;\n\004kbId\030\001 \002(\0132-.edu.s" +
-      "tanford.protege.reasoning.protocol.KbId\022" +
-      "C\n\010kbDigest\030\002 \002(\01321.edu.stanford.protege" +
-      ".reasoning.protocol.KbDigest\"\231\001\n\032Replace" +
-      "AxiomsActionMessage\022;\n\004kbId\030\001 \002(\0132-.edu.",
-      "stanford.protege.reasoning.protocol.KbId" +
-      "\022>\n\006axioms\030\002 \003(\0132..edu.stanford.protege." +
-      "reasoning.protocol.Axiom\"\240\001\n\034ReplaceAxio" +
-      "msResponseMessage\022;\n\004kbId\030\001 \002(\0132-.edu.st" +
-      "anford.protege.reasoning.protocol.KbId\022C" +
-      "\n\010kbDigest\030\002 \002(\01321.edu.stanford.protege." +
-      "reasoning.protocol.KbDigest\"\\\n\035GetReason" +
-      "erStateActionMessage\022;\n\004kbId\030\001 \002(\0132-.edu" +
-      ".stanford.protege.reasoning.protocol.KbI" +
-      "d\"\255\001\n\037GetReasonerStateResponseMessage\022;\n",
-      "\004kbId\030\001 \002(\0132-.edu.stanford.protege.reaso" +
-      "ning.protocol.KbId\022M\n\rreasonerState\030\002 \002(" +
-      "\01326.edu.stanford.protege.reasoning.proto" +
-      "col.ReasonerState\"\321\001\n\rReasonerState\022\024\n\014r" +
-      "easonerName\030\001 \002(\t\022K\n\020reasonerKbDigest\030\002 " +
-      "\002(\01321.edu.stanford.protege.reasoning.pro" +
-      "tocol.KbDigest\022\030\n\020stateDescription\030\003 \002(\t" +
-      "\022C\n\010progress\030\004 \001(\01321.edu.stanford.proteg" +
-      "e.reasoning.protocol.Progress\"X\n\010Progres" +
-      "s\022\023\n\013determinate\030\001 \002(\010\022\024\n\014initialValue\030\002",
-      " \001(\005\022\022\n\nfinalValue\030\003 \001(\005\022\r\n\005value\030\004 \001(\005*" +
-      ".\n\022HierarchyQueryType\022\n\n\006DIRECT\020\000\022\014\n\010IND" +
-      "IRECT\020\001*/\n\013Consistency\022\016\n\nCONSISTENT\020\000\022\020" +
-      "\n\014INCONSISTENT\020\001*7\n\025EntailmentCheckResul" +
-      "t\022\020\n\014NOT_ENTAILED\020\000\022\014\n\010ENTAILED\020\001"
+      "ClassExpression\"\256\003\n#GetEquivalentClasses" +
+      "ResponseMessage\022;\n\004kbId\030\001 \002(\0132-.edu.stan" +
+      "ford.protege.reasoning.protocol.KbId\022C\n\010",
+      "kbDigest\030\002 \002(\01321.edu.stanford.protege.re" +
+      "asoning.protocol.KbDigest\022Q\n\017classExpres" +
+      "sion\030\003 \002(\01328.edu.stanford.protege.reason" +
+      "ing.protocol.ClassExpression\022\017\n\007present\030" +
+      "\004 \002(\010\022I\n\013consistency\030\005 \001(\01624.edu.stanfor" +
+      "d.protege.reasoning.protocol.Consistency" +
+      "\022V\n\021equivalentClasses\030\006 \001(\0132;.edu.stanfo" +
+      "rd.protege.reasoning.protocol.ClassHiera" +
+      "rchyNode\"\203\002\n\031GetInstancesActionMessage\022;" +
+      "\n\004kbId\030\001 \002(\0132-.edu.stanford.protege.reas",
+      "oning.protocol.KbId\022P\n\016classExpresion\030\002 " +
+      "\002(\01328.edu.stanford.protege.reasoning.pro" +
+      "tocol.ClassExpression\022W\n\022hierarchyQueryT" +
+      "ype\030\003 \001(\0162;.edu.stanford.protege.reasoni" +
+      "ng.protocol.HierarchyQueryType\"\232\003\n\033GetIn" +
+      "stancesResponseMessage\022;\n\004kbId\030\001 \002(\0132-.e" +
+      "du.stanford.protege.reasoning.protocol.K" +
+      "bId\022C\n\010kbDigest\030\002 \002(\01321.edu.stanford.pro" +
+      "tege.reasoning.protocol.KbDigest\022Q\n\017clas" +
+      "sExpression\030\003 \002(\01328.edu.stanford.protege",
+      ".reasoning.protocol.ClassExpression\022\017\n\007p" +
+      "resent\030\004 \002(\010\022I\n\013consistency\030\005 \001(\01624.edu." +
+      "stanford.protege.reasoning.protocol.Cons" +
+      "istency\022J\n\tinstances\030\006 \003(\01327.edu.stanfor" +
+      "d.protege.reasoning.protocol.IndividualN" +
+      "ame\"#\n\nChangeData\022\025\n\rserialization\030\001 \002(\014" +
+      "\"\236\001\n\031ApplyChangesActionMessage\022;\n\004kbId\030\001" +
+      " \002(\0132-.edu.stanford.protege.reasoning.pr" +
+      "otocol.KbId\022D\n\007changes\030\002 \003(\01323.edu.stanf" +
+      "ord.protege.reasoning.protocol.ChangeDat",
+      "a\"\237\001\n\033ApplyChangesResponseMessage\022;\n\004kbI" +
+      "d\030\001 \002(\0132-.edu.stanford.protege.reasoning" +
+      ".protocol.KbId\022C\n\010kbDigest\030\002 \002(\01321.edu.s" +
+      "tanford.protege.reasoning.protocol.KbDig" +
+      "est\"\231\001\n\032ReplaceAxiomsActionMessage\022;\n\004kb" +
+      "Id\030\001 \002(\0132-.edu.stanford.protege.reasonin" +
+      "g.protocol.KbId\022>\n\006axioms\030\002 \003(\0132..edu.st" +
+      "anford.protege.reasoning.protocol.Axiom\"" +
+      "\240\001\n\034ReplaceAxiomsResponseMessage\022;\n\004kbId" +
+      "\030\001 \002(\0132-.edu.stanford.protege.reasoning.",
+      "protocol.KbId\022C\n\010kbDigest\030\002 \002(\01321.edu.st" +
+      "anford.protege.reasoning.protocol.KbDige" +
+      "st\"\\\n\035GetReasonerStateActionMessage\022;\n\004k" +
+      "bId\030\001 \002(\0132-.edu.stanford.protege.reasoni" +
+      "ng.protocol.KbId\"\255\001\n\037GetReasonerStateRes" +
+      "ponseMessage\022;\n\004kbId\030\001 \002(\0132-.edu.stanfor" +
+      "d.protege.reasoning.protocol.KbId\022M\n\rrea" +
+      "sonerState\030\002 \002(\01326.edu.stanford.protege." +
+      "reasoning.protocol.ReasonerState\"\321\001\n\rRea" +
+      "sonerState\022\024\n\014reasonerName\030\001 \002(\t\022K\n\020reas",
+      "onerKbDigest\030\002 \002(\01321.edu.stanford.proteg" +
+      "e.reasoning.protocol.KbDigest\022\030\n\020stateDe" +
+      "scription\030\003 \002(\t\022C\n\010progress\030\004 \001(\01321.edu." +
+      "stanford.protege.reasoning.protocol.Prog" +
+      "ress\"X\n\010Progress\022\023\n\013determinate\030\001 \002(\010\022\024\n" +
+      "\014initialValue\030\002 \001(\005\022\022\n\nfinalValue\030\003 \001(\005\022" +
+      "\r\n\005value\030\004 \001(\005*.\n\022HierarchyQueryType\022\n\n\006" +
+      "DIRECT\020\000\022\014\n\010INDIRECT\020\001*/\n\013Consistency\022\016\n" +
+      "\nCONSISTENT\020\000\022\020\n\014INCONSISTENT\020\001*7\n\025Entai" +
+      "lmentCheckResult\022\020\n\014NOT_ENTAILED\020\000\022\014\n\010EN",
+      "TAILED\020\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -24042,68 +26121,80 @@ public final class Messages {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_GetSuperClassesResponseMessage_descriptor,
               new java.lang.String[] { "KbId", "KbDigest", "ClassExpression", "Present", "Consistency", "SuperClasses", });
-          internal_static_edu_stanford_protege_reasoning_protocol_GetInstancesActionMessage_descriptor =
+          internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesActionMessage_descriptor =
             getDescriptor().getMessageTypes().get(21);
+          internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesActionMessage_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesActionMessage_descriptor,
+              new java.lang.String[] { "KbId", "ClassExpression", });
+          internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesResponseMessage_descriptor =
+            getDescriptor().getMessageTypes().get(22);
+          internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesResponseMessage_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_edu_stanford_protege_reasoning_protocol_GetEquivalentClassesResponseMessage_descriptor,
+              new java.lang.String[] { "KbId", "KbDigest", "ClassExpression", "Present", "Consistency", "EquivalentClasses", });
+          internal_static_edu_stanford_protege_reasoning_protocol_GetInstancesActionMessage_descriptor =
+            getDescriptor().getMessageTypes().get(23);
           internal_static_edu_stanford_protege_reasoning_protocol_GetInstancesActionMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_GetInstancesActionMessage_descriptor,
               new java.lang.String[] { "KbId", "ClassExpresion", "HierarchyQueryType", });
           internal_static_edu_stanford_protege_reasoning_protocol_GetInstancesResponseMessage_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_edu_stanford_protege_reasoning_protocol_GetInstancesResponseMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_GetInstancesResponseMessage_descriptor,
               new java.lang.String[] { "KbId", "KbDigest", "ClassExpression", "Present", "Consistency", "Instances", });
           internal_static_edu_stanford_protege_reasoning_protocol_ChangeData_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_edu_stanford_protege_reasoning_protocol_ChangeData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_ChangeData_descriptor,
               new java.lang.String[] { "Serialization", });
           internal_static_edu_stanford_protege_reasoning_protocol_ApplyChangesActionMessage_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_edu_stanford_protege_reasoning_protocol_ApplyChangesActionMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_ApplyChangesActionMessage_descriptor,
               new java.lang.String[] { "KbId", "Changes", });
           internal_static_edu_stanford_protege_reasoning_protocol_ApplyChangesResponseMessage_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_edu_stanford_protege_reasoning_protocol_ApplyChangesResponseMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_ApplyChangesResponseMessage_descriptor,
               new java.lang.String[] { "KbId", "KbDigest", });
           internal_static_edu_stanford_protege_reasoning_protocol_ReplaceAxiomsActionMessage_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_edu_stanford_protege_reasoning_protocol_ReplaceAxiomsActionMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_ReplaceAxiomsActionMessage_descriptor,
               new java.lang.String[] { "KbId", "Axioms", });
           internal_static_edu_stanford_protege_reasoning_protocol_ReplaceAxiomsResponseMessage_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_edu_stanford_protege_reasoning_protocol_ReplaceAxiomsResponseMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_ReplaceAxiomsResponseMessage_descriptor,
               new java.lang.String[] { "KbId", "KbDigest", });
           internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateActionMessage_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateActionMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateActionMessage_descriptor,
               new java.lang.String[] { "KbId", });
           internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateResponseMessage_descriptor =
-            getDescriptor().getMessageTypes().get(29);
+            getDescriptor().getMessageTypes().get(31);
           internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateResponseMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_GetReasonerStateResponseMessage_descriptor,
               new java.lang.String[] { "KbId", "ReasonerState", });
           internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_descriptor =
-            getDescriptor().getMessageTypes().get(30);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_ReasonerState_descriptor,
               new java.lang.String[] { "ReasonerName", "ReasonerKbDigest", "StateDescription", "Progress", });
           internal_static_edu_stanford_protege_reasoning_protocol_Progress_descriptor =
-            getDescriptor().getMessageTypes().get(31);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_edu_stanford_protege_reasoning_protocol_Progress_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_edu_stanford_protege_reasoning_protocol_Progress_descriptor,
