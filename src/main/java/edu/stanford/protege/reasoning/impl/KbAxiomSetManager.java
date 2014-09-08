@@ -1,13 +1,8 @@
 package edu.stanford.protege.reasoning.impl;
 
 import com.google.common.base.Optional;
-import com.google.common.base.Stopwatch;
 import com.google.common.collect.Sets;
 import edu.stanford.protege.reasoning.KbDigest;
-import org.semanticweb.binaryowl.lookup.IRILookupTable;
-import org.semanticweb.binaryowl.lookup.LookupTable;
-import org.semanticweb.binaryowl.owlobject.OWLObjectBinaryType;
-import org.semanticweb.binaryowl.stream.BinaryOWLOutputStream;
 import org.semanticweb.owlapi.change.*;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -15,9 +10,7 @@ import uk.ac.manchester.cs.owl.owlapi.EmptyInMemOWLOntologyFactory;
 import uk.ac.manchester.cs.owl.owlapi.OWLDataFactoryImpl;
 import uk.ac.manchester.cs.owl.owlapi.OWLOntologyManagerImpl;
 
-import java.io.*;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -154,34 +147,4 @@ public class KbAxiomSetManager {
     }
 
 
-    private static class DigestManager {
-
-        private final ReadWriteLock lock = new ReentrantReadWriteLock();
-
-        private final Lock readLock = lock.readLock();
-
-        private final Lock writeLock = lock.writeLock();
-
-        private KbDigest digest = KbDigest.emptyDigest();
-
-        public KbDigest getDigest() {
-            try {
-                readLock.lock();
-                return digest;
-            } finally {
-                readLock.unlock();
-            }
-        }
-
-        public void updateDigest(Collection<OWLAxiom> axioms) {
-            try {
-                writeLock.lock();
-                List<OWLAxiom> sortedAxioms = new ArrayList<>(axioms);
-                Collections.sort(sortedAxioms);
-                this.digest = KbDigest.getDigest(axioms);
-            } finally {
-                writeLock.unlock();
-            }
-        }
-    }
 }
