@@ -81,6 +81,7 @@ public class KbReasonerImpl implements KbReasoner {
         handlerRegistry.registerHandler(ReplaceAxiomsAction.TYPE, new ReplaceAxiomsHandlerImpl());
         handlerRegistry.registerHandler(GetSuperClassesAction.TYPE, new GetSuperClassesActionHandlerImpl());
         handlerRegistry.registerHandler(GetReasonerStateAction.TYPE, new GetReasonerStateActionHandlerImpl());
+        handlerRegistry.registerHandler(GetEquivalentClassesAction.TYPE, new GetEquivalentClassesActionHandlerImpl());
 
     }
 
@@ -210,6 +211,21 @@ public class KbReasonerImpl implements KbReasoner {
                             )
 
                             );
+                        }
+                    }
+            );
+        }
+    }
+
+    private class GetEquivalentClassesActionHandlerImpl implements GetEquivalentClassesActionHandler {
+        @Override
+        public ListenableFuture<GetEquivalentClassesResponse> handleAction(final GetEquivalentClassesAction action) {
+            return queryExecutorService.submit(
+                    new Callable<GetEquivalentClassesResponse>() {
+                        @Override
+                        public GetEquivalentClassesResponse call() throws Exception {
+                            Reasoner r = getReasoner();
+                            return new GetEquivalentClassesResponse(kbId, r.getKbDigest(), action.getClassExpression(), r.getEquivalentClasses(action.getClassExpression()));
                         }
                     }
             );
