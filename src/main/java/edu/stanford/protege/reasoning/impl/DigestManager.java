@@ -47,7 +47,13 @@ class DigestManager {
     public void updateDigest(Collection<OWLAxiom> axioms) {
         try {
             writeLock.lock();
-            TreeSet<OWLAxiom> sortedAxioms = Sets.newTreeSet(checkNotNull(axioms));
+            TreeSet<OWLAxiom> sortedAxioms;
+            if (!(axioms instanceof TreeSet)) {
+                sortedAxioms = Sets.newTreeSet(checkNotNull(axioms));
+            }
+            else {
+                sortedAxioms = (TreeSet<OWLAxiom>) axioms;
+            }
             this.digest = KbDigest.getDigest(sortedAxioms);
         } finally {
             writeLock.unlock();

@@ -8,6 +8,7 @@ import com.google.inject.assistedinject.Assisted;
 import edu.stanford.protege.reasoning.*;
 import edu.stanford.protege.reasoning.action.*;
 import org.semanticweb.owlapi.change.AxiomChangeData;
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.reasoner.*;
 
 import java.util.List;
@@ -241,7 +242,7 @@ public class KbReasonerImpl implements KbReasoner {
                         public GetKbDigestResponse call() throws Exception {
                             try {
                                 readLock.lock();
-                                return new GetKbDigestResponse(kbId, reasoner.get().getKbDigest());
+                                return new GetKbDigestResponse(kbId, getReasoner().getKbDigest());
                             } finally {
                                 readLock.unlock();
                             }
@@ -259,7 +260,7 @@ public class KbReasonerImpl implements KbReasoner {
                     new KbUpdateOperation<ReplaceAxiomsResponse>() {
                         @Override
                         public Optional<VersionedOntology> performUpdate(KbAxiomSetManager axiomSetManager) {
-                            return axiomSetManager.replaceAxioms(action.getAxioms().asList());
+                            return axiomSetManager.replaceAxioms(action.getAxioms());
                         }
 
                         @Override
@@ -330,7 +331,7 @@ public class KbReasonerImpl implements KbReasoner {
                 );
             }
             else {
-                return Futures.immediateFuture(updateOperation.createResponse(kbId, reasoner.get().getKbDigest()));
+                return Futures.immediateFuture(updateOperation.createResponse(kbId, getReasoner().getKbDigest()));
             }
         } catch (Throwable t) {
             return wrapException(t);

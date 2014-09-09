@@ -22,7 +22,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class KbAxiomSetManager {
 
-    private Set<OWLAxiom> axioms = Sets.newTreeSet();
+    private final Set<OWLAxiom> axioms = Sets.newTreeSet();
 
     private final DigestManager digestManager = new DigestManager();
 
