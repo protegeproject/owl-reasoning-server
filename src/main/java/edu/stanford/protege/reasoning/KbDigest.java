@@ -49,7 +49,7 @@ public class KbDigest {
      * @param axioms The axioms. Not {@code null}.
      * @return The KbDigest of the axioms.  Not {@code null}.
      */
-    public static KbDigest getDigest(Iterable<OWLAxiom> axioms) {
+    public static KbDigest getDigest(Iterable<? extends OWLAxiom> axioms) {
         checkNotNull(axioms);
         try {
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
