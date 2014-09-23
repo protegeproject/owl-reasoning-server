@@ -5,9 +5,11 @@ import com.google.protobuf.ByteString;
 import org.semanticweb.binaryowl.BinaryOWLVersion;
 import org.semanticweb.binaryowl.owlobject.OWLObjectBinaryType;
 import org.semanticweb.binaryowl.stream.BinaryOWLOutputStream;
+import org.semanticweb.binaryowl.stream.TreeSetTransformer;
 import org.semanticweb.owlapi.model.OWLAxiom;
 
 import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -24,7 +26,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class KbDigest {
 
+    private static final int INITIAL_BUFFER_SIZE = 20 * 1024 * 1204;
+
     private static final String DIGEST_TYPE = "SHA1";
+
+    final private static char[] hexArray = "0123456789abcdef".toCharArray();
 
     private static final KbDigest EMPTY_DIGEST = getDigest(Collections.<OWLAxiom>emptyList());
 
@@ -52,13 +58,15 @@ public class KbDigest {
     public static KbDigest getDigest(Iterable<? extends OWLAxiom> axioms) {
         checkNotNull(axioms);
         try {
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            BinaryOWLOutputStream boos = new BinaryOWLOutputStream(bos, BinaryOWLVersion.getVersion(1));
+            ByteArrayOutputStream bos = new ByteArrayOutputStream(INITIAL_BUFFER_SIZE);
+            BinaryOWLOutputStream boos = new BinaryOWLOutputStream(new DataOutputStream(bos), new TreeSetTransformer());
             for (OWLAxiom ax : axioms) {
                 OWLObjectBinaryType.write(ax, boos);
             }
+            boos.flush();
             MessageDigest sha1 = MessageDigest.getInstance(DIGEST_TYPE);
-            sha1.update(bos.toByteArray());
+            byte[] input = bos.toByteArray();
+            sha1.update(input);
             byte[] digest = sha1.digest();
             return new KbDigest(digest);
         } catch (IOException | NoSuchAlgorithmException e) {
@@ -118,8 +126,6 @@ public class KbDigest {
 
 
     // Pinched from http://stackoverflow.com/questions/9655181/convert-from-byte-array-to-hex-string-in-java
-
-    final private static char[] hexArray = "0123456789abcdef".toCharArray();
 
     private static String toHex(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 2];
