@@ -30,7 +30,7 @@
         <dependency>
             <groupId>net.sourceforge.owlapi</groupId>
             <artifactId>owlapi-distribution</artifactId>
-            <version>3.5.0</version>
+            <version>3.5.1</version>
         </dependency>
 
         <dependency>
@@ -50,7 +50,7 @@
             <artifactId>guice-assistedinject</artifactId>
             <version>4.0-beta4</version>
         </dependency>
-        
+
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
             <artifactId>guice-multibindings</artifactId>
