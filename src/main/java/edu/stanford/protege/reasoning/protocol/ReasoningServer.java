@@ -3,10 +3,7 @@ package edu.stanford.protege.reasoning.protocol;
 import com.google.inject.Inject;
 import edu.stanford.protege.reasoning.ReasoningService;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -43,6 +40,7 @@ public class ReasoningServer {
                 .localAddress(socketAddress)
                 .group(eventLoopGroup)
                 .channel(NioServerSocketChannel.class)
+                .option(ChannelOption.SO_KEEPALIVE, true)
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {

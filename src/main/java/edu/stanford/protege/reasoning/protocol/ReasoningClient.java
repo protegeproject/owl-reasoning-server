@@ -4,15 +4,13 @@ import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
 import edu.stanford.protege.reasoning.ReasoningService;
 import edu.stanford.protege.reasoning.Response;
 import edu.stanford.protege.reasoning.Action;
 import edu.stanford.protege.reasoning.action.ActionHandler;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -37,12 +35,16 @@ public class ReasoningClient implements ReasoningService {
     private Map<Integer, SettableFuture<? extends Response>> id2FutureMap = Maps.newConcurrentMap();
 
     private final AtomicInteger atomicInteger = new AtomicInteger();
+
     private ReasoningClientHandler.Id2FutureMapper id2FutureMapper;
+
+    private final InetSocketAddress inetSocketAddress;
 
 
     @Inject
-    public ReasoningClient(ReasoningServerCodecRegistry codecRegistry) {
+    public ReasoningClient(@Assisted InetSocketAddress inetSocketAddress, ReasoningServerCodecRegistry codecRegistry) {
         this.codecRegistry = codecRegistry;
+        this.inetSocketAddress = inetSocketAddress;
         this.eventLoopGroup = new NioEventLoopGroup();
         id2FutureMapper = new ReasoningClientHandler.Id2FutureMapper() {
             @Override
@@ -53,41 +55,65 @@ public class ReasoningClient implements ReasoningService {
         };
     }
 
-    public void connect(InetSocketAddress inetSocketAddress) throws Exception {
-        Bootstrap bootstrap = new Bootstrap();
-        bootstrap.group(eventLoopGroup)
-                .channel(NioSocketChannel.class)
-                .remoteAddress(inetSocketAddress)
-                .handler(new ChannelInitializer<SocketChannel>() {
-                    @Override
-                    protected void initChannel(SocketChannel socketChannel) throws Exception {
-                        ChannelPipeline pipeline = socketChannel.pipeline();
-//                        pipeline.addLast(new LoggingHandler(LogLevel.INFO));
-                        pipeline.addLast(new LengthFieldPrepender(4));
-                        pipeline.addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
-                        pipeline.addLast(new ReasoningServerErrorDecoder());
-                        pipeline.addLast(new IdentifiableActionEncoder(codecRegistry));
-                        pipeline.addLast(new IdentifiableResponseDecoder(codecRegistry));
-                        pipeline.addLast(new ReasoningClientErrorHandler(id2FutureMapper));
-                        pipeline.addLast(new ReasoningClientHandler(id2FutureMapper));
-                    }
-                });
-        channelFuture = bootstrap.connect();
-        channelFuture.sync();
+    public synchronized void connect() {
+        try {
+            final Bootstrap bootstrap = new Bootstrap();
+            bootstrap.group(eventLoopGroup)
+                    .channel(NioSocketChannel.class)
+                    .remoteAddress(inetSocketAddress)
+                    .option(ChannelOption.SO_KEEPALIVE, true)
+                    .handler(new ChannelInitializer<SocketChannel>() {
+                        @Override
+                        protected void initChannel(SocketChannel socketChannel) throws Exception {
+                            ChannelPipeline pipeline = socketChannel.pipeline();
+                            pipeline.addLast(new LengthFieldPrepender(4));
+                            pipeline.addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
+                            pipeline.addLast(new ReasoningServerErrorDecoder());
+                            pipeline.addLast(new IdentifiableActionEncoder(codecRegistry));
+                            pipeline.addLast(new IdentifiableResponseDecoder(codecRegistry));
+                            pipeline.addLast(new ReasoningClientErrorHandler(id2FutureMapper));
+                            pipeline.addLast(new ReasoningClientHandler(id2FutureMapper));
+                        }
+                    });
+            final ChannelFuture future = bootstrap.connect();
+            future.sync();
+            channelFuture = future;
+            final ChannelFuture closeFuture = channelFuture.channel().closeFuture();
+            closeFuture.addListener(new ChannelFutureListener() {
+                @Override
+                public void operationComplete(ChannelFuture future) throws Exception {
+                    channelFuture = null;
+                }
+            });
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void disconnect() throws Exception {
+    private synchronized void connectIfNecessary() {
+        if(channelFuture == null) {
+            connect();
+        }
+    }
+
+    public void disconnect() throws InterruptedException {
+        if(channelFuture == null) {
+            return;
+        }
         channelFuture.channel().close().sync();
     }
 
     @Override
     public <A extends Action<R, H>, R extends Response, H extends ActionHandler> ListenableFuture<R> execute(A action) {
+        connectIfNecessary();
         Integer id = atomicInteger.getAndIncrement();
-        SettableFuture<R> future = SettableFuture.create();
-        id2FutureMap.put(id, future);
-        channelFuture.channel().writeAndFlush(new IdentifiableAction(id, action));
-        return future;
+            SettableFuture<R> future = SettableFuture.create();
+            id2FutureMap.put(id, future);
+            channelFuture.channel().writeAndFlush(new IdentifiableAction(id, action));
+            return future;
     }
+
+
 
     @Override
     public void shutDown() {
