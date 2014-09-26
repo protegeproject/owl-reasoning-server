@@ -5,12 +5,8 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import edu.stanford.protege.reasoning.ReasoningService;
 import edu.stanford.protege.reasoning.Response;
-import edu.stanford.protege.reasoning.action.GetReasonerStateResponse;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 29/08/2014
@@ -36,9 +32,9 @@ public class ReasoningServerHandler extends SimpleChannelInboundHandler<Identifi
 
             @Override
             public void onFailure(Throwable t) {
-                t.printStackTrace();
+                System.err.println("An error occurred: " + t.getMessage());
                 String message = t.getMessage();
-                ctx.writeAndFlush(new ReasoningServerError(msg.getId(), message == null ? "" : message));
+                ctx.writeAndFlush(new ReasoningServerInternalError(msg.getId(), message == null ? "" : message));
             }
         });
     }

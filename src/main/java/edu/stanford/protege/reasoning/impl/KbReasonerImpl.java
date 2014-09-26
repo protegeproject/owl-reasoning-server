@@ -5,10 +5,10 @@ import com.google.common.base.Stopwatch;
 import com.google.common.util.concurrent.*;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
+import com.google.inject.name.Named;
 import edu.stanford.protege.reasoning.*;
 import edu.stanford.protege.reasoning.action.*;
 import org.semanticweb.owlapi.change.AxiomChangeData;
-import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.reasoner.*;
 
 import java.util.List;
@@ -23,6 +23,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 15/04/2014
  */
 public class KbReasonerImpl implements KbReasoner {
+
+    public static final String TIMEOUT_VARIABLE_NAME = "timeOut";
 
     private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
@@ -51,13 +53,16 @@ public class KbReasonerImpl implements KbReasoner {
 
     private final AtomicInteger clock = new AtomicInteger();
 
+    private final long timeOut;
+
 
     @Inject
     public KbReasonerImpl(
             @Assisted KbId kbId,
             HandlerRegistry handlerRegistry,
             KbAxiomSetManager axiomSetManager,
-            OWLReasonerFactorySelector reasonerFactorySelector) {
+            OWLReasonerFactorySelector reasonerFactorySelector,
+            @Named(TIMEOUT_VARIABLE_NAME) long timeOut) {
         this.kbId = kbId;
         this.handlerRegistry = handlerRegistry;
         this.kbAxiomSetManager = axiomSetManager;
@@ -71,6 +76,7 @@ public class KbReasonerImpl implements KbReasoner {
                         "None", KbDigest.emptyDigest(), "Idle", Optional.<Progress>absent()
                 )
         );
+        this.timeOut = timeOut;
 
         // Seems bad... doing work in constructor
         handlerRegistry.registerHandler(ApplyChangesAction.TYPE, new ApplyChangesActionHandlerImpl());
@@ -101,11 +107,11 @@ public class KbReasonerImpl implements KbReasoner {
         if (t instanceof ExecutionException) {
             return wrapException(t.getCause());
         }
-        if (t instanceof TimeoutException) {
+        if (t instanceof TimeOutException) {
             return Futures.immediateFailedFuture(t);
         }
         else {
-            return Futures.immediateFailedFuture(new InternalReasonerException(t));
+            return Futures.immediateFailedFuture(new InternalReasonerErrorException(t));
         }
     }
 
@@ -326,7 +332,8 @@ public class KbReasonerImpl implements KbReasoner {
                                         processingState.set(state);
                                     }
                                 },
-                                updateOperation
+                                updateOperation,
+                                timeOut
                         )
                 );
             }
@@ -366,6 +373,8 @@ public class KbReasonerImpl implements KbReasoner {
 
         private final KbUpdateOperation<R> updateOperation;
 
+        private long timeOut;
+
 
         private ReasonerUpdater(
                 KbId kbId,
@@ -373,7 +382,8 @@ public class KbReasonerImpl implements KbReasoner {
                 OWLReasonerFactory reasonerFactory,
                 VersionedOntology versionedOntology,
                 ReasonerUpdaterCallback callback,
-                KbUpdateOperation<R> updateOperation) {
+                KbUpdateOperation<R> updateOperation,
+                long timeOut) {
             this.kbId = kbId;
             this.clockValue = clock.incrementAndGet();
             this.clock = clock;
@@ -381,54 +391,60 @@ public class KbReasonerImpl implements KbReasoner {
             this.versionedOntology = versionedOntology;
             this.callback = callback;
             this.updateOperation = updateOperation;
+            this.timeOut = timeOut;
         }
 
         @Override
         public R call() throws Exception {
-            if (clock.get() != clockValue) {
-                return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
-            }
-            callback.processing(
-                    new ReasonerState(
-                            reasonerFactory.getReasonerName(),
-                            versionedOntology.getKbDigest(),
-                            "Loading reasoner",
-                            Optional.of(Progress.indeterminate())
-                    )
-            );
-            // Dynamically select best reasoner factory?
-            Stopwatch stopwatch = Stopwatch.createStarted();
-            SimpleConfiguration configuration = new SimpleConfiguration(
-                    new KbReasonerProgressMonitor(reasonerFactory.getReasonerName(), versionedOntology.getKbDigest()) {
-                        @Override
-                        public void stateChanged(ReasonerState processingState) {
-                            callback.processing(processingState);
+            try {
+                if (clock.get() != clockValue) {
+                    return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
+                }
+                callback.processing(
+                        new ReasonerState(
+                                reasonerFactory.getReasonerName(),
+                                versionedOntology.getKbDigest(),
+                                "Loading reasoner",
+                                Optional.of(Progress.indeterminate())
+                        )
+                );
+                // Dynamically select best reasoner factory?
+                Stopwatch stopwatch = Stopwatch.createStarted();
+                SimpleConfiguration configuration = new SimpleConfiguration(
+                        new KbReasonerProgressMonitor(reasonerFactory.getReasonerName(), versionedOntology.getKbDigest()) {
+                            @Override
+                            public void stateChanged(ReasonerState processingState) {
+                                callback.processing(processingState);
+                            }
                         }
-                    }
-            );
-            OWLReasoner owlReasoner = reasonerFactory.createNonBufferingReasoner(
-                    versionedOntology.getOntology(), configuration
-            );
-            boolean consistent = owlReasoner.isConsistent();
-            if (consistent) {
-                owlReasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY, InferenceType.CLASS_ASSERTIONS);
+                , FreshEntityPolicy.ALLOW, timeOut, IndividualNodeSetPolicy.BY_NAME);
+                OWLReasoner owlReasoner = reasonerFactory.createNonBufferingReasoner(
+                        versionedOntology.getOntology(), configuration
+                );
+                boolean consistent = owlReasoner.isConsistent();
+                if (consistent) {
+                    owlReasoner.precomputeInferences(InferenceType.CLASS_HIERARCHY, InferenceType.CLASS_ASSERTIONS);
+                }
+                stopwatch.stop();
+                Reasoner reasoner = new ReasonerImpl(versionedOntology.getKbDigest(), owlReasoner);
+                callback.reasonerReady(
+                        reasoner, new ReasoningStats(
+                        reasonerFactory.getReasonerName(), stopwatch.elapsed(TimeUnit.MILLISECONDS)
+                )
+                );
+                callback.processing(
+                        new ReasonerState(
+                                reasonerFactory.getReasonerName(),
+                                reasoner.getKbDigest(),
+                                "Ready",
+                                Optional.<Progress>absent()
+                        )
+                );
+                return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
+            } catch (TimeOutException e) {
+                callback.processing(new ReasonerState(reasonerFactory.getReasonerName(), versionedOntology.getKbDigest(), "Reasoner timed out", Optional.<Progress>absent()));
+                throw e;
             }
-            stopwatch.stop();
-            Reasoner reasoner = new ReasonerImpl(versionedOntology.getKbDigest(), owlReasoner);
-            callback.reasonerReady(
-                    reasoner, new ReasoningStats(
-                    reasonerFactory.getReasonerName(), stopwatch.elapsed(TimeUnit.MILLISECONDS)
-            )
-            );
-            callback.processing(
-                    new ReasonerState(
-                            reasonerFactory.getReasonerName(),
-                            reasoner.getKbDigest(),
-                            "Ready",
-                            Optional.<Progress>absent()
-                    )
-            );
-            return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
         }
 
         public static interface ReasonerUpdaterCallback {

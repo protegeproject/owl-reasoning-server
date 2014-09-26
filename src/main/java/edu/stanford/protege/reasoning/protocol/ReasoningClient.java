@@ -68,10 +68,10 @@ public class ReasoningClient implements ReasoningService {
                             ChannelPipeline pipeline = socketChannel.pipeline();
                             pipeline.addLast(new LengthFieldPrepender(4));
                             pipeline.addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
-                            pipeline.addLast(new ReasoningServerErrorDecoder());
+                            pipeline.addLast(new ReasoningServerInternalErrorDecoder());
                             pipeline.addLast(new IdentifiableActionEncoder(codecRegistry));
                             pipeline.addLast(new IdentifiableResponseDecoder(codecRegistry));
-                            pipeline.addLast(new ReasoningClientErrorHandler(id2FutureMapper));
+                            pipeline.addLast(new ReasoningClientInternalErrorHandler(id2FutureMapper));
                             pipeline.addLast(new ReasoningClientHandler(id2FutureMapper));
                         }
                     });

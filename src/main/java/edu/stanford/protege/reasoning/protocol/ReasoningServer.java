@@ -9,8 +9,6 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.LengthFieldPrepender;
-import io.netty.handler.logging.LogLevel;
-import io.netty.handler.logging.LoggingHandler;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 
@@ -48,7 +46,7 @@ public class ReasoningServer {
 //                        pipeline.addLast(new LoggingHandler(LogLevel.INFO));
                         pipeline.addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
                         pipeline.addLast(new LengthFieldPrepender(4));
-                        pipeline.addLast(new ReasoningServerErrorEncoder());
+                        pipeline.addLast(new ReasoningServerInternalErrorEncoder());
                         pipeline.addLast(new IdentifiableActionDecoder(codecRegistry));
                         pipeline.addLast(new IdentifiableResponseEncoder(codecRegistry));
                         pipeline.addLast(new ReasoningServerHandler(reasoningService));

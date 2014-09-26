@@ -64,6 +64,12 @@
         </dependency>
 
         <dependency>
+            <groupId>net.sourceforge.owlapi</groupId>
+            <artifactId>jfact</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.semanticweb.elk</groupId>
             <artifactId>elk-distribution</artifactId>
             <version>0.4.1</version>

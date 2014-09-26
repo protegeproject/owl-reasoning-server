@@ -128,7 +128,7 @@ public abstract class Progress {
         @Override
         public String toString() {
             return Objects.toStringHelper("Progress")
-                          .add("value", getValue() + "(" + getPercentageValue() + ")")
+                          .add("value", getValue() + " (" + getPercentageValue() + "%)")
                           .add("from", getInitialValue())
                           .add("to", getFinalValue())
                           .toString();
