@@ -92,28 +92,10 @@ public class KbReasonerImpl implements KbReasoner {
 
     }
 
-    private <R extends Response> ListenableFuture<R> wrapException(Throwable t) {
-        if (t instanceof ExecutionException) {
-            return wrapException(t.getCause());
-        }
-        if (t instanceof TimeOutException) {
-            return Futures.immediateFailedFuture(new ReasonerTimeOutException());
-        }
-        else {
-            return Futures.immediateFailedFuture(new ReasonerInternalErrorException(t));
-        }
-    }
-
-
     @Override
     public <A extends KbAction<R, H>, R extends Response, H extends ActionHandler> ListenableFuture<R> execute(
             final A action) {
-
-        try {
             return handlerRegistry.handleAction(action);
-        } catch (Throwable e) {
-            return wrapException(e);
-        }
     }
 
     @Override
@@ -340,9 +322,7 @@ public class KbReasonerImpl implements KbReasoner {
             else {
                 return Futures.immediateFuture(updateOperation.createResponse(kbId, getReasoner().getKbDigest()));
             }
-        } catch (Throwable t) {
-            return wrapException(t);
-        } finally {
+        }  finally {
             writeLock.unlock();
         }
     }

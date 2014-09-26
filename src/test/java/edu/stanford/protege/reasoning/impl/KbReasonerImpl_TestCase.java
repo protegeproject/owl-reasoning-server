@@ -1,31 +1,43 @@
 package edu.stanford.protege.reasoning.impl;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
+import com.google.inject.Guice;
 import edu.stanford.protege.reasoning.ReasonerInternalErrorException;
 import edu.stanford.protege.reasoning.KbId;
 import edu.stanford.protege.reasoning.ReasonerTimeOutException;
 import edu.stanford.protege.reasoning.Response;
 import edu.stanford.protege.reasoning.action.ActionHandler;
+import edu.stanford.protege.reasoning.action.ApplyChangesAction;
+import edu.stanford.protege.reasoning.action.ApplyChangesResponse;
 import edu.stanford.protege.reasoning.action.KbAction;
+import edu.stanford.protege.reasoning.inject.ReasoningServerModule;
+import edu.stanford.protege.reasoning.inject.ReasoningServiceModule;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.semanticweb.owlapi.change.AddAxiomData;
+import org.semanticweb.owlapi.change.AxiomChangeData;
+import org.semanticweb.owlapi.model.OWLAxiom;
+import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.reasoner.OWLReasonerConfiguration;
 import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.TimeOutException;
+import org.semanticweb.owlapi.util.DefaultPrefixManager;
 
 
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
+import static org.semanticweb.owlapi.apibinding.OWLFunctionalSyntaxFactory.*;
 
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 02/09/2014
@@ -39,12 +51,6 @@ public class KbReasonerImpl_TestCase<A extends KbAction<R, H>, R extends Respons
     private KbId kbId;
 
     @Mock
-    private HandlerRegistry handlerRegistry;
-
-    @Mock
-    private KbAxiomSetManager axiomSetManager;
-
-    @Mock
     private OWLReasonerFactorySelector reasonerFactorySelector;
 
     @Mock
@@ -54,46 +60,67 @@ public class KbReasonerImpl_TestCase<A extends KbAction<R, H>, R extends Respons
     private ActionHandler<A, R> actionHandler;
 
     @Mock
-    private FutureCallback<R> futureCallback;
+    private FutureCallback<ApplyChangesResponse> futureCallback;
 
     @Mock
     private OWLReasonerFactory reasonerFactory;
+    private ApplyChangesAction applyChangesAction;
 
     @Before
     public void setUp() throws Exception {
+        DefaultPrefixManager pm = new DefaultPrefixManager();
+        pm.setDefaultPrefix("http://other/ont/");
+        ImmutableList<AxiomChangeData> list = ImmutableList.<AxiomChangeData>builder().add(
+                new AddAxiomData(SubClassOf(Class("A", pm), Class("B", pm)))
+        ).build();
+
+        applyChangesAction = new ApplyChangesAction(kbId, list);
+
+
+        KbAxiomSetManager axiomSetManager = new KbAxiomSetManager();
         when(reasonerFactorySelector.getQueryExecutorService()).thenReturn(Executors.newSingleThreadScheduledExecutor());
-        reasoner = new KbReasonerImpl(kbId, handlerRegistry, axiomSetManager, reasonerFactorySelector, 33);
+        when(reasonerFactorySelector.getReasonerFactory(any(OWLOntology.class))).thenReturn(reasonerFactory);
+        when(reasonerFactory.getReasonerName()).thenReturn("MockReasoner");
+
+        reasoner = new KbReasonerImpl(kbId, new HandlerRegistry(new ActionHandlerMap()),
+                                      axiomSetManager, reasonerFactorySelector, 33);
+
     }
 
     /**
      * Verifies that the correct time out exception is thrown when an OWL API TimeOutException is thrown internally.
      */
     @Test
+    @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
     public void shouldThrowReasonerTimeOutException() {
-        TimeOutException timeoutException = new TimeOutException();
-        when(handlerRegistry.handleAction(action)).thenThrow(timeoutException);
-        ListenableFuture<R> future = reasoner.execute(action);
-        Futures.addCallback(future, futureCallback);
+        when(reasonerFactory.createNonBufferingReasoner(
+                any(OWLOntology.class), any(OWLReasonerConfiguration.class)))
+                .thenThrow(new TimeOutException());
 
+        ListenableFuture<ApplyChangesResponse> future = reasoner.execute(applyChangesAction);
+        Futures.addCallback(future, futureCallback);
         ArgumentCaptor<Throwable> argumentCaptor = ArgumentCaptor.forClass(Throwable.class);
         verify(futureCallback, times(1)).onFailure(argumentCaptor.capture());
         Throwable throwable = argumentCaptor.getValue();
         assertThat(throwable instanceof ReasonerTimeOutException, is(true));
     }
 
+    /**
+     * Verifies that the correct
+     */
     @Test
+    @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
     public void shouldThrowReasonerInternalExceptionForArbitraryRuntimeException() {
-        Throwable runtimeException = mock(RuntimeException.class);
-        when(handlerRegistry.handleAction(action)).thenThrow(runtimeException);
-
-        ListenableFuture<R> future = reasoner.execute(action);
+        Throwable cause = mock(RuntimeException.class);
+        when(reasonerFactory.createNonBufferingReasoner(
+                any(OWLOntology.class), any(OWLReasonerConfiguration.class)))
+                .thenThrow(cause);
+        ListenableFuture<ApplyChangesResponse> future = reasoner.execute(applyChangesAction);
         Futures.addCallback(future, futureCallback);
-
         ArgumentCaptor<Throwable> argumentCaptor = ArgumentCaptor.forClass(Throwable.class);
         verify(futureCallback, times(1)).onFailure(argumentCaptor.capture());
         Throwable throwable = argumentCaptor.getValue();
         assertThat(throwable instanceof ReasonerInternalErrorException, is(true));
-        Throwable cause = throwable.getCause();
-        assertThat(cause, is(runtimeException));
+        assertThat(throwable.getCause(), is(cause));
     }
 }
