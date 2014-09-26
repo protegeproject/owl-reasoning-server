@@ -11,13 +11,13 @@ import java.util.List;
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 03/09/2014
  */
-public class ReasoningServerInternalErrorEncoder extends MessageToMessageEncoder<ReasoningServerInternalError> {
+public class IdentifiableReasonerInternalErrorExceptionEncoder extends MessageToMessageEncoder<IdentifiableReasonerInternalErrorException> {
 
     @Override
-    protected void encode(ChannelHandlerContext ctx, ReasoningServerInternalError msg, List<Object> out) throws Exception {
-        byte[] errorMessageBytes = msg.getMessage().getBytes(CharsetUtil.UTF_8);
+    protected void encode(ChannelHandlerContext ctx, IdentifiableReasonerInternalErrorException msg, List<Object> out) throws Exception {
+        byte[] errorMessageBytes = msg.getException().getMessage().getBytes(CharsetUtil.UTF_8);
         ByteBuf buffer = Unpooled.buffer(5 + errorMessageBytes.length);
-        buffer.writeByte(ResponseTypeMarker.EXPECTED_RESPONSE.getMarker());
+        buffer.writeByte(ResponseTypeMarker.REASONER_INTERNAL_ERROR_EXCEPTION.getMarker());
         buffer.writeInt(msg.getId());
         buffer.writeBytes(errorMessageBytes);
         out.add(buffer);

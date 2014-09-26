@@ -311,37 +311,31 @@ public class KbReasonerImpl implements KbReasoner {
             Optional<VersionedOntology> ontology = updateOperation.performUpdate(kbAxiomSetManager);
             if (ontology.isPresent()) {
                 VersionedOntology versionedOntology = ontology.get();
-                OWLReasonerFactory reasonerFactory = reasonerFactorySelector.getReasonerFactory(
-                        versionedOntology.getOntology()
-                );
-                return applyChangesExecutorService.submit(
-                        new ReasonerUpdater<>(
-                                kbId,
-                                clock,
-                                reasonerFactory,
-                                versionedOntology,
-                                new ReasonerUpdater.ReasonerUpdaterCallback() {
-                                    @Override
-                                    public void reasonerReady(Reasoner r, ReasoningStats reasoningStats) {
-                                        reasoner.set(r);
-                                        stats.set(reasoningStats);
-                                    }
+                OWLReasonerFactory reasonerFactory = reasonerFactorySelector.getReasonerFactory(versionedOntology.getOntology());
+                return applyChangesExecutorService.submit(new ReasonerUpdater<>(kbId,
+                                                                                clock,
+                                                                                reasonerFactory,
+                                                                                versionedOntology,
+                                                                                new ReasonerUpdater
+                                                                                        .ReasonerUpdaterCallback() {
+                                                                                    @Override
+                                                                                    public void reasonerReady(
+                                                                                            Reasoner r,
+                                                                                            ReasoningStats
+                                                                                                    reasoningStats) {
+                                                                                        reasoner.set(r);
+                                                                                        stats.set(reasoningStats);
+                                                                                    }
 
-                                    @Override
-                                    public void processing(
-                                            ReasonerState state) {
-                                        processingState.set(state);
-                                    }
+                                                                                    @Override
+                                                                                    public void processing(
+                                                                                            ReasonerState state) {
+                                                                                        processingState.set(state);
+                                                                                    }
+                                                                                },
+                                                                                updateOperation,
+                                                                                timeOut));
 
-                                    @Override
-                                    public void reasonerTimeOut(KbDigest reasonerDigest) {
-                                        System.err.println("TODO: TIMEOUT for Digest: " + reasonerDigest);
-                                    }
-                                },
-                                updateOperation,
-                                timeOut
-                        )
-                );
             }
             else {
                 return Futures.immediateFuture(updateOperation.createResponse(kbId, getReasoner().getKbDigest()));
@@ -448,9 +442,10 @@ public class KbReasonerImpl implements KbReasoner {
                 );
                 return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
             } catch (TimeOutException e) {
-                callback.reasonerTimeOut(versionedOntology.getKbDigest());
+                throw new ReasonerTimeOutException();
+            } catch (Throwable t) {
+                throw new ReasonerInternalErrorException(t);
             }
-            throw new RuntimeException();
         }
 
         public static interface ReasonerUpdaterCallback {
@@ -461,8 +456,6 @@ public class KbReasonerImpl implements KbReasoner {
              * @param reasonerState The state.  Not {@code null}.
              */
             void processing(ReasonerState reasonerState);
-
-            void reasonerTimeOut(KbDigest reasonerDigest);
 
             void reasonerReady(Reasoner reasoner, ReasoningStats reasoningStats);
         }

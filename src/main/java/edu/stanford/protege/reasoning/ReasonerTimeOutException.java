@@ -9,5 +9,6 @@ public class ReasonerTimeOutException extends RuntimeException {
      * Constructs a timeout exception.
      */
     public ReasonerTimeOutException() {
+        super("The reasoner timed out");
     }
 }

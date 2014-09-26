@@ -3,6 +3,8 @@ package edu.stanford.protege.reasoning.protocol;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
+import edu.stanford.protege.reasoning.ReasonerInternalErrorException;
+import edu.stanford.protege.reasoning.ReasonerTimeOutException;
 import edu.stanford.protege.reasoning.ReasoningService;
 import edu.stanford.protege.reasoning.Response;
 import io.netty.channel.ChannelHandlerContext;
@@ -33,8 +35,18 @@ public class ReasoningServerHandler extends SimpleChannelInboundHandler<Identifi
             @Override
             public void onFailure(Throwable t) {
                 System.err.println("An error occurred: " + t.getMessage());
-                String message = t.getMessage();
-                ctx.writeAndFlush(new ReasoningServerInternalError(msg.getId(), message == null ? "" : message));
+                if(t instanceof ReasonerInternalErrorException) {
+                    ctx.writeAndFlush(new IdentifiableReasonerInternalErrorException(
+                            msg.getId(),
+                            (ReasonerInternalErrorException) t));
+                }
+                else if(t instanceof ReasonerTimeOutException) {
+                    ctx.writeAndFlush(new IdentifiableReasonerTimeOutException(msg.getId()));
+                }
+                else {
+                    throw new RuntimeException("An unexpected exception (i.e. not a ReasonerInternalErrorException" +
+                                                       " or a ReasonerTimeOutException occurred.", t);
+                }
             }
         });
     }

@@ -1,5 +1,6 @@
 package edu.stanford.protege.reasoning.protocol;
 
+import edu.stanford.protege.reasoning.ReasonerInternalErrorException;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 03/09/2014
  */
-public class ReasoningServerInternalErrorDecoder extends MessageToMessageDecoder<ByteBuf> {
+public class IdentifiableReasonerInternalErrorExceptionDecoder extends MessageToMessageDecoder<ByteBuf> {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
@@ -18,7 +19,7 @@ public class ReasoningServerInternalErrorDecoder extends MessageToMessageDecoder
             msg.readByte();
             int id = msg.readInt();
             String errorMessage = msg.toString(msg.readerIndex(), msg.readableBytes(), CharsetUtil.UTF_8);
-            out.add(new ReasoningServerInternalError(id, errorMessage));
+            out.add(new IdentifiableReasonerInternalErrorException(id, new ReasonerInternalErrorException(errorMessage)));
         }
         else {
             msg.retain();

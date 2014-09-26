@@ -46,7 +46,8 @@ public class ReasoningServer {
 //                        pipeline.addLast(new LoggingHandler(LogLevel.INFO));
                         pipeline.addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
                         pipeline.addLast(new LengthFieldPrepender(4));
-                        pipeline.addLast(new ReasoningServerInternalErrorEncoder());
+                        pipeline.addLast(new IdentifiableReasonerInternalErrorExceptionEncoder());
+                        pipeline.addLast(new IdentifiableReasonerTimeOutExceptionEncoder());
                         pipeline.addLast(new IdentifiableActionDecoder(codecRegistry));
                         pipeline.addLast(new IdentifiableResponseEncoder(codecRegistry));
                         pipeline.addLast(new ReasoningServerHandler(reasoningService));
