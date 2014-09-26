@@ -1,7 +1,7 @@
 package edu.stanford.protege.reasoning.protocol;
 
 import com.google.common.util.concurrent.SettableFuture;
-import edu.stanford.protege.reasoning.InternalReasonerErrorException;
+import edu.stanford.protege.reasoning.ReasonerInternalErrorException;
 import edu.stanford.protege.reasoning.Response;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -20,6 +20,6 @@ public class ReasoningClientInternalErrorHandler extends SimpleChannelInboundHan
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, ReasoningServerInternalError msg) throws Exception {
         SettableFuture<Response> future = id2FutureMapper.consumeFuture(msg.getId());
-        future.setException(new InternalReasonerErrorException(msg.getMessage()));
+        future.setException(new ReasonerInternalErrorException(msg.getMessage()));
     }
 }

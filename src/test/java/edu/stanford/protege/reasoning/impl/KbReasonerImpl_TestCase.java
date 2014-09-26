@@ -3,8 +3,9 @@ package edu.stanford.protege.reasoning.impl;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import edu.stanford.protege.reasoning.InternalReasonerErrorException;
+import edu.stanford.protege.reasoning.ReasonerInternalErrorException;
 import edu.stanford.protege.reasoning.KbId;
+import edu.stanford.protege.reasoning.ReasonerTimeOutException;
 import edu.stanford.protege.reasoning.Response;
 import edu.stanford.protege.reasoning.action.ActionHandler;
 import edu.stanford.protege.reasoning.action.KbAction;
@@ -18,14 +19,13 @@ import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
 import org.semanticweb.owlapi.reasoner.TimeOutException;
 
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 02/09/2014
@@ -57,9 +57,6 @@ public class KbReasonerImpl_TestCase<A extends KbAction<R, H>, R extends Respons
     private FutureCallback<R> futureCallback;
 
     @Mock
-    private Throwable runtimeException;
-
-    @Mock
     private OWLReasonerFactory reasonerFactory;
 
     @Before
@@ -68,9 +65,25 @@ public class KbReasonerImpl_TestCase<A extends KbAction<R, H>, R extends Respons
         reasoner = new KbReasonerImpl(kbId, handlerRegistry, axiomSetManager, reasonerFactorySelector, 33);
     }
 
+    /**
+     * Verifies that the correct time out exception is thrown when an OWL API TimeOutException is thrown internally.
+     */
     @Test
-    public void shouldWrapArbitraryExceptionInInternalReasonerException() {
-        runtimeException = new RuntimeException();
+    public void shouldThrowReasonerTimeOutException() {
+        TimeOutException timeoutException = new TimeOutException();
+        when(handlerRegistry.handleAction(action)).thenThrow(timeoutException);
+        ListenableFuture<R> future = reasoner.execute(action);
+        Futures.addCallback(future, futureCallback);
+
+        ArgumentCaptor<Throwable> argumentCaptor = ArgumentCaptor.forClass(Throwable.class);
+        verify(futureCallback, times(1)).onFailure(argumentCaptor.capture());
+        Throwable throwable = argumentCaptor.getValue();
+        assertThat(throwable instanceof ReasonerTimeOutException, is(true));
+    }
+
+    @Test
+    public void shouldThrowReasonerInternalExceptionForArbitraryRuntimeException() {
+        Throwable runtimeException = mock(RuntimeException.class);
         when(handlerRegistry.handleAction(action)).thenThrow(runtimeException);
 
         ListenableFuture<R> future = reasoner.execute(action);
@@ -79,17 +92,8 @@ public class KbReasonerImpl_TestCase<A extends KbAction<R, H>, R extends Respons
         ArgumentCaptor<Throwable> argumentCaptor = ArgumentCaptor.forClass(Throwable.class);
         verify(futureCallback, times(1)).onFailure(argumentCaptor.capture());
         Throwable throwable = argumentCaptor.getValue();
-        assertThat(throwable instanceof InternalReasonerErrorException, is(true));
+        assertThat(throwable instanceof ReasonerInternalErrorException, is(true));
         Throwable cause = throwable.getCause();
         assertThat(cause, is(runtimeException));
-    }
-
-    @Test
-    public void shouldFailWithTimeoutException() {
-        TimeOutException timeoutException = new TimeOutException();
-        when(handlerRegistry.handleAction(action)).thenThrow(timeoutException);
-        ListenableFuture<R> future = reasoner.execute(action);
-        Futures.addCallback(future, futureCallback);
-        verify(futureCallback, times(1)).onFailure(timeoutException);
     }
 }

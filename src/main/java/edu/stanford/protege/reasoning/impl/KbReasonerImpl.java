@@ -92,6 +92,19 @@ public class KbReasonerImpl implements KbReasoner {
 
     }
 
+    private <R extends Response> ListenableFuture<R> wrapException(Throwable t) {
+        if (t instanceof ExecutionException) {
+            return wrapException(t.getCause());
+        }
+        if (t instanceof TimeOutException) {
+            return Futures.immediateFailedFuture(new ReasonerTimeOutException());
+        }
+        else {
+            return Futures.immediateFailedFuture(new ReasonerInternalErrorException(t));
+        }
+    }
+
+
     @Override
     public <A extends KbAction<R, H>, R extends Response, H extends ActionHandler> ListenableFuture<R> execute(
             final A action) {
@@ -100,18 +113,6 @@ public class KbReasonerImpl implements KbReasoner {
             return handlerRegistry.handleAction(action);
         } catch (Throwable e) {
             return wrapException(e);
-        }
-    }
-
-    private <R extends Response> ListenableFuture<R> wrapException(Throwable t) {
-        if (t instanceof ExecutionException) {
-            return wrapException(t.getCause());
-        }
-        if (t instanceof TimeOutException) {
-            return Futures.immediateFailedFuture(t);
-        }
-        else {
-            return Futures.immediateFailedFuture(new InternalReasonerErrorException(t));
         }
     }
 
@@ -331,6 +332,11 @@ public class KbReasonerImpl implements KbReasoner {
                                             ReasonerState state) {
                                         processingState.set(state);
                                     }
+
+                                    @Override
+                                    public void reasonerTimeOut(KbDigest reasonerDigest) {
+                                        System.err.println("TODO: TIMEOUT for Digest: " + reasonerDigest);
+                                    }
                                 },
                                 updateOperation,
                                 timeOut
@@ -442,13 +448,21 @@ public class KbReasonerImpl implements KbReasoner {
                 );
                 return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
             } catch (TimeOutException e) {
-                callback.processing(new ReasonerState(reasonerFactory.getReasonerName(), versionedOntology.getKbDigest(), "Reasoner timed out", Optional.<Progress>absent()));
-                throw e;
+                callback.reasonerTimeOut(versionedOntology.getKbDigest());
             }
+            throw new RuntimeException();
         }
 
         public static interface ReasonerUpdaterCallback {
+
+            /**
+             * Called when the processing state of the reasoner has changed.  This could be due to a reasoning stage
+             * change or an increment of progress during a specific stage.
+             * @param reasonerState The state.  Not {@code null}.
+             */
             void processing(ReasonerState reasonerState);
+
+            void reasonerTimeOut(KbDigest reasonerDigest);
 
             void reasonerReady(Reasoner reasoner, ReasoningStats reasoningStats);
         }
