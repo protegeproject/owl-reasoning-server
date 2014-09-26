@@ -20,7 +20,7 @@ public class IdentifiableResponseDecoder extends MessageToMessageDecoder<ByteBuf
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
-        if(msg.readableBytes() > 0 && msg.getByte(0) == 0) {
+        if(msg.readableBytes() > 0 && msg.getByte(0) == ResponseTypeMarker.EXPECTED_RESPONSE.getMarker()) {
             msg.readByte();
             int id = msg.readInt();
             int marker = msg.readInt();

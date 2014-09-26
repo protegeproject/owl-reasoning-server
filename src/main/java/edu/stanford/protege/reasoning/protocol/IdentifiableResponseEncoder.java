@@ -23,7 +23,7 @@ public class IdentifiableResponseEncoder extends MessageToMessageEncoder<Identif
         ReasoningServerCodec codec = registry.getCodec(msg.getResponse());
         byte [] bytes = codec.encodeResponse(msg.getResponse());
         ByteBuf byteBuf = Unpooled.buffer(9 + bytes.length);
-        byteBuf.writeByte(0);
+        byteBuf.writeByte(ResponseTypeMarker.EXPECTED_RESPONSE.getMarker());
         byteBuf.writeInt(msg.getId());
         byteBuf.writeInt(codec.getFrameMarker());
         byteBuf.writeBytes(bytes);

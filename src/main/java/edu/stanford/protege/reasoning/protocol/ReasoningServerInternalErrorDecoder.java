@@ -14,7 +14,7 @@ public class ReasoningServerInternalErrorDecoder extends MessageToMessageDecoder
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
-        if(msg.readableBytes() > 0 && msg.getByte(0) == 1) {
+        if(msg.readableBytes() > 0 && msg.getByte(0) == ResponseTypeMarker.REASONER_INTERNAL_ERROR_EXCEPTION.getMarker()) {
             msg.readByte();
             int id = msg.readInt();
             String errorMessage = msg.toString(msg.readerIndex(), msg.readableBytes(), CharsetUtil.UTF_8);

@@ -17,7 +17,7 @@ public class ReasoningServerInternalErrorEncoder extends MessageToMessageEncoder
     protected void encode(ChannelHandlerContext ctx, ReasoningServerInternalError msg, List<Object> out) throws Exception {
         byte[] errorMessageBytes = msg.getMessage().getBytes(CharsetUtil.UTF_8);
         ByteBuf buffer = Unpooled.buffer(5 + errorMessageBytes.length);
-        buffer.writeByte(1);
+        buffer.writeByte(ResponseTypeMarker.EXPECTED_RESPONSE.getMarker());
         buffer.writeInt(msg.getId());
         buffer.writeBytes(errorMessageBytes);
         out.add(buffer);
