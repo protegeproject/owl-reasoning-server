@@ -423,6 +423,8 @@ public class KbReasonerImpl implements KbReasoner {
                 return updateOperation.createResponse(kbId, versionedOntology.getKbDigest());
             } catch (TimeOutException e) {
                 throw new ReasonerTimeOutException();
+            } catch (ReasonerInternalErrorException e) {
+                throw e;
             } catch (Throwable t) {
                 throw new ReasonerInternalErrorException(t);
             }

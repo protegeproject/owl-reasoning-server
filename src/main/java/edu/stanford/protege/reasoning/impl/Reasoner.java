@@ -27,15 +27,8 @@ public interface Reasoner {
      * @return {@code true} if the imports closure of the root ontology is
      *         consistent, or {@code false} if the imports closure of the root
      *         ontology is inconsistent.
-     * @throws org.semanticweb.owlapi.reasoner.ReasonerInterruptedException
-     *         if the reasoning process was interrupted for any particular
-     *         reason (for example if reasoning was cancelled by a client
-     *         process).
-     * @throws org.semanticweb.owlapi.reasoner.TimeOutException
-     *         if the reasoner timed out during a basic reasoning operation. See
-     *         {@link #getTimeOut()}.
      */
-     Optional<Consistency> getConsistency() throws ReasonerInterruptedException, TimeOutException;
+     Optional<Consistency> getConsistency();
 
     /**
      * A convenience method that determines if the specified axiom is entailed
@@ -47,30 +40,8 @@ public interface Reasoner {
      *         or {@code false} if {@code axiom} is not entailed by the reasoner
      *         axioms. {@code true} if the set of reasoner axioms is
      *         inconsistent.
-     * @throws FreshEntitiesException
-     *         if the signature of the axiom is not contained within the
-     *         signature of the imports closure of the root ontology.
-     * @throws ReasonerInterruptedException
-     *         if the reasoning process was interrupted for any particular
-     *         reason (for example if reasoning was cancelled by a client
-     *         process)
-     * @throws TimeOutException
-     *         if the reasoner timed out during a basic reasoning operation. See
-     *         {@link #getTimeOut()}.
-     * @throws UnsupportedEntailmentTypeException
-     *         if the reasoner cannot perform a check to see if the specified
-     *         axiom is entailed
-     * @throws AxiomNotInProfileException
-     *         if {@code axiom} is not in the profile that is supported by this
-     *         reasoner.
-     * @throws InconsistentOntologyException
-     *         if the set of reasoner axioms is inconsistent
-     * @see #isEntailmentCheckingSupported(org.semanticweb.owlapi.model.AxiomType)
      */
-    Optional<KbQueryResult<Entailed>> isEntailed(OWLAxiom axiom) throws ReasonerInterruptedException,
-            UnsupportedEntailmentTypeException, TimeOutException,
-            AxiomNotInProfileException, FreshEntitiesException,
-            InconsistentOntologyException;
+    Optional<KbQueryResult<Entailed>> isEntailed(OWLAxiom axiom);
 
 
     /**
@@ -94,28 +65,8 @@ public interface Reasoner {
      *         entails {@code StrictSubClassOf(C, ce)}. <br>
      *         If {@code ce} is equivalent to {@code owl:Nothing} then the empty
      *         {@code NodeSet} will be returned.
-     * @throws InconsistentOntologyException
-     *         if the imports closure of the root ontology is inconsistent
-     * @throws ClassExpressionNotInProfileException
-     *         if {@code classExpression} is not within the profile that is
-     *         supported by this reasoner.
-     * @throws FreshEntitiesException
-     *         if the signature of the classExpression is not contained within
-     *         the signature of the imports closure of the root ontology and the
-     *         undeclared entity policy of this reasoner is set to
-     *         {@link FreshEntityPolicy#DISALLOW}.
-     * @throws ReasonerInterruptedException
-     *         if the reasoning process was interrupted for any particular
-     *         reason (for example if reasoning was cancelled by a client
-     *         process)
-     * @throws TimeOutException
-     *         if the reasoner timed out during a basic reasoning operation. See
-     *         {@link #getTimeOut()}.
      */
-    Optional<KbQueryResult<NodeSet<OWLClass>>> getSubClasses(OWLClassExpression ce, boolean direct)
-            throws ReasonerInterruptedException, TimeOutException,
-            FreshEntitiesException, InconsistentOntologyException,
-            ClassExpressionNotInProfileException;
+    Optional<KbQueryResult<NodeSet<OWLClass>>> getSubClasses(OWLClassExpression ce, boolean direct);
 
     /**
      * Gets the set of named classes that are the strict (potentially direct)
@@ -138,28 +89,8 @@ public interface Reasoner {
      *         entails {@code StrictSubClassOf(ce, C)}. <br>
      *         If {@code ce} is equivalent to {@code owl:Thing} then the empty
      *         {@code NodeSet} will be returned.
-     * @throws InconsistentOntologyException
-     *         if the imports closure of the root ontology is inconsistent
-     * @throws ClassExpressionNotInProfileException
-     *         if {@code classExpression} is not within the profile that is
-     *         supported by this reasoner.
-     * @throws FreshEntitiesException
-     *         if the signature of the classExpression is not contained within
-     *         the signature of the imports closure of the root ontology and the
-     *         undeclared entity policy of this reasoner is set to
-     *         {@link FreshEntityPolicy#DISALLOW}.
-     * @throws ReasonerInterruptedException
-     *         if the reasoning process was interrupted for any particular
-     *         reason (for example if reasoning was cancelled by a client
-     *         process)
-     * @throws TimeOutException
-     *         if the reasoner timed out during a basic reasoning operation. See
-     *         {@link #getTimeOut()}.
      */
-    Optional<KbQueryResult<NodeSet<OWLClass>>> getSuperClasses(OWLClassExpression ce, boolean direct)
-            throws InconsistentOntologyException,
-            ClassExpressionNotInProfileException, FreshEntitiesException,
-            ReasonerInterruptedException, TimeOutException;
+    Optional<KbQueryResult<NodeSet<OWLClass>>> getSuperClasses(OWLClassExpression ce, boolean direct);
 
     /**
      * Gets the set of named classes that are equivalent to the specified class
@@ -181,29 +112,8 @@ public interface Reasoner {
      *         If {@code ce} is equivalent to {@code owl:Thing} with respect to
      *         the set of reasoner axioms then the node representing and
      *         containing {@code owl:Thing}, i.e. the top node, will be returned <br>
-     *         .
-     * @throws InconsistentOntologyException
-     *         if the imports closure of the root ontology is inconsistent
-     * @throws ClassExpressionNotInProfileException
-     *         if {@code classExpression} is not within the profile that is
-     *         supported by this reasoner.
-     * @throws FreshEntitiesException
-     *         if the signature of the classExpression is not contained within
-     *         the signature of the imports closure of the root ontology and the
-     *         undeclared entity policy of this reasoner is set to
-     *         {@link FreshEntityPolicy#DISALLOW}.
-     * @throws ReasonerInterruptedException
-     *         if the reasoning process was interrupted for any particular
-     *         reason (for example if reasoning was cancelled by a client
-     *         process)
-     * @throws TimeOutException
-     *         if the reasoner timed out during a basic reasoning operation. See
-     *         {@link #getTimeOut()}.
      */
-    Optional<KbQueryResult<Node<OWLClass>>> getEquivalentClasses(OWLClassExpression ce)
-            throws InconsistentOntologyException,
-            ClassExpressionNotInProfileException, FreshEntitiesException,
-            ReasonerInterruptedException, TimeOutException;
+    Optional<KbQueryResult<Node<OWLClass>>> getEquivalentClasses(OWLClassExpression ce);
 
 
     /**
@@ -227,27 +137,7 @@ public interface Reasoner {
      *         {@code ClassAssertion(ce, j)}. <br>
      *         If ce is unsatisfiable with respect to the set of reasoner axioms
      *         then the empty {@code NodeSet} is returned.
-     * @throws InconsistentOntologyException
-     *         if the imports closure of the root ontology is inconsistent
-     * @throws ClassExpressionNotInProfileException
-     *         if the class expression {@code ce} is not in the profile that is
-     *         supported by this reasoner.
-     * @throws FreshEntitiesException
-     *         if the signature of the class expression is not contained within
-     *         the signature of the imports closure of the root ontology and the
-     *         undeclared entity policy of this reasoner is set to
-     *         {@link FreshEntityPolicy#DISALLOW}.
-     * @throws ReasonerInterruptedException
-     *         if the reasoning process was interrupted for any particular
-     *         reason (for example if reasoning was cancelled by a client
-     *         process)
-     * @throws TimeOutException
-     *         if the reasoner timed out during a basic reasoning operation. See
-     *         {@link #getTimeOut()}.
-     * @see org.semanticweb.owlapi.reasoner.IndividualNodeSetPolicy
      */
     Optional<KbQueryResult<NodeSet<OWLNamedIndividual>>> getInstances(OWLClassExpression ce,
-                                             boolean direct) throws InconsistentOntologyException,
-            ClassExpressionNotInProfileException, FreshEntitiesException,
-            ReasonerInterruptedException, TimeOutException;
+                                             boolean direct);
 }

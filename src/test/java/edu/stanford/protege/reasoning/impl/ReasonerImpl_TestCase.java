@@ -2,6 +2,8 @@ package edu.stanford.protege.reasoning.impl;
 
 import com.google.common.base.Optional;
 import edu.stanford.protege.reasoning.KbDigest;
+import edu.stanford.protege.reasoning.ReasonerInternalErrorException;
+import edu.stanford.protege.reasoning.ReasonerTimeOutException;
 import edu.stanford.protege.reasoning.action.Consistency;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +15,7 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
-import org.semanticweb.owlapi.reasoner.OWLReasonerRuntimeException;
+import org.semanticweb.owlapi.reasoner.TimeOutException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -87,39 +89,75 @@ public class ReasonerImpl_TestCase {
         assertThat(result.get(), is(Consistency.INCONSISTENT));
     }
 
-    @Test(expected = RuntimeException.class)
-    public void shouldPropagateRuntimeExceptionOn_IsConsistent() {
+    @Test(expected = ReasonerInternalErrorException.class)
+    public void shouldTranslateRuntimeExceptionOn_IsConsistent() {
         when(delegate.isConsistent()).thenThrow(new RuntimeException());
         reasoner.getConsistency();
     }
 
-    @Test(expected = RuntimeException.class)
-    public void shouldPropagateRuntimeExceptionOn_IsEntailed() {
+    @Test(expected = ReasonerInternalErrorException.class)
+    public void shouldTranslateRuntimeExceptionOn_IsEntailed() {
         when(delegate.isEntailed(ax)).thenThrow(new RuntimeException());
         reasoner.isEntailed(ax);
     }
 
-    @Test(expected = RuntimeException.class)
-    public void shouldPropagateRuntimeExceptionOn_GetSubClasses() {
+    @Test(expected = ReasonerInternalErrorException.class)
+    public void shouldTranslateRuntimeExceptionOn_GetSubClasses() {
         when(delegate.getSubClasses(classExpression, true)).thenThrow(new RuntimeException());
         reasoner.getSubClasses(classExpression, true);
     }
 
-    @Test(expected = RuntimeException.class)
-    public void shouldPropagateRuntimeExceptionOn_GetSuperClasses() {
+    @Test(expected = ReasonerInternalErrorException.class)
+    public void shouldTranslateRuntimeExceptionOn_GetSuperClasses() {
         when(delegate.getSuperClasses(classExpression, true)).thenThrow(new RuntimeException());
         reasoner.getSuperClasses(classExpression, true);
     }
 
-    @Test(expected = RuntimeException.class)
-    public void shouldPropagateRuntimeExceptionOn_GetEquivalentClasses() {
+    @Test(expected = ReasonerInternalErrorException.class)
+    public void shouldTranslateRuntimeExceptionOn_GetEquivalentClasses() {
         when(delegate.getEquivalentClasses(classExpression)).thenThrow(new RuntimeException());
         reasoner.getEquivalentClasses(classExpression);
     }
 
-    @Test(expected = RuntimeException.class)
-    public void shouldPropagateRuntimeExceptionOn_GetInstances() {
+    @Test(expected = ReasonerInternalErrorException.class)
+    public void shouldTranslateRuntimeExceptionOn_GetInstances() {
         when(delegate.getInstances(classExpression, true)).thenThrow(new RuntimeException());
+        reasoner.getInstances(classExpression, true);
+    }
+
+    @Test(expected = ReasonerTimeOutException.class)
+    public void shouldTranslateTimeOutExceptionOn_IsConsistent() {
+        when(delegate.isConsistent()).thenThrow(new TimeOutException());
+        reasoner.getConsistency();
+    }
+
+    @Test(expected = ReasonerTimeOutException.class)
+    public void shouldTranslateTimeOutExceptionOn_IsEntailed() {
+        when(delegate.isEntailed(ax)).thenThrow(new TimeOutException());
+        reasoner.isEntailed(ax);
+    }
+
+    @Test(expected = ReasonerTimeOutException.class)
+    public void shouldTranslateTimeOutExceptionOn_GetSubClasses() {
+        when(delegate.getSubClasses(classExpression, true)).thenThrow(new TimeOutException());
+        reasoner.getSubClasses(classExpression, true);
+    }
+
+    @Test(expected = ReasonerTimeOutException.class)
+    public void shouldTranslateTimeOutExceptionOn_GetSuperClasses() {
+        when(delegate.getSuperClasses(classExpression, true)).thenThrow(new TimeOutException());
+        reasoner.getSuperClasses(classExpression, true);
+    }
+
+    @Test(expected = ReasonerTimeOutException.class)
+    public void shouldTranslateTimeOutExceptionOn_GetEquivalentClasses() {
+        when(delegate.getEquivalentClasses(classExpression)).thenThrow(new TimeOutException());
+        reasoner.getEquivalentClasses(classExpression);
+    }
+
+    @Test(expected = ReasonerTimeOutException.class)
+    public void shouldTranslateTimeOutExceptionOn_GetInstances() {
+        when(delegate.getInstances(classExpression, true)).thenThrow(new TimeOutException());
         reasoner.getInstances(classExpression, true);
     }
 

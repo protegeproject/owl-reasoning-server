@@ -19,6 +19,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.semanticweb.owlapi.change.AddAxiomData;
@@ -31,10 +32,13 @@ import org.semanticweb.owlapi.reasoner.TimeOutException;
 import org.semanticweb.owlapi.util.DefaultPrefixManager;
 
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 
+import static junit.framework.TestCase.fail;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 import static org.semanticweb.owlapi.apibinding.OWLFunctionalSyntaxFactory.*;
@@ -64,6 +68,7 @@ public class KbReasonerImpl_TestCase<A extends KbAction<R, H>, R extends Respons
 
     @Mock
     private OWLReasonerFactory reasonerFactory;
+
     private ApplyChangesAction applyChangesAction;
 
     @Before
@@ -92,35 +97,59 @@ public class KbReasonerImpl_TestCase<A extends KbAction<R, H>, R extends Respons
      */
     @Test
     @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
-    public void shouldThrowReasonerTimeOutException() {
+    public void shouldThrowReasonerTimeOutException() throws InterruptedException {
         when(reasonerFactory.createNonBufferingReasoner(
                 any(OWLOntology.class), any(OWLReasonerConfiguration.class)))
                 .thenThrow(new TimeOutException());
 
         ListenableFuture<ApplyChangesResponse> future = reasoner.execute(applyChangesAction);
-        Futures.addCallback(future, futureCallback);
-        ArgumentCaptor<Throwable> argumentCaptor = ArgumentCaptor.forClass(Throwable.class);
-        verify(futureCallback, times(1)).onFailure(argumentCaptor.capture());
-        Throwable throwable = argumentCaptor.getValue();
-        assertThat(throwable instanceof ReasonerTimeOutException, is(true));
+        try {
+            future.get();
+            fail("Expected ExecutionException, but it was not thrown");
+        } catch (ExecutionException e) {
+            assertThat(e.getCause() instanceof ReasonerTimeOutException, is(true));
+        }
     }
 
     /**
-     * Verifies that the correct
+     * Verifies that the correct exception is thrown if a runtime exception occurs internally.
      */
     @Test
     @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
-    public void shouldThrowReasonerInternalExceptionForArbitraryRuntimeException() {
+    public void shouldThrowReasonerInternalExceptionForArbitraryRuntimeException() throws InterruptedException {
         Throwable cause = mock(RuntimeException.class);
         when(reasonerFactory.createNonBufferingReasoner(
                 any(OWLOntology.class), any(OWLReasonerConfiguration.class)))
                 .thenThrow(cause);
         ListenableFuture<ApplyChangesResponse> future = reasoner.execute(applyChangesAction);
-        Futures.addCallback(future, futureCallback);
-        ArgumentCaptor<Throwable> argumentCaptor = ArgumentCaptor.forClass(Throwable.class);
-        verify(futureCallback, times(1)).onFailure(argumentCaptor.capture());
-        Throwable throwable = argumentCaptor.getValue();
-        assertThat(throwable instanceof ReasonerInternalErrorException, is(true));
-        assertThat(throwable.getCause(), is(cause));
+        try {
+            future.get();
+            fail("Expected ExecutionException, but it was not thrown");
+        } catch (ExecutionException e) {
+            Throwable throwable = e.getCause();
+            assertThat(throwable instanceof ReasonerInternalErrorException, is(true));
+            assertThat(throwable.getCause(), is(cause));
+        }
+
+    }
+
+    /**
+     * Verifies that the correct exception is thrown if a ReasonerInternalErrorException exception occurs internally.
+     */
+    @Test
+    @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
+    public void shouldReThrowReasonerInternalException() throws InterruptedException {
+        ReasonerInternalErrorException cause = mock(ReasonerInternalErrorException.class);
+        when(reasonerFactory.createNonBufferingReasoner(
+                any(OWLOntology.class), any(OWLReasonerConfiguration.class)))
+                .thenThrow(cause);
+        ListenableFuture<ApplyChangesResponse> future = reasoner.execute(applyChangesAction);
+        try {
+            future.get();
+        } catch (ExecutionException e) {
+            Throwable throwable = e.getCause();
+            assertThat(throwable instanceof ReasonerInternalErrorException, is(true));
+            assertThat(throwable.getCause(), is(nullValue()));
+        }
     }
 }

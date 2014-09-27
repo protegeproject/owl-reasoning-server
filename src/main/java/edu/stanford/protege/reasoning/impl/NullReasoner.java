@@ -32,7 +32,7 @@ public class NullReasoner implements Reasoner {
     }
 
     @Override
-    public Optional<Consistency> getConsistency() throws ReasonerInterruptedException, TimeOutException {
+    public Optional<Consistency> getConsistency() {
         return Optional.absent();
     }
 
