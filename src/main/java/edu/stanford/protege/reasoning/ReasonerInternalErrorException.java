@@ -10,6 +10,6 @@ public class ReasonerInternalErrorException extends RuntimeException {
     }
 
     public ReasonerInternalErrorException(Throwable cause) {
-        super(cause);
+        super(cause.getMessage(), cause);
     }
 }
