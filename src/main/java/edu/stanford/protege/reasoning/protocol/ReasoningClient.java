@@ -16,6 +16,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.LengthFieldPrepender;
+import io.netty.util.concurrent.DefaultThreadFactory;
 
 import java.net.InetSocketAddress;
 import java.util.Map;
@@ -25,6 +26,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author Matthew Horridge, Stanford University, Bio-Medical Informatics Research Group, Date: 29/08/2014
  */
 public class ReasoningClient implements ReasoningService {
+
+    private static final boolean DAEMON = true;
+
+    private static final int DEFAULT_THREADS = 0;
 
     private ReasoningServerCodecRegistry codecRegistry;
 
@@ -41,11 +46,12 @@ public class ReasoningClient implements ReasoningService {
     private final InetSocketAddress inetSocketAddress;
 
 
+
     @Inject
     public ReasoningClient(@Assisted InetSocketAddress inetSocketAddress, ReasoningServerCodecRegistry codecRegistry) {
         this.codecRegistry = codecRegistry;
         this.inetSocketAddress = inetSocketAddress;
-        this.eventLoopGroup = new NioEventLoopGroup();
+        this.eventLoopGroup = new NioEventLoopGroup(DEFAULT_THREADS, new DefaultThreadFactory("client-pool", DAEMON));
         id2FutureMapper = new ReasoningClientHandler.Id2FutureMapper() {
             @Override
             @SuppressWarnings("unchecked")
