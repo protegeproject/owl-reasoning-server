@@ -41,7 +41,7 @@ public class KbAxiomSetManager {
 //    }
 
 
-    public Optional<VersionedOntology> replaceAxioms(List<OWLAxiom> replacementAxioms) {
+    public Optional<VersionedOntology> replaceAxioms(Collection<OWLAxiom> replacementAxioms) {
         try {
             checkNotNull(replacementAxioms);
             writeLock.lock();

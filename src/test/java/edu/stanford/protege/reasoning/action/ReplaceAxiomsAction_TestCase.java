@@ -1,5 +1,6 @@
 package edu.stanford.protege.reasoning.action;
 
+import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
 import edu.stanford.protege.reasoning.KbId;
 import org.hamcrest.core.IsNull;
@@ -28,7 +29,7 @@ public class ReplaceAxiomsAction_TestCase {
     private KbId kbId;
 
     @Mock
-    private ImmutableList<OWLAxiom> axioms;
+    private ImmutableCollection<OWLAxiom> axioms;
 
     private ReplaceAxiomsAction action;
 

@@ -1,6 +1,7 @@
 package edu.stanford.protege.reasoning.action;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
 import com.google.common.util.concurrent.ListenableFuture;
 import edu.stanford.protege.reasoning.KbId;
@@ -15,14 +16,14 @@ public class ReplaceAxiomsAction extends KbAction<ReplaceAxiomsResponse, Replace
 
     public static final ActionType<ReplaceAxiomsActionHandler> TYPE = ActionType.create();
 
-    private final ImmutableList<OWLAxiom> axioms;
+    private final ImmutableCollection<OWLAxiom> axioms;
 
-    public ReplaceAxiomsAction(KbId kbId, ImmutableList<OWLAxiom> axioms) {
+    public ReplaceAxiomsAction(KbId kbId, ImmutableCollection<OWLAxiom> axioms) {
         super(kbId);
         this.axioms = checkNotNull(axioms);
     }
 
-    public ImmutableList<OWLAxiom> getAxioms() {
+    public ImmutableCollection<OWLAxiom> getAxioms() {
         return axioms;
     }
 
