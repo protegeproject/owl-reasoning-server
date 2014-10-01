@@ -1,6 +1,5 @@
 package edu.stanford.protege.reasoning.util;
 
-import com.google.common.base.Optional;
 import com.google.common.collect.*;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
@@ -22,8 +21,6 @@ public class ReasonerSynchronizer {
     private ReasoningService reasoningService;
 
     private KbId kbId;
-
-    private Optional<KbDigest> lastSyncedDigest = Optional.absent();
 
     private final Lock synchronizeAxiomsLock = new ReentrantLock();
 
@@ -94,7 +91,6 @@ public class ReasonerSynchronizer {
         Futures.addCallback(replaceAxiomsFuture, new FutureCallback<ReplaceAxiomsResponse>() {
             @Override
             public void onSuccess(ReplaceAxiomsResponse result) {
-                lastSyncedDigest = Optional.of(result.getKbDigest());
                 resultToReturn.set(result.getKbDigest());
                 synchronizeAxiomsLock.unlock();
             }
@@ -123,7 +119,6 @@ public class ReasonerSynchronizer {
             public void onSuccess(ApplyChangesResponse result) {
                 // Is this what is expected?
                 if (expectedDigest.equals(result.getKbDigest())) {
-                    lastSyncedDigest = Optional.of(result.getKbDigest());
                     resultToReturn.set(result.getKbDigest());
                     synchronizeAxiomsLock.unlock();
                 }
