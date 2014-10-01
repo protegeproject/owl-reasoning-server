@@ -22,8 +22,6 @@ public class ReasonerSynchronizer {
 
     private KbId kbId;
 
-    private final Lock synchronizeAxiomsLock = new ReentrantLock();
-
     public ReasonerSynchronizer(
             KbId kbId, ReasoningService reasoningService) {
         this.kbId = kbId;
@@ -47,7 +45,6 @@ public class ReasonerSynchronizer {
     public ListenableFuture<KbDigest> synchronizeReasoner(
             final MinimizedLogicalAxiomChanges changes,
             final ImmutableSortedSet<OWLLogicalAxiom> expectedAxioms) {
-        synchronizeAxiomsLock.lock();
         final SettableFuture<KbDigest> futureResult = SettableFuture.create();
         final ImmutableList<OWLAxiom> expectedAxiomsList = getExpectedAxioms(expectedAxioms);
         final KbDigest expectedDigest = KbDigest.getDigest(expectedAxioms);
@@ -59,7 +56,6 @@ public class ReasonerSynchronizer {
                 if (reasonerDigest.equals(expectedDigest)) {
                     // There's nothing to do.
                     futureResult.set(reasonerDigest);
-                    synchronizeAxiomsLock.unlock();
                 }
                 else {
                     if (changes.isEmpty()) {
@@ -74,7 +70,6 @@ public class ReasonerSynchronizer {
             @Override
             public void onFailure(Throwable t) {
                 // Propagate the exception
-                synchronizeAxiomsLock.unlock();
                 futureResult.setException(t);
             }
         });
@@ -92,14 +87,12 @@ public class ReasonerSynchronizer {
             @Override
             public void onSuccess(ReplaceAxiomsResponse result) {
                 resultToReturn.set(result.getKbDigest());
-                synchronizeAxiomsLock.unlock();
             }
 
             @Override
             public void onFailure(Throwable t) {
                 // Propagate exception
                 resultToReturn.setException(t);
-                synchronizeAxiomsLock.unlock();
             }
         });
     }
@@ -120,7 +113,6 @@ public class ReasonerSynchronizer {
                 // Is this what is expected?
                 if (expectedDigest.equals(result.getKbDigest())) {
                     resultToReturn.set(result.getKbDigest());
-                    synchronizeAxiomsLock.unlock();
                 }
                 else {
                     // Something went wrong somewhere.  Do a full blown synchronization.
@@ -132,7 +124,6 @@ public class ReasonerSynchronizer {
             public void onFailure(Throwable t) {
                 // Propagate exception
                 resultToReturn.setException(t);
-                synchronizeAxiomsLock.unlock();
             }
         });
     }
